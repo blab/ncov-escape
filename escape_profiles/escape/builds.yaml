@@ -7,7 +7,7 @@ files:
   include: "escape_profiles/escape/include.txt"
   auspice_config: "escape_profiles/escape/auspice_config.json"
   description: "escape_profiles/escape/escape_description.md"
-  ordering: "escape_profiles/escape/color_ordering.tsv"  
+  ordering: "escape_profiles/escape/color_ordering.tsv"
 
 # Note: unaligned sequences are provided as "aligned" sequences to avoid an initial full-DB alignment
 # as we re-align everything after subsampling.
@@ -31,7 +31,7 @@ inputs:
 # Auspice config is specified in rule auspice_config in export_for_nextstrain.smk
 builds:
   escape:
-    subsampling_scheme: nextstrain_global_2m
+    subsampling_scheme: pango_diversity_6m
     title: SARS-CoV-2 evolution showing immune escape since BA.2
 
 # remove sequences without division label in US
@@ -56,6 +56,8 @@ filter:
     Nextstrain_clade='21F (Iota)' \
     Nextstrain_clade='21G (Lambda)' \
     Nextstrain_clade='21H (Mu)' \
+    Nextstrain_clade='21I (Delta)' \
+    Nextstrain_clade='21J (Delta)' \
     Nextstrain_clade='21K (Omicron)' \
     Nextstrain_clade='21M (Omicron)'"
 
@@ -65,37 +67,11 @@ subsampling:
   # 4000 total
   # 4:1 ratio of focal to context
   # all regions equal except Oceania at 33%
-  nextstrain_global_2m:
-    africa_recent:
-      group_by: "country year month"
-      max_sequences: 600
-      min_date: "--min-date 2M"
-      exclude: "--exclude-where 'region!=Africa'"
-    asia_recent:
-      group_by: "country year month"
-      max_sequences: 600
-      min_date: "--min-date 2M"
-      exclude: "--exclude-where 'region!=Asia'"
-    europe_recent:
-      group_by: "country year month"
-      max_sequences: 600
-      min_date: "--min-date 2M"
-      exclude: "--exclude-where 'region!=Europe'"
-    north_america_recent:
-      group_by: "division year month"
-      max_sequences: 600
-      min_date: "--min-date 2M"
-      exclude: "--exclude-where 'region!=North America'"
-    south_america_recent:
-      group_by: "country year month"
-      max_sequences: 600
-      min_date: "--min-date 2M"
-      exclude: "--exclude-where 'region!=South America'"
-    oceania_recent:
-      group_by: "division year month"
-      max_sequences: 200
-      min_date: "--min-date 2M"
-      exclude: "--exclude-where 'region!=Oceania'"
+  pango_diversity_6m:
+    pango_diversity:
+      group_by: "pango_lineage"
+      max_sequences: 4000
+      min_date: "--min-date 6M"
 
 # TreeTime settings
 refine:
@@ -114,6 +90,6 @@ traits:
 # narrow_bandwidth = 0.038 or 14 days for "6m" and "all-time"
 frequencies:
   escape:
-    min_date: "2M"
-    narrow_bandwidth: 0.019
+    min_date: "6M"
+    narrow_bandwidth: 0.038
     recent_days_to_censor: 7
