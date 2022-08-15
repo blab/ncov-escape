@@ -2,7 +2,8 @@
   "title": "Genomic epidemiology of novel coronavirus",
   "build_url": "https://github.com/blab/ncov-escape",
   "maintainers": [
-    {"name": "Trevor Bedford", "url": "https://bedford.io/"}
+    {"name": "Trevor Bedford", "url": "https://bedford.io/"},
+    {"name": "Jesse Bloom", "url": "https://research.fredhutch.org/bloom/en.html"}    
   ],
   "colorings": [
     {

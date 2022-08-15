@@ -1,1 +1,1 @@
-Work in progress build showing neutralizing antibody escape of viruses from BA.2 descended from BA.2, with escape relative to BA.2.
+Nextstrain build showing calculated degree of escape from population immunity of BA.2 / BA.4 / BA.5 and descendant viruses. Escape values are derived from the ["Escape calculator for SARS-CoV-2 RBD"](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/).
