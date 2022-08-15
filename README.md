@@ -15,3 +15,8 @@ Visualize locally with:
 ```
 auspice view --datasetDir auspice/
 ```
+
+Push live with:
+```
+nextstrain remote upload nextstrain.org/groups/blab auspice/ncov_escape*.json
+```
