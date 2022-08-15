@@ -12,9 +12,9 @@ files:
 # Note: unaligned sequences are provided as "aligned" sequences to avoid an initial full-DB alignment
 # as we re-align everything after subsampling.
 inputs:
-  - name: open
-    metadata: "https://data.nextstrain.org/files/ncov/open/global/metadata.tsv.xz"
-    aligned: "https://data.nextstrain.org/files/ncov/open/global/aligned.fasta.xz"
+  - name: gisaid
+    metadata: "s3://nextstrain-ncov-private/metadata.tsv.gz"
+    aligned: "s3://nextstrain-ncov-private/sequences.fasta.xz"
     skip_sanitize_metadata: true
   - name: outgroup
     metadata: "data/ba2_outgroup_metadata.tsv"

@@ -3,7 +3,10 @@
   "build_url": "https://github.com/blab/ncov-escape",
   "maintainers": [
     {"name": "Trevor Bedford", "url": "https://bedford.io/"},
-    {"name": "Jesse Bloom", "url": "https://research.fredhutch.org/bloom/en.html"}    
+    {"name": "Jesse Bloom", "url": "https://research.fredhutch.org/bloom/en.html"}
+  ],
+  "data_provenance": [
+    {"name": "GISAID"}
   ],
   "colorings": [
     {
@@ -121,7 +124,6 @@
   "panels": [
     "tree",
     "map",
-    "entropy",
-    "frequencies"
+    "entropy"
   ]
 }
