@@ -16,10 +16,6 @@ inputs:
     metadata: "s3://nextstrain-ncov-private/metadata.tsv.gz"
     aligned: "s3://nextstrain-ncov-private/sequences.fasta.xz"
     skip_sanitize_metadata: true
-  - name: outgroup
-    metadata: "data/ba2_outgroup_metadata.tsv"
-    sequences: "data/ba2_outgroup_sequences.fasta"
-    skip_sanitize_metadata: true
 
 # Define locations for which builds should be created.
 # For each build we specify a subsampling scheme via an explicit key.
