@@ -67,6 +67,7 @@ if __name__ == '__main__':
         escape_df
         .set_index("strain")
         [["escape_score"]]
+        .round(3)
         .to_dict(orient="index")
     )
     write_json({"nodes": escape_dict}, args.output)
