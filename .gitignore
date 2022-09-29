@@ -13,6 +13,9 @@ gisaid_metadata.tsv
 gisaid_metadata_pruned.tsv
 metadata.tsv.gz
 
+escape-score/data/
+escape-score/output/
+
 # common analysis directory names
 ncov-tutorial/
 my-ncov-analyses/

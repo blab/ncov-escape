@@ -1,0 +1,2001 @@
+seqName	clade	Nextclade_pango	partiallyAliased	immune_escape	ace2_binding
+A.11	outgroup				
+A.16	outgroup				
+A	outgroup				
+A.15	outgroup				
+A.12	outgroup				
+A.18	outgroup				
+A.17	outgroup				
+A.1	outgroup				
+A.19	outgroup				
+A.2	outgroup				
+A.2.5.2	outgroup				
+A.2.5	outgroup				
+A.2.2	outgroup				
+A.2.4	outgroup				
+A.2.3	outgroup				
+A.2.5.1	outgroup				
+A.24	outgroup				
+A.2.5.3	outgroup				
+A.23.1	outgroup				
+A.22	outgroup				
+A.21	outgroup				
+A.25	outgroup				
+A.23	outgroup				
+A.27	outgroup				
+A.26	outgroup				
+A.30	outgroup				
+A.3	outgroup				
+A.4	outgroup				
+A.7	outgroup				
+A.28	outgroup				
+A.6	outgroup				
+A.29	outgroup				
+A.5	outgroup				
+AA.1	outgroup				
+A.9	outgroup				
+AA.4	outgroup				
+AA.6	outgroup				
+AA.3	outgroup				
+AA.5	outgroup				
+AA.2	outgroup				
+AB.1	outgroup				
+AD.1	outgroup				
+AD.2	outgroup				
+AE.1	outgroup				
+AA.7	outgroup				
+AC.1	outgroup				
+AA.8	outgroup				
+AE.2	outgroup				
+AD.2.1	outgroup				
+AE.5	outgroup				
+AE.7	outgroup				
+AE.6	outgroup				
+AE.4	outgroup				
+AH.1	outgroup				
+AH.2	outgroup				
+AE.8	outgroup				
+AE.3	outgroup				
+AH.3	outgroup				
+AJ.1	outgroup				
+AG.1	outgroup				
+AF.1	outgroup				
+AM.1	outgroup				
+AL.1	outgroup				
+AK.1	outgroup				
+AM.3	outgroup				
+AM.2	outgroup				
+AK.2	outgroup				
+AQ.1	outgroup				
+AM.4	outgroup				
+AN.1	outgroup				
+AS.1	outgroup				
+AQ.2	outgroup				
+AS.2	outgroup				
+AT.1	outgroup				
+AU.2	outgroup				
+AV.1	outgroup				
+AU.1	outgroup				
+AU.3	outgroup				
+AP.1	outgroup				
+AY.1	outgroup				
+AW.1	outgroup				
+AY.100	outgroup				
+AY.10	outgroup				
+AY.102.1	outgroup				
+AY.101	outgroup				
+AY.102.2	outgroup				
+AY.102	outgroup				
+AY.103	outgroup				
+AY.103.1	outgroup				
+AY.104	outgroup				
+AY.106	outgroup				
+AY.103.2	outgroup				
+AY.105	outgroup				
+AY.107	outgroup				
+AY.11	outgroup				
+AY.108	outgroup				
+AY.109	outgroup				
+AY.112	outgroup				
+AY.112.2	outgroup				
+AY.110	outgroup				
+AY.112.1	outgroup				
+AY.111	outgroup				
+AY.116.1	outgroup				
+AY.113	outgroup				
+AY.116	outgroup				
+AY.114	outgroup				
+AY.112.3	outgroup				
+AY.119.2	outgroup				
+AY.118	outgroup				
+AY.119	outgroup				
+AY.117	outgroup				
+AY.120.1	outgroup				
+AY.120.2	outgroup				
+AY.119.1	outgroup				
+AY.120	outgroup				
+AY.121	outgroup				
+AY.121.1	outgroup				
+AY.120.2.1	outgroup				
+AY.122.2	outgroup				
+AY.122	outgroup				
+AY.122.1	outgroup				
+AY.122.3	outgroup				
+AY.123	outgroup				
+AY.124	outgroup				
+AY.122.6	outgroup				
+AY.122.4	outgroup				
+AY.123.1	outgroup				
+AY.122.5	outgroup				
+AY.124.1.1	outgroup				
+AY.125	outgroup				
+AY.127.1	outgroup				
+AY.125.1	outgroup				
+AY.126	outgroup				
+AY.127	outgroup				
+AY.124.1	outgroup				
+AY.127.2	outgroup				
+AY.127.3	outgroup				
+AY.131	outgroup				
+AY.13	outgroup				
+AY.133	outgroup				
+AY.128	outgroup				
+AY.132	outgroup				
+AY.129	outgroup				
+AY.15	outgroup				
+AY.16	outgroup				
+AY.18	outgroup				
+AY.14	outgroup				
+AY.17	outgroup				
+AY.134	outgroup				
+AY.19	outgroup				
+AY.16.1	outgroup				
+AY.2	outgroup				
+AY.22	outgroup				
+AY.20	outgroup				
+AY.21	outgroup				
+AY.20.1	outgroup				
+AY.23	outgroup				
+AY.23.1	outgroup				
+AY.24	outgroup				
+AY.25.1.1	outgroup				
+AY.23.2	outgroup				
+AY.25	outgroup				
+AY.24.1	outgroup				
+AY.25.1	outgroup				
+AY.25.1.2	outgroup				
+AY.26.1	outgroup				
+AY.25.3	outgroup				
+AY.26	outgroup				
+AY.25.2	outgroup				
+AY.28	outgroup				
+AY.27	outgroup				
+AY.29.2	outgroup				
+AY.29	outgroup				
+AY.3	outgroup				
+AY.29.1	outgroup				
+AY.3.2	outgroup				
+AY.3.3	outgroup				
+AY.32	outgroup				
+AY.3.1	outgroup				
+AY.3.4	outgroup				
+AY.31	outgroup				
+AY.33	outgroup				
+AY.30	outgroup				
+AY.33.1	outgroup				
+AY.34.1.1	outgroup				
+AY.33.2	outgroup				
+AY.34	outgroup				
+AY.35	outgroup				
+AY.34.2	outgroup				
+AY.36	outgroup				
+AY.34.1	outgroup				
+AY.39	outgroup				
+AY.36.1	outgroup				
+AY.37	outgroup				
+AY.38	outgroup				
+AY.39.1.2	outgroup				
+AY.39.1.3	outgroup				
+AY.39.1.1	outgroup				
+AY.39.1	outgroup				
+AY.39.3	outgroup				
+AY.39.2	outgroup				
+AY.39.1.4	outgroup				
+AY.4	outgroup				
+AY.4.1	outgroup				
+AY.4.11	outgroup				
+AY.4.13	outgroup				
+AY.4.12	outgroup				
+AY.4.16	outgroup				
+AY.4.14	outgroup				
+AY.4.15	outgroup				
+AY.4.10	outgroup				
+AY.4.2.4	outgroup				
+AY.4.17	outgroup				
+AY.4.2.5	outgroup				
+AY.4.3	outgroup				
+AY.4.2.2	outgroup				
+AY.4.2.1	outgroup				
+AY.4.2.3	outgroup				
+AY.4.2	outgroup				
+AY.4.5	outgroup				
+AY.4.4	outgroup				
+AY.4.6	outgroup				
+AY.4.9	outgroup				
+AY.4.8	outgroup				
+AY.4.7	outgroup				
+AY.42	outgroup				
+AY.42.1	outgroup				
+AY.40	outgroup				
+AY.41	outgroup				
+AY.43	outgroup				
+AY.43.7	outgroup				
+AY.43.5	outgroup				
+AY.43.8	outgroup				
+AY.43.3	outgroup				
+AY.43.1	outgroup				
+AY.43.6	outgroup				
+AY.43.2	outgroup				
+AY.43.4	outgroup				
+AY.43.9	outgroup				
+AY.44	outgroup				
+AY.46	outgroup				
+AY.46.1	outgroup				
+AY.45	outgroup				
+AY.46.2	outgroup				
+AY.46.5	outgroup				
+AY.46.3	outgroup				
+AY.46.6	outgroup				
+AY.46.4	outgroup				
+AY.48	outgroup				
+AY.46.6.1	outgroup				
+AY.47	outgroup				
+AY.5	outgroup				
+AY.49	outgroup				
+AY.5.3	outgroup				
+AY.5.5	outgroup				
+AY.5.7	outgroup				
+AY.5.1	outgroup				
+AY.5.4	outgroup				
+AY.51	outgroup				
+AY.50	outgroup				
+AY.5.2	outgroup				
+AY.5.6	outgroup				
+AY.54	outgroup				
+AY.55	outgroup				
+AY.52	outgroup				
+AY.56	outgroup				
+AY.58	outgroup				
+AY.57	outgroup				
+AY.53	outgroup				
+AY.59	outgroup				
+AY.6	outgroup				
+AY.61	outgroup				
+AY.60	outgroup				
+AY.65	outgroup				
+AY.67	outgroup				
+AY.62	outgroup				
+AY.63	outgroup				
+AY.66	outgroup				
+AY.64	outgroup				
+AY.7	outgroup				
+AY.7.1	outgroup				
+AY.69	outgroup				
+AY.70	outgroup				
+AY.74	outgroup				
+AY.68	outgroup				
+AY.7.2	outgroup				
+AY.71	outgroup				
+AY.75	outgroup				
+AY.72	outgroup				
+AY.75.3	outgroup				
+AY.77	outgroup				
+AY.78	outgroup				
+AY.73	outgroup				
+AY.76	outgroup				
+AY.75.2	outgroup				
+AY.79	outgroup				
+AY.82	outgroup				
+AY.8	outgroup				
+AY.80	outgroup				
+AY.84	outgroup				
+AY.81	outgroup				
+AY.85	outgroup				
+AY.83	outgroup				
+AY.9.2	outgroup				
+AY.87	outgroup				
+AY.9	outgroup				
+AY.88	outgroup				
+AY.86	outgroup				
+AY.9.2.1	outgroup				
+AY.9.2.2	outgroup				
+AY.91	outgroup				
+AY.94	outgroup				
+AY.95	outgroup				
+AY.90	outgroup				
+AY.92	outgroup				
+AY.91.1	outgroup				
+AY.93	outgroup				
+AY.98.1.1	outgroup				
+AY.98	outgroup				
+AZ.1	outgroup				
+AZ.2	outgroup				
+AY.99.2	outgroup				
+AY.98.1	outgroup				
+AZ.2.1	outgroup				
+AY.99	outgroup				
+AZ.5	outgroup				
+AZ.4	outgroup				
+AY.99.1	outgroup				
+AZ.6	outgroup				
+AZ.3	outgroup				
+B.1	outgroup				
+B	outgroup				
+B.1.1.1	outgroup				
+B.1.1.101	outgroup				
+B.1.1.109	outgroup				
+B.1.1	outgroup				
+B.1.1.10	outgroup				
+B.1.1.107	outgroup				
+B.1.1.100	outgroup				
+B.1.1.115	outgroup				
+B.1.1.110	outgroup				
+B.1.1.111	outgroup				
+B.1.1.116	outgroup				
+B.1.1.114	outgroup				
+B.1.1.112	outgroup				
+B.1.1.113	outgroup				
+B.1.1.117	outgroup				
+B.1.1.119	outgroup				
+B.1.1.12	outgroup				
+B.1.1.121	outgroup				
+B.1.1.118	outgroup				
+B.1.1.120	outgroup				
+B.1.1.122	outgroup				
+B.1.1.125	outgroup				
+B.1.1.127	outgroup				
+B.1.1.123	outgroup				
+B.1.1.128	outgroup				
+B.1.1.129	outgroup				
+B.1.1.134	outgroup				
+B.1.1.13	outgroup				
+B.1.1.133	outgroup				
+B.1.1.132	outgroup				
+B.1.1.135	outgroup				
+B.1.1.130	outgroup				
+B.1.1.137	outgroup				
+B.1.1.136	outgroup				
+B.1.1.142	outgroup				
+B.1.1.138	outgroup				
+B.1.1.139	outgroup				
+B.1.1.141	outgroup				
+B.1.1.14	outgroup				
+B.1.1.147	outgroup				
+B.1.1.144	outgroup				
+B.1.1.148	outgroup				
+B.1.1.149	outgroup				
+B.1.1.152	outgroup				
+B.1.1.153	outgroup				
+B.1.1.145	outgroup				
+B.1.1.15	outgroup				
+B.1.1.154	outgroup				
+B.1.1.155	outgroup				
+B.1.1.157	outgroup				
+B.1.1.158	outgroup				
+B.1.1.160	outgroup				
+B.1.1.159	outgroup				
+B.1.1.16	outgroup				
+B.1.1.163	outgroup				
+B.1.1.162	outgroup				
+B.1.1.161	outgroup				
+B.1.1.164	outgroup				
+B.1.1.165	outgroup				
+B.1.1.166	outgroup				
+B.1.1.168	outgroup				
+B.1.1.169	outgroup				
+B.1.1.17	outgroup				
+B.1.1.170	outgroup				
+B.1.1.171	outgroup				
+B.1.1.172	outgroup				
+B.1.1.180	outgroup				
+B.1.1.175	outgroup				
+B.1.1.181	outgroup				
+B.1.1.177	outgroup				
+B.1.1.182	outgroup				
+B.1.1.174	outgroup				
+B.1.1.178	outgroup				
+B.1.1.176	outgroup				
+B.1.1.184	outgroup				
+B.1.1.187	outgroup				
+B.1.1.185	outgroup				
+B.1.1.186	outgroup				
+B.1.1.190	outgroup				
+B.1.1.192	outgroup				
+B.1.1.191	outgroup				
+B.1.1.189	outgroup				
+B.1.1.194	outgroup				
+B.1.1.196	outgroup				
+B.1.1.200	outgroup				
+B.1.1.197	outgroup				
+B.1.1.193	outgroup				
+B.1.1.198	outgroup				
+B.1.1.204	outgroup				
+B.1.1.201	outgroup				
+B.1.1.203	outgroup				
+B.1.1.202	outgroup				
+B.1.1.207	outgroup				
+B.1.1.209	outgroup				
+B.1.1.214	outgroup				
+B.1.1.205	outgroup				
+B.1.1.216	outgroup				
+B.1.1.208	outgroup				
+B.1.1.210	outgroup				
+B.1.1.213	outgroup				
+B.1.1.220	outgroup				
+B.1.1.218	outgroup				
+B.1.1.219	outgroup				
+B.1.1.222	outgroup				
+B.1.1.221	outgroup				
+B.1.1.226	outgroup				
+B.1.1.217	outgroup				
+B.1.1.227	outgroup				
+B.1.1.228	outgroup				
+B.1.1.225	outgroup				
+B.1.1.224	outgroup				
+B.1.1.234	outgroup				
+B.1.1.229	outgroup				
+B.1.1.231	outgroup				
+B.1.1.237	outgroup				
+B.1.1.239	outgroup				
+B.1.1.232	outgroup				
+B.1.1.230	outgroup				
+B.1.1.244	outgroup				
+B.1.1.242	outgroup				
+B.1.1.240	outgroup				
+B.1.1.236	outgroup				
+B.1.1.25	outgroup				
+B.1.1.241	outgroup				
+B.1.1.251	outgroup				
+B.1.1.249	outgroup				
+B.1.1.243	outgroup				
+B.1.1.255	outgroup				
+B.1.1.254	outgroup				
+B.1.1.256	outgroup				
+B.1.1.253	outgroup				
+B.1.1.26	outgroup				
+B.1.1.257	outgroup				
+B.1.1.258	outgroup				
+B.1.1.261	outgroup				
+B.1.1.262	outgroup				
+B.1.1.266	outgroup				
+B.1.1.268	outgroup				
+B.1.1.263	outgroup				
+B.1.1.267	outgroup				
+B.1.1.265	outgroup				
+B.1.1.27	outgroup				
+B.1.1.270	outgroup				
+B.1.1.269	outgroup				
+B.1.1.275	outgroup				
+B.1.1.271	outgroup				
+B.1.1.273	outgroup				
+B.1.1.279	outgroup				
+B.1.1.274	outgroup				
+B.1.1.272	outgroup				
+B.1.1.277	outgroup				
+B.1.1.28	outgroup				
+B.1.1.280	outgroup				
+B.1.1.285	outgroup				
+B.1.1.288	outgroup				
+B.1.1.283	outgroup				
+B.1.1.284	outgroup				
+B.1.1.282	outgroup				
+B.1.1.29	outgroup				
+B.1.1.289	outgroup				
+B.1.1.286	outgroup				
+B.1.1.290	outgroup				
+B.1.1.294	outgroup				
+B.1.1.291	outgroup				
+B.1.1.296	outgroup				
+B.1.1.30	outgroup				
+B.1.1.297	outgroup				
+B.1.1.301	outgroup				
+B.1.1.298	outgroup				
+B.1.1.3	outgroup				
+B.1.1.302	outgroup				
+B.1.1.304	outgroup				
+B.1.1.299	outgroup				
+B.1.1.300	outgroup				
+B.1.1.303	outgroup				
+B.1.1.305	outgroup				
+B.1.1.308	outgroup				
+B.1.1.307	outgroup				
+B.1.1.309	outgroup				
+B.1.1.311	outgroup				
+B.1.1.306	outgroup				
+B.1.1.31	outgroup				
+B.1.1.315	outgroup				
+B.1.1.310	outgroup				
+B.1.1.316	outgroup				
+B.1.1.312	outgroup				
+B.1.1.320	outgroup				
+B.1.1.317	outgroup				
+B.1.1.318	outgroup				
+B.1.1.319	outgroup				
+B.1.1.322	outgroup				
+B.1.1.324	outgroup				
+B.1.1.327	outgroup				
+B.1.1.325	outgroup				
+B.1.1.328	outgroup				
+B.1.1.326	outgroup				
+B.1.1.329	outgroup				
+B.1.1.323	outgroup				
+B.1.1.33	outgroup				
+B.1.1.334	outgroup				
+B.1.1.331	outgroup				
+B.1.1.332	outgroup				
+B.1.1.330	outgroup				
+B.1.1.335	outgroup				
+B.1.1.333	outgroup				
+B.1.1.336	outgroup				
+B.1.1.338	outgroup				
+B.1.1.337	outgroup				
+B.1.1.340	outgroup				
+B.1.1.342	outgroup				
+B.1.1.339	outgroup				
+B.1.1.345	outgroup				
+B.1.1.34	outgroup				
+B.1.1.341	outgroup				
+B.1.1.343	outgroup				
+B.1.1.344	outgroup				
+B.1.1.346	outgroup				
+B.1.1.348	outgroup				
+B.1.1.349	outgroup				
+B.1.1.350	outgroup				
+B.1.1.353	outgroup				
+B.1.1.354	outgroup				
+B.1.1.347	outgroup				
+B.1.1.352	outgroup				
+B.1.1.351	outgroup				
+B.1.1.355	outgroup				
+B.1.1.357	outgroup				
+B.1.1.361	outgroup				
+B.1.1.360	outgroup				
+B.1.1.359	outgroup				
+B.1.1.356	outgroup				
+B.1.1.358	outgroup				
+B.1.1.363	outgroup				
+B.1.1.364	outgroup				
+B.1.1.362	outgroup				
+B.1.1.366	outgroup				
+B.1.1.365	outgroup				
+B.1.1.367	outgroup				
+B.1.1.37	outgroup				
+B.1.1.369	outgroup				
+B.1.1.368	outgroup				
+B.1.1.371	outgroup				
+B.1.1.370	outgroup				
+B.1.1.372	outgroup				
+B.1.1.375	outgroup				
+B.1.1.374	outgroup				
+B.1.1.376	outgroup				
+B.1.1.377	outgroup				
+B.1.1.373	outgroup				
+B.1.1.378	outgroup				
+B.1.1.38	outgroup				
+B.1.1.380	outgroup				
+B.1.1.379	outgroup				
+B.1.1.382	outgroup				
+B.1.1.384	outgroup				
+B.1.1.381	outgroup				
+B.1.1.383	outgroup				
+B.1.1.385	outgroup				
+B.1.1.39	outgroup				
+B.1.1.386	outgroup				
+B.1.1.387	outgroup				
+B.1.1.389	outgroup				
+B.1.1.388	outgroup				
+B.1.1.393	outgroup				
+B.1.1.392	outgroup				
+B.1.1.395	outgroup				
+B.1.1.394	outgroup				
+B.1.1.398	outgroup				
+B.1.1.391	outgroup				
+B.1.1.397	outgroup				
+B.1.1.399	outgroup				
+B.1.1.396	outgroup				
+B.1.1.400	outgroup				
+B.1.1.4	outgroup				
+B.1.1.401	outgroup				
+B.1.1.402	outgroup				
+B.1.1.40	outgroup				
+B.1.1.404	outgroup				
+B.1.1.403	outgroup				
+B.1.1.407	outgroup				
+B.1.1.405	outgroup				
+B.1.1.406	outgroup				
+B.1.1.41	outgroup				
+B.1.1.409	outgroup				
+B.1.1.408	outgroup				
+B.1.1.410	outgroup				
+B.1.1.412	outgroup				
+B.1.1.411	outgroup				
+B.1.1.416	outgroup				
+B.1.1.415	outgroup				
+B.1.1.418	outgroup				
+B.1.1.414	outgroup				
+B.1.1.417	outgroup				
+B.1.1.413	outgroup				
+B.1.1.420	outgroup				
+B.1.1.423	outgroup				
+B.1.1.419	outgroup				
+B.1.1.426	outgroup				
+B.1.1.422	outgroup				
+B.1.1.427	outgroup				
+B.1.1.429	outgroup				
+B.1.1.425	outgroup				
+B.1.1.421	outgroup				
+B.1.1.428	outgroup				
+B.1.1.424	outgroup				
+B.1.1.43	outgroup				
+B.1.1.430	outgroup				
+B.1.1.434	outgroup				
+B.1.1.431	outgroup				
+B.1.1.433	outgroup				
+B.1.1.432	outgroup				
+B.1.1.436	outgroup				
+B.1.1.437	outgroup				
+B.1.1.435	outgroup				
+B.1.1.438	outgroup				
+B.1.1.441	outgroup				
+B.1.1.440	outgroup				
+B.1.1.44	outgroup				
+B.1.1.442	outgroup				
+B.1.1.444	outgroup				
+B.1.1.447	outgroup				
+B.1.1.449	outgroup				
+B.1.1.446	outgroup				
+B.1.1.45	outgroup				
+B.1.1.448	outgroup				
+B.1.1.451	outgroup				
+B.1.1.450	outgroup				
+B.1.1.445	outgroup				
+B.1.1.452	outgroup				
+B.1.1.458	outgroup				
+B.1.1.46	outgroup				
+B.1.1.453	outgroup				
+B.1.1.461	outgroup				
+B.1.1.459	outgroup				
+B.1.1.456	outgroup				
+B.1.1.465	outgroup				
+B.1.1.462	outgroup				
+B.1.1.467	outgroup				
+B.1.1.463	outgroup				
+B.1.1.466	outgroup				
+B.1.1.47	outgroup				
+B.1.1.48	outgroup				
+B.1.1.464	outgroup				
+B.1.1.482	outgroup				
+B.1.1.480	outgroup				
+B.1.1.481	outgroup				
+B.1.1.484	outgroup				
+B.1.1.483	outgroup				
+B.1.1.486	outgroup				
+B.1.1.487	outgroup				
+B.1.1.485	outgroup				
+B.1.1.50	outgroup				
+B.1.1.49	outgroup				
+B.1.1.5	outgroup				
+B.1.1.500	outgroup				
+B.1.1.506	outgroup				
+B.1.1.51	outgroup				
+B.1.1.512	outgroup				
+B.1.1.513	outgroup				
+B.1.1.514	outgroup				
+B.1.1.507	outgroup				
+B.1.1.515	outgroup				
+B.1.1.517	outgroup				
+B.1.1.518	outgroup				
+B.1.1.516	outgroup				
+B.1.1.519	outgroup				
+B.1.1.52	outgroup				
+B.1.1.522	outgroup				
+B.1.1.521	outgroup				
+B.1.1.525	outgroup				
+B.1.1.524	outgroup				
+B.1.1.526	outgroup				
+B.1.1.523	outgroup				
+B.1.1.56	outgroup				
+B.1.1.54	outgroup				
+B.1.1.528	outgroup				
+B.1.1.55	outgroup				
+B.1.1.59	outgroup				
+B.1.1.58	outgroup				
+B.1.1.57	outgroup				
+B.1.1.53	outgroup				
+B.1.1.61	outgroup				
+B.1.1.7	outgroup				
+B.1.1.70	outgroup				
+B.1.1.62	outgroup				
+B.1.1.72	outgroup				
+B.1.1.63	outgroup				
+B.1.1.67	outgroup				
+B.1.1.74	outgroup				
+B.1.1.75	outgroup				
+B.1.1.71	outgroup				
+B.1.1.82	outgroup				
+B.1.1.77	outgroup				
+B.1.1.8	outgroup				
+B.1.1.83	outgroup				
+B.1.1.86	outgroup				
+B.1.1.88	outgroup				
+B.1.1.87	outgroup				
+B.1.1.84	outgroup				
+B.1.1.91	outgroup				
+B.1.1.89	outgroup				
+B.1.1.92	outgroup				
+B.1.1.93	outgroup				
+B.1.1.90	outgroup				
+B.1.1.95	outgroup				
+B.1.1.98	outgroup				
+B.1.1.99	outgroup				
+B.1.106	outgroup				
+B.1.1.97	outgroup				
+B.1.104	outgroup				
+B.1.103	outgroup				
+B.1.110.2	outgroup				
+B.1.108	outgroup				
+B.1.105	outgroup				
+B.1.110	outgroup				
+B.1.110.3	outgroup				
+B.1.110.1	outgroup				
+B.1.111	outgroup				
+B.1.112	outgroup				
+B.1.116	outgroup				
+B.1.113	outgroup				
+B.1.12	outgroup				
+B.1.120	outgroup				
+B.1.118	outgroup				
+B.1.115	outgroup				
+B.1.117	outgroup				
+B.1.119	outgroup				
+B.1.124	outgroup				
+B.1.134	outgroup				
+B.1.127	outgroup				
+B.1.126	outgroup				
+B.1.13	outgroup				
+B.1.131	outgroup				
+B.1.137	outgroup				
+B.1.139	outgroup				
+B.1.128	outgroup				
+B.1.14	outgroup				
+B.1.145	outgroup				
+B.1.146	outgroup				
+B.1.140	outgroup				
+B.1.147	outgroup				
+B.1.149	outgroup				
+B.1.143	outgroup				
+B.1.142	outgroup				
+B.1.158	outgroup				
+B.1.151	outgroup				
+B.1.157	outgroup				
+B.1.159	outgroup				
+B.1.160.11	outgroup				
+B.1.153	outgroup				
+B.1.160.12	outgroup				
+B.1.160	outgroup				
+B.1.160.13	outgroup				
+B.1.160.10	outgroup				
+B.1.160.14	outgroup				
+B.1.160.16	outgroup				
+B.1.160.17	outgroup				
+B.1.160.15	outgroup				
+B.1.160.18	outgroup				
+B.1.160.21	outgroup				
+B.1.160.22	outgroup				
+B.1.160.20	outgroup				
+B.1.160.23	outgroup				
+B.1.160.24	outgroup				
+B.1.160.25	outgroup				
+B.1.160.19	outgroup				
+B.1.160.26	outgroup				
+B.1.160.28	outgroup				
+B.1.160.27	outgroup				
+B.1.160.29	outgroup				
+B.1.160.33	outgroup				
+B.1.160.31	outgroup				
+B.1.160.30	outgroup				
+B.1.160.32	outgroup				
+B.1.160.8	outgroup				
+B.1.160.9	outgroup				
+B.1.160.7	outgroup				
+B.1.161	outgroup				
+B.1.162	outgroup				
+B.1.165	outgroup				
+B.1.163	outgroup				
+B.1.167	outgroup				
+B.1.164	outgroup				
+B.1.169	outgroup				
+B.1.166	outgroup				
+B.1.170	outgroup				
+B.1.168	outgroup				
+B.1.173	outgroup				
+B.1.177.10	outgroup				
+B.1.177	outgroup				
+B.1.177.15	outgroup				
+B.1.177.11	outgroup				
+B.1.177.12	outgroup				
+B.1.177.14	outgroup				
+B.1.177.18	outgroup				
+B.1.177.16	outgroup				
+B.1.177.17	outgroup				
+B.1.177.19	outgroup				
+B.1.177.20	outgroup				
+B.1.177.2	outgroup				
+B.1.177.23	outgroup				
+B.1.177.21	outgroup				
+B.1.177.25	outgroup				
+B.1.177.27	outgroup				
+B.1.177.26	outgroup				
+B.1.177.24	outgroup				
+B.1.177.3	outgroup				
+B.1.177.28	outgroup				
+B.1.177.29	outgroup				
+B.1.177.30	outgroup				
+B.1.177.31	outgroup				
+B.1.177.32	outgroup				
+B.1.177.36	outgroup				
+B.1.177.33	outgroup				
+B.1.177.34	outgroup				
+B.1.177.35	outgroup				
+B.1.177.37	outgroup				
+B.1.177.38	outgroup				
+B.1.177.4	outgroup				
+B.1.177.39	outgroup				
+B.1.177.41	outgroup				
+B.1.177.40	outgroup				
+B.1.177.42	outgroup				
+B.1.177.44	outgroup				
+B.1.177.43	outgroup				
+B.1.177.47	outgroup				
+B.1.177.48	outgroup				
+B.1.177.5	outgroup				
+B.1.177.45	outgroup				
+B.1.177.49	outgroup				
+B.1.177.46	outgroup				
+B.1.177.50	outgroup				
+B.1.177.51	outgroup				
+B.1.177.55	outgroup				
+B.1.177.54	outgroup				
+B.1.177.56	outgroup				
+B.1.177.52	outgroup				
+B.1.177.53	outgroup				
+B.1.177.57	outgroup				
+B.1.177.58	outgroup				
+B.1.177.6	outgroup				
+B.1.177.59	outgroup				
+B.1.177.61	outgroup				
+B.1.177.60	outgroup				
+B.1.177.62	outgroup				
+B.1.177.64	outgroup				
+B.1.177.66	outgroup				
+B.1.177.63	outgroup				
+B.1.177.65	outgroup				
+B.1.177.69	outgroup				
+B.1.177.70	outgroup				
+B.1.177.72	outgroup				
+B.1.177.67	outgroup				
+B.1.177.68	outgroup				
+B.1.177.71	outgroup				
+B.1.177.7	outgroup				
+B.1.177.76	outgroup				
+B.1.177.73	outgroup				
+B.1.177.75	outgroup				
+B.1.177.74	outgroup				
+B.1.177.77	outgroup				
+B.1.177.78	outgroup				
+B.1.177.80	outgroup				
+B.1.177.81	outgroup				
+B.1.177.8	outgroup				
+B.1.177.87	outgroup				
+B.1.177.88	outgroup				
+B.1.177.84	outgroup				
+B.1.177.85	outgroup				
+B.1.177.82	outgroup				
+B.1.177.89	outgroup				
+B.1.178	outgroup				
+B.1.177.83	outgroup				
+B.1.177.9	outgroup				
+B.1.181	outgroup				
+B.1.179	outgroup				
+B.1.182	outgroup				
+B.1.177.86	outgroup				
+B.1.184	outgroup				
+B.1.187	outgroup				
+B.1.180	outgroup				
+B.1.195	outgroup				
+B.1.189	outgroup				
+B.1.194	outgroup				
+B.1.190	outgroup				
+B.1.188	outgroup				
+B.1.192	outgroup				
+B.1.2	outgroup				
+B.1.203	outgroup				
+B.1.205	outgroup				
+B.1.198	outgroup				
+B.1.201	outgroup				
+B.1.199	outgroup				
+B.1.210	outgroup				
+B.1.208	outgroup				
+B.1.206	outgroup				
+B.1.213	outgroup				
+B.1.214.1	outgroup				
+B.1.214.2	outgroup				
+B.1.211	outgroup				
+B.1.214.4	outgroup				
+B.1.214	outgroup				
+B.1.212	outgroup				
+B.1.218	outgroup				
+B.1.214.3	outgroup				
+B.1.22	outgroup				
+B.1.215	outgroup				
+B.1.219	outgroup				
+B.1.22.1	outgroup				
+B.1.222	outgroup				
+B.1.221.4	outgroup				
+B.1.221.2	outgroup				
+B.1.223	outgroup				
+B.1.221.3	outgroup				
+B.1.221	outgroup				
+B.1.221.1	outgroup				
+B.1.220	outgroup				
+B.1.225	outgroup				
+B.1.23	outgroup				
+B.1.224	outgroup				
+B.1.229	outgroup				
+B.1.227	outgroup				
+B.1.231	outgroup				
+B.1.235	outgroup				
+B.1.232	outgroup				
+B.1.233	outgroup				
+B.1.234	outgroup				
+B.1.236	outgroup				
+B.1.237	outgroup				
+B.1.239	outgroup				
+B.1.238	outgroup				
+B.1.241	outgroup				
+B.1.242	outgroup				
+B.1.240.1	outgroup				
+B.1.243	outgroup				
+B.1.240.2	outgroup				
+B.1.247	outgroup				
+B.1.240	outgroup				
+B.1.243.1	outgroup				
+B.1.243.2	outgroup				
+B.1.249	outgroup				
+B.1.245	outgroup				
+B.1.248	outgroup				
+B.1.252	outgroup				
+B.1.258	outgroup				
+B.1.251	outgroup				
+B.1.254	outgroup				
+B.1.256	outgroup				
+B.1.258.15	outgroup				
+B.1.250	outgroup				
+B.1.258.16	outgroup				
+B.1.258.10	outgroup				
+B.1.258.11	outgroup				
+B.1.258.18	outgroup				
+B.1.258.14	outgroup				
+B.1.258.2	outgroup				
+B.1.258.17	outgroup				
+B.1.258.22	outgroup				
+B.1.258.12	outgroup				
+B.1.258.20	outgroup				
+B.1.258.21	outgroup				
+B.1.258.19	outgroup				
+B.1.258.23	outgroup				
+B.1.258.4	outgroup				
+B.1.258.5	outgroup				
+B.1.258.6	outgroup				
+B.1.258.3	outgroup				
+B.1.258.9	outgroup				
+B.1.263	outgroup				
+B.1.258.7	outgroup				
+B.1.258.24	outgroup				
+B.1.260	outgroup				
+B.1.265	outgroup				
+B.1.270	outgroup				
+B.1.268	outgroup				
+B.1.274	outgroup				
+B.1.264	outgroup				
+B.1.267	outgroup				
+B.1.276	outgroup				
+B.1.273	outgroup				
+B.1.279	outgroup				
+B.1.264.1	outgroup				
+B.1.281	outgroup				
+B.1.287	outgroup				
+B.1.289	outgroup				
+B.1.282	outgroup				
+B.1.285	outgroup				
+B.1.280	outgroup				
+B.1.292	outgroup				
+B.1.277	outgroup				
+B.1.284	outgroup				
+B.1.3	outgroup				
+B.1.301	outgroup				
+B.1.294	outgroup				
+B.1.305	outgroup				
+B.1.291	outgroup				
+B.1.293	outgroup				
+B.1.304	outgroup				
+B.1.302	outgroup				
+B.1.309	outgroup				
+B.1.310	outgroup				
+B.1.311	outgroup				
+B.1.313	outgroup				
+B.1.314	outgroup				
+B.1.315	outgroup				
+B.1.316	outgroup				
+B.1.318	outgroup				
+B.1.319	outgroup				
+B.1.320	outgroup				
+B.1.308	outgroup				
+B.1.298	outgroup				
+B.1.306	outgroup				
+B.1.326	outgroup				
+B.1.321	outgroup				
+B.1.323	outgroup				
+B.1.330	outgroup				
+B.1.334	outgroup				
+B.1.324	outgroup				
+B.1.335	outgroup				
+B.1.329	outgroup				
+B.1.328	outgroup				
+B.1.325	outgroup				
+B.1.332	outgroup				
+B.1.333	outgroup				
+B.1.337	outgroup				
+B.1.342	outgroup				
+B.1.340	outgroup				
+B.1.336	outgroup				
+B.1.338	outgroup				
+B.1.341	outgroup				
+B.1.343	outgroup				
+B.1.344	outgroup				
+B.1.346	outgroup				
+B.1.349	outgroup				
+B.1.350.1	outgroup				
+B.1.350	outgroup				
+B.1.348	outgroup				
+B.1.351	outgroup				
+B.1.35	outgroup				
+B.1.351.2	outgroup				
+B.1.351.1	outgroup				
+B.1.351.3	outgroup				
+B.1.355	outgroup				
+B.1.351.5	outgroup				
+B.1.359	outgroup				
+B.1.356	outgroup				
+B.1.357	outgroup				
+B.1.358	outgroup				
+B.1.354	outgroup				
+B.1.36.12	outgroup				
+B.1.36.1	outgroup				
+B.1.36.19	outgroup				
+B.1.36.10	outgroup				
+B.1.36.17	outgroup				
+B.1.36	outgroup				
+B.1.36.20	outgroup				
+B.1.36.21	outgroup				
+B.1.36.16	outgroup				
+B.1.36.23	outgroup				
+B.1.36.2	outgroup				
+B.1.36.18	outgroup				
+B.1.36.24	outgroup				
+B.1.36.28	outgroup				
+B.1.36.25	outgroup				
+B.1.36.22	outgroup				
+B.1.36.26	outgroup				
+B.1.36.34	outgroup				
+B.1.36.29	outgroup				
+B.1.36.35	outgroup				
+B.1.36.31	outgroup				
+B.1.36.27	outgroup				
+B.1.36.37	outgroup				
+B.1.36.33	outgroup				
+B.1.36.36	outgroup				
+B.1.36.38	outgroup				
+B.1.36.39	outgroup				
+B.1.36.9	outgroup				
+B.1.36.8	outgroup				
+B.1.36.7	outgroup				
+B.1.362.1	outgroup				
+B.1.361	outgroup				
+B.1.363	outgroup				
+B.1.362.2	outgroup				
+B.1.360	outgroup				
+B.1.367	outgroup				
+B.1.366	outgroup				
+B.1.369.1	outgroup				
+B.1.369	outgroup				
+B.1.37	outgroup				
+B.1.370	outgroup				
+B.1.372	outgroup				
+B.1.362	outgroup				
+B.1.371	outgroup				
+B.1.378	outgroup				
+B.1.377	outgroup				
+B.1.379	outgroup				
+B.1.375	outgroup				
+B.1.38	outgroup				
+B.1.385	outgroup				
+B.1.381	outgroup				
+B.1.384	outgroup				
+B.1.383	outgroup				
+B.1.380	outgroup				
+B.1.387	outgroup				
+B.1.382	outgroup				
+B.1.388	outgroup				
+B.1.39	outgroup				
+B.1.390	outgroup				
+B.1.391	outgroup				
+B.1.389	outgroup				
+B.1.393	outgroup				
+B.1.396	outgroup				
+B.1.395	outgroup				
+B.1.40	outgroup				
+B.1.397	outgroup				
+B.1.399	outgroup				
+B.1.398	outgroup				
+B.1.400	outgroup				
+B.1.401	outgroup				
+B.1.400.1	outgroup				
+B.1.402	outgroup				
+B.1.405	outgroup				
+B.1.403	outgroup				
+B.1.404	outgroup				
+B.1.406	outgroup				
+B.1.408	outgroup				
+B.1.407	outgroup				
+B.1.411	outgroup				
+B.1.415.1	outgroup				
+B.1.409	outgroup				
+B.1.413	outgroup				
+B.1.415	outgroup				
+B.1.417	outgroup				
+B.1.416.1	outgroup				
+B.1.416	outgroup				
+B.1.418	outgroup				
+B.1.420	outgroup				
+B.1.421	outgroup				
+B.1.425	outgroup				
+B.1.422	outgroup				
+B.1.424	outgroup				
+B.1.426	outgroup				
+B.1.423	outgroup				
+B.1.428.1	outgroup				
+B.1.428	outgroup				
+B.1.431	outgroup				
+B.1.427	outgroup				
+B.1.429.1	outgroup				
+B.1.428.2	outgroup				
+B.1.428.3	outgroup				
+B.1.429	outgroup				
+B.1.433	outgroup				
+B.1.435	outgroup				
+B.1.432	outgroup				
+B.1.438.1	outgroup				
+B.1.438	outgroup				
+B.1.434	outgroup				
+B.1.437	outgroup				
+B.1.436	outgroup				
+B.1.438.2	outgroup				
+B.1.439	outgroup				
+B.1.438.3	outgroup				
+B.1.438.4	outgroup				
+B.1.441	outgroup				
+B.1.442	outgroup				
+B.1.443	outgroup				
+B.1.444	outgroup				
+B.1.44	outgroup				
+B.1.450	outgroup				
+B.1.453	outgroup				
+B.1.445	outgroup				
+B.1.446	outgroup				
+B.1.452	outgroup				
+B.1.451	outgroup				
+B.1.448	outgroup				
+B.1.456	outgroup				
+B.1.460	outgroup				
+B.1.458	outgroup				
+B.1.462	outgroup				
+B.1.463	outgroup				
+B.1.466	outgroup				
+B.1.459	outgroup				
+B.1.466.1	outgroup				
+B.1.465	outgroup				
+B.1.466.2	outgroup				
+B.1.467	outgroup				
+B.1.468	outgroup				
+B.1.469	outgroup				
+B.1.473	outgroup				
+B.1.470	outgroup				
+B.1.471	outgroup				
+B.1.475	outgroup				
+B.1.478	outgroup				
+B.1.476	outgroup				
+B.1.474	outgroup				
+B.1.483	outgroup				
+B.1.482	outgroup				
+B.1.480	outgroup				
+B.1.488	outgroup				
+B.1.486	outgroup				
+B.1.489	outgroup				
+B.1.487	outgroup				
+B.1.485	outgroup				
+B.1.479	outgroup				
+B.1.490	outgroup				
+B.1.492	outgroup				
+B.1.493	outgroup				
+B.1.494	outgroup				
+B.1.491	outgroup				
+B.1.495	outgroup				
+B.1.496	outgroup				
+B.1.497	outgroup				
+B.1.498	outgroup				
+B.1.499.1	outgroup				
+B.1.500	outgroup				
+B.1.499	outgroup				
+B.1.501	outgroup				
+B.1.505	outgroup				
+B.1.502	outgroup				
+B.1.503	outgroup				
+B.1.504	outgroup				
+B.1.507	outgroup				
+B.1.506	outgroup				
+B.1.511	outgroup				
+B.1.509	outgroup				
+B.1.510	outgroup				
+B.1.508	outgroup				
+B.1.517	outgroup				
+B.1.517.1	outgroup				
+B.1.520	outgroup				
+B.1.513	outgroup				
+B.1.521	outgroup				
+B.1.516	outgroup				
+B.1.518	outgroup				
+B.1.515	outgroup				
+B.1.526	outgroup				
+B.1.524	outgroup				
+B.1.525	outgroup				
+B.1.527	outgroup				
+B.1.523	outgroup				
+B.1.532	outgroup				
+B.1.531	outgroup				
+B.1.530	outgroup				
+B.1.533	outgroup				
+B.1.534	outgroup				
+B.1.537	outgroup				
+B.1.528	outgroup				
+B.1.529	outgroup				
+B.1.538	outgroup				
+B.1.536	outgroup				
+B.1.540	outgroup				
+B.1.539	outgroup				
+B.1.535	outgroup				
+B.1.542	outgroup				
+B.1.541	outgroup				
+B.1.544	outgroup				
+B.1.543	outgroup				
+B.1.545	outgroup				
+B.1.546	outgroup				
+B.1.548	outgroup				
+B.1.547	outgroup				
+B.1.552	outgroup				
+B.1.554	outgroup				
+B.1.549	outgroup				
+B.1.550	outgroup				
+B.1.551	outgroup				
+B.1.556	outgroup				
+B.1.555	outgroup				
+B.1.557	outgroup				
+B.1.559	outgroup				
+B.1.558	outgroup				
+B.1.562	outgroup				
+B.1.564	outgroup				
+B.1.563	outgroup				
+B.1.564.1	outgroup				
+B.1.561	outgroup				
+B.1.566	outgroup				
+B.1.568	outgroup				
+B.1.560	outgroup				
+B.1.567	outgroup				
+B.1.565	outgroup				
+B.1.569	outgroup				
+B.1.570	outgroup				
+B.1.575.1	outgroup				
+B.1.571	outgroup				
+B.1.574	outgroup				
+B.1.573	outgroup				
+B.1.575	outgroup				
+B.1.572	outgroup				
+B.1.578	outgroup				
+B.1.575.2	outgroup				
+B.1.576	outgroup				
+B.1.579	outgroup				
+B.1.577	outgroup				
+B.1.581	outgroup				
+B.1.585	outgroup				
+B.1.586	outgroup				
+B.1.580	outgroup				
+B.1.588.1	outgroup				
+B.1.582	outgroup				
+B.1.587	outgroup				
+B.1.588	outgroup				
+B.1.589	outgroup				
+B.1.592	outgroup				
+B.1.590	outgroup				
+B.1.595	outgroup				
+B.1.593	outgroup				
+B.1.591	outgroup				
+B.1.595.2	outgroup				
+B.1.594	outgroup				
+B.1.595.1	outgroup				
+B.1.595.3	outgroup				
+B.1.596	outgroup				
+B.1.596.1	outgroup				
+B.1.598	outgroup				
+B.1.6	outgroup				
+B.1.600	outgroup				
+B.1.599	outgroup				
+B.1.595.4	outgroup				
+B.1.597	outgroup				
+B.1.603	outgroup				
+B.1.604	outgroup				
+B.1.601	outgroup				
+B.1.607	outgroup				
+B.1.602	outgroup				
+B.1.605	outgroup				
+B.1.609	outgroup				
+B.1.606	outgroup				
+B.1.612	outgroup				
+B.1.610	outgroup				
+B.1.611	outgroup				
+B.1.617	outgroup				
+B.1.616	outgroup				
+B.1.617.2	outgroup				
+B.1.614	outgroup				
+B.1.613	outgroup				
+B.1.615	outgroup				
+B.1.617.1	outgroup				
+B.1.617.3	outgroup				
+B.1.618	outgroup				
+B.1.619	outgroup				
+B.1.620	outgroup				
+B.1.619.1	outgroup				
+B.1.621	outgroup				
+B.1.621.1	outgroup				
+B.1.627	outgroup				
+B.1.626	outgroup				
+B.1.622	outgroup				
+B.1.625	outgroup				
+B.1.629	outgroup				
+B.1.623	outgroup				
+B.1.630	outgroup				
+B.1.621.2	outgroup				
+B.1.631	outgroup				
+B.1.633	outgroup				
+B.1.635	outgroup				
+B.1.634	outgroup				
+B.1.632	outgroup				
+B.1.636	outgroup				
+B.1.637	outgroup				
+B.1.640.2	outgroup				
+B.1.641	outgroup				
+B.1.640.1	outgroup				
+B.1.637.1	outgroup				
+B.1.67	outgroup				
+B.1.639	outgroup				
+B.1.638	outgroup				
+B.1.70	outgroup				
+B.1.76	outgroup				
+B.1.69	outgroup				
+B.1.8	outgroup				
+B.1.81	outgroup				
+B.1.83	outgroup				
+B.1.9.1	outgroup				
+B.1.77	outgroup				
+B.1.78	outgroup				
+B.1.9	outgroup				
+B.1.84	outgroup				
+B.1.91	outgroup				
+B.1.9.5	outgroup				
+B.1.96	outgroup				
+B.1.9.4	outgroup				
+B.1.9.2	outgroup				
+B.1.9.3	outgroup				
+B.1.94	outgroup				
+B.1.93	outgroup				
+B.12	outgroup				
+B.13	outgroup				
+B.1.97	outgroup				
+B.10	outgroup				
+B.11	outgroup				
+B.15	outgroup				
+B.23	outgroup				
+B.18	outgroup				
+B.20	outgroup				
+B.26	outgroup				
+B.19	outgroup				
+B.27	outgroup				
+B.28	outgroup				
+B.31	outgroup				
+B.3	outgroup				
+B.30	outgroup				
+B.3.1	outgroup				
+B.32	outgroup				
+B.34	outgroup				
+B.35	outgroup				
+B.29	outgroup				
+B.37	outgroup				
+B.33	outgroup				
+B.36	outgroup				
+B.38	outgroup				
+B.39	outgroup				
+B.4.1	outgroup				
+B.4.2	outgroup				
+B.4	outgroup				
+B.4.5	outgroup				
+B.4.7	outgroup				
+B.4.6	outgroup				
+B.4.8	outgroup				
+B.41	outgroup				
+B.44	outgroup				
+B.40	outgroup				
+B.42	outgroup				
+B.43	outgroup				
+B.45	outgroup				
+B.47	outgroup				
+B.49	outgroup				
+B.5	outgroup				
+B.46	outgroup				
+B.52	outgroup				
+B.50	outgroup				
+B.53	outgroup				
+B.51	outgroup				
+B.4.4	outgroup				
+B.58	outgroup				
+B.6	outgroup				
+B.55	outgroup				
+B.56	outgroup				
+B.6.1	outgroup				
+B.57	outgroup				
+B.6.2	outgroup				
+B.61	outgroup				
+B.6.5	outgroup				
+B.6.4	outgroup				
+B.6.8	outgroup				
+B.6.6	outgroup				
+B.60	outgroup				
+BA.1	outgroup				
+BA.1.1.10	outgroup				
+B.6.3	outgroup				
+BA.1.1	outgroup				
+BA.1.1.12	outgroup				
+BA.1.1.1	outgroup				
+BA.1.1.11	outgroup				
+BA.1.1.14	outgroup				
+BA.1.1.13	outgroup				
+BA.1.1.17	outgroup				
+BA.1.1.3	outgroup				
+BA.1.1.15	outgroup				
+BA.1.1.18	outgroup				
+BA.1.1.16	outgroup				
+BA.1.1.5	outgroup				
+BA.1.1.2	outgroup				
+BA.1.1.4	outgroup				
+BA.1.1.7	outgroup				
+BA.1.1.6	outgroup				
+BA.1.1.8	outgroup				
+BA.1.1.9	outgroup				
+BA.1.12	outgroup				
+BA.1.13.1	outgroup				
+BA.1.13	outgroup				
+BA.1.10	outgroup				
+BA.1.14	outgroup				
+BA.1.14.2	outgroup				
+BA.1.15.1	outgroup				
+BA.1.15	outgroup				
+BA.1.14.1	outgroup				
+BA.1.15.2	outgroup				
+BA.1.16.1	outgroup				
+BA.1.16.2	outgroup				
+BA.1.15.3	outgroup				
+BA.1.17	outgroup				
+BA.1.17.2	outgroup				
+BA.1.2	outgroup				
+BA.1.18	outgroup				
+BA.1.17.1	outgroup				
+BA.1.16	outgroup				
+BA.1.21	outgroup				
+BA.1.19	outgroup				
+BA.1.22	outgroup				
+BA.1.21.1	outgroup				
+BA.1.20	outgroup				
+BA.1.24	outgroup				
+BA.1.23	outgroup				
+BA.1.4	outgroup				
+BA.1.8	outgroup				
+BA.1.5	outgroup				
+BA.1.9	outgroup				
+BA.1.6	outgroup				
+BA.2	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+BA.1.7	outgroup				
+BA.2.1	21L (Omicron)	BA.2.1	BA.2.1	-0.00008999595024645948	-0
+BA.2.10.3	21L (Omicron)	BA.2.10.3	BA.2.10.3	-0.00008999595024645948	-0
+BA.2.10.1	21L (Omicron)	BA.2.10.1	BA.2.10.1	-0.00008999595024645948	-0
+BA.2.10	21L (Omicron)	BA.2.10	BA.2.10	-0.00008999595024645948	-0
+BA.1.3	outgroup				
+BA.2.10.2	21L (Omicron)	BA.2.10.2	BA.2.10.2	-0.00008999595024645948	-0
+BA.2.11	21L (Omicron)	BA.2.11	BA.2.11	0.1718042480715419	-0.04096000000000006
+BA.2.10.4	21L (Omicron)	BA.2.10.4	BA.2.10.4	0.3624635743501971	0.73328
+BA.2.12.1	22C (Omicron)	BA.2.12.1	BA.2.12.1	0.1718042480715419	-0.1269299999999999
+BA.2.12	21L (Omicron)	BA.2.12	BA.2.12	-0.00008999595024645948	-0
+BA.2.13	21L (Omicron)	BA.2.13	BA.2.13	0.1718042480715419	0.10556
+BA.2.13.1	21L (Omicron)	BA.2.13.1	BA.2.13.1	0.1718042480715419	0.10556
+BA.2.12.2	21L (Omicron)	BA.2.12.2	BA.2.12.2	0.0606644813713417	0.07350000000000005
+BA.2.17	21L (Omicron)	BA.2.17	BA.2.17	-0.00008999595024645948	-0
+BA.2.15	21L (Omicron)	BA.2.15	BA.2.15	-0.00008999595024645948	-0
+BA.2.16	21L (Omicron)	BA.2.16	BA.2.16	-0.00008999595024645948	-0
+BA.2.19	21L (Omicron)	BA.2.19	BA.2.19	-0.00008999595024645948	-0
+BA.2.14	21L (Omicron)	BA.2.14	BA.2.14	-0.00008999595024645948	-0
+BA.2.2.1	21L (Omicron)	BA.2.2.1	BA.2.2.1	-0.00008999595024645948	-0
+BA.2.18	21L (Omicron)	BA.2.18	BA.2.18	0.047315972860990416	0.23107
+BA.2.20	21L (Omicron)	BA.2.20	BA.2.20	-0.00008999595024645948	-0
+BA.2.21	21L (Omicron)	BA.2.21	BA.2.21	-0.00008999595024645948	-0
+BA.2.25	21L (Omicron)	BA.2.25	BA.2.25	-0.00008999595024645948	-0
+BA.2.23.1	21L (Omicron)	BA.2.23.1	BA.2.23.1	-0.00008999595024645948	-0
+BA.2.2	21L (Omicron)	BA.2.2	BA.2.2	-0.00008999595024645948	-0
+BA.2.24	21L (Omicron)	BA.2.24	BA.2.24	0.013108466806745694	-0.03172000000000008
+BA.2.22	21L (Omicron)	BA.2.22	BA.2.22	-0.00008999595024645948	-0
+BA.2.23	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+BA.2.26	21L (Omicron)	BA.2.26	BA.2.26	-0.00008999595024645948	-0
+BA.2.27	21L (Omicron)	BA.2.27	BA.2.27	-0.00008999595024645948	-0
+BA.2.29	21L (Omicron)	BA.2.29	BA.2.29	-0.00008999595024645948	-0
+BA.2.25.1	21L (Omicron)	BA.2.25.1	BA.2.25.1	-0.00008999595024645948	-0
+BA.2.3	21L (Omicron)	BA.2.3	BA.2.3	-0.00008999595024645948	-0
+BA.2.3.10	21L (Omicron)	BA.2.3.10	BA.2.3.10	-0.00008999595024645948	-0
+BA.2.28	21L (Omicron)	BA.2.28	BA.2.28	-0.00008999595024645948	-0
+BA.2.3.12	21L (Omicron)	BA.2.3.12	BA.2.3.12	-0.00008999595024645948	-0
+BA.2.3.11	21L (Omicron)	BA.2.3.11	BA.2.3.11	-0.00008999595024645948	-0
+BA.2.3.1	21L (Omicron)	BA.2.3.1	BA.2.3.1	-0.00008999595024645948	-0
+BA.2.3.13	21L (Omicron)	BA.2.3.13	BA.2.3.13	-0.00008999595024645948	-0
+BA.2.3.14	21L (Omicron)	BA.2.3.14	BA.2.3.14	-0.00008999595024645948	-0
+BA.2.3.16	21L (Omicron)	BA.2.3.16	BA.2.3.16	-0.00008999595024645948	-0
+BA.2.3.15	21L (Omicron)	BA.2.3.15	BA.2.3.15	-0.00008999595024645948	-0
+BA.2.3.18	21L (Omicron)	BA.2.3.18	BA.2.3.18	-0.00008999595024645948	-0
+BA.2.3.17	21L (Omicron)	BA.2.3.17	BA.2.3.17	-0.00008999595024645948	-0
+BA.2.3.2	21L (Omicron)	BA.2.3.2	BA.2.3.2	-0.00008999595024645948	-0
+BA.2.3.4	21L (Omicron)	BA.2.3.4	BA.2.3.4	-0.00008999595024645948	-0
+BA.2.3.5	21L (Omicron)	BA.2.3.5	BA.2.3.5	-0.00008999595024645948	-0
+BA.2.3.19	21L (Omicron)	BA.2.3.19	BA.2.3.19	0.047315972860990416	0.23107
+BA.2.3.7	21L (Omicron)	BA.2.3.7	BA.2.3.7	-0.00008999595024645948	-0
+BA.2.3.20	21L (Omicron)	BA.2.3.20	BA.2.3.20	0.592503786408845	1.06344
+BA.2.3.6	21L (Omicron)	BA.2.3.6	BA.2.3.6	-0.00008999595024645948	-0
+BA.2.3.8	21L (Omicron)	BA.2.3.8	BA.2.3.8	-0.00008999595024645948	-0
+BA.2.3.9	21L (Omicron)	BA.2.3.9	BA.2.3.9	-0.00008999595024645948	-0
+BA.2.31.1	21L (Omicron)	BA.2.31.1	BA.2.31.1	-0.00008999595024645948	-0
+BA.2.31	21L (Omicron)	BA.2.31	BA.2.31	-0.00008999595024645948	-0
+BA.2.33	21L (Omicron)	BA.2.33	BA.2.33	-0.00008999595024645948	-0
+BA.2.30	21L (Omicron)	BA.2.30	BA.2.30	-0.00008999595024645948	-0
+BA.2.32	21L (Omicron)	BA.2.32	BA.2.32	-0.00008999595024645948	-0
+BA.2.36	21L (Omicron)	BA.2.36	BA.2.36	-0.00008999595024645948	-0
+BA.2.35	21L (Omicron)	BA.2.35	BA.2.35	0.1718042480715419	-0.04096000000000006
+BA.2.37	21L (Omicron)	BA.2.37	BA.2.37	-0.00008999595024645948	-0
+BA.2.34	21L (Omicron)	BA.2.34	BA.2.34	-0.00008999595024645948	-0
+BA.2.38.1	21L (Omicron)	BA.2.38.1	BA.2.38.1	0.22640031950314557	0.07569000000000004
+BA.2.38	21L (Omicron)	BA.2.38	BA.2.38	0.047315972860990416	0.23107
+BA.2.38.2	21L (Omicron)	BA.2.38.2	BA.2.38.2	0.22640031950314557	0.07569000000000004
+BA.2.38.3	21L (Omicron)	BA.2.38.3	BA.2.38.3	0.050443241158159235	0.08445999999999997
+BA.2.39	21L (Omicron)	BA.2.39	BA.2.39	-0.00008999595024645948	-0
+BA.2.4	21L (Omicron)	BA.2.4	BA.2.4	-0.00008999595024645948	-0
+BA.2.41	21L (Omicron)	BA.2.41	BA.2.41	-0.00008999595024645948	-0
+BA.2.40	21L (Omicron)	BA.2.40	BA.2.40	-0.00008999595024645948	-0
+BA.2.42	21L (Omicron)	BA.2.42	BA.2.42	-0.00008999595024645948	-0
+BA.2.43	21L (Omicron)	BA.2.43	BA.2.43	0.017546004766815407	0.11284999999999996
+BA.2.40.1	21L (Omicron)	BA.2.40.1	BA.2.40.1	0.047315972860990416	0.23107
+BA.2.45	21L (Omicron)	BA.2.45	BA.2.45	0.06752446585871223	-0.30756000000000006
+BA.2.44	21L (Omicron)	BA.2.44	BA.2.44	0.017546004766815407	0.11284999999999996
+BA.2.47	21L (Omicron)	BA.2.47	BA.2.47	-0.00008999595024645948	-0
+BA.2.46	21L (Omicron)	BA.2.46	BA.2.46	-0.00008999595024645948	-0
+BA.2.48	21L (Omicron)	BA.2.48	BA.2.48	-0.00008999595024645948	-0
+BA.2.49	21L (Omicron)	BA.2.49	BA.2.49	-0.00008999595024645948	-0
+BA.2.51	21L (Omicron)	BA.2.51	BA.2.51	-0.00008999595024645948	-0
+BA.2.50	21L (Omicron)	BA.2.50	BA.2.50	-0.00008999595024645948	-0
+BA.2.5	21L (Omicron)	BA.2.5	BA.2.5	-0.00008999595024645948	-0
+BA.2.52	21L (Omicron)	BA.2.52	BA.2.52	-0.00008999595024645948	-0
+BA.2.54	21L (Omicron)	BA.2.54	BA.2.54	-0.00008999595024645948	-0
+BA.2.55	21L (Omicron)	BA.2.55	BA.2.55	-0.00008999595024645948	-0
+BA.2.53	21L (Omicron)	BA.2.53	BA.2.53	0.06752446585871223	-0.33552999999999994
+BA.2.56.1	21L (Omicron)	BA.2.56.1	BA.2.56.1	0.1718042480715419	0.10556
+BA.2.56	21L (Omicron)	BA.2.56	BA.2.56	0.1718042480715419	0.10556
+BA.2.57	21L (Omicron)	BA.2.57	BA.2.57	-0.00008999595024645948	-0
+BA.2.6	21L (Omicron)	BA.2.6	BA.2.6	-0.00008999595024645948	-0
+BA.2.59	21L (Omicron)	BA.2.59	BA.2.59	-0.00008999595024645948	-0
+BA.2.61	21L (Omicron)	BA.2.61	BA.2.61	-0.00008999595024645948	-0
+BA.2.58	21L (Omicron)	BA.2.58	BA.2.58	-0.00008999595024645948	-0
+BA.2.62	21L (Omicron)	BA.2.62	BA.2.62	-0.00008999595024645948	-0
+BA.2.60	21L (Omicron)	BA.2.60	BA.2.60	-0.00008999595024645948	-0
+BA.2.63	21L (Omicron)	BA.2.63	BA.2.63	-0.00008999595024645948	-0
+BA.2.68	21L (Omicron)	BA.2.68	BA.2.68	-0.00008999595024645948	-0
+BA.2.64	21L (Omicron)	BA.2.64	BA.2.64	-0.00008999595024645948	-0
+BA.2.65	21L (Omicron)	BA.2.65	BA.2.65	-0.00008999595024645948	-0
+BA.2.66	21L (Omicron)	BA.2.66	BA.2.66	-0.00008999595024645948	-0
+BA.2.67	21L (Omicron)	BA.2.67	BA.2.67	-0.00008999595024645948	-0
+BA.2.69	21L (Omicron)	BA.2.69	BA.2.69	-0.00008999595024645948	-0
+BA.2.70	21L (Omicron)	BA.2.70	BA.2.70	-0.00008999595024645948	-0
+BA.2.72	21L (Omicron)	BA.2.72	BA.2.72	-0.00008999595024645948	-0
+BA.2.74	21L (Omicron)	BA.2.74	BA.2.74	0.3475462623597209	0.21698000000000003
+BA.2.73	21L (Omicron)	BA.2.73	BA.2.73	-0.00008999595024645948	-0
+BA.2.7	21L (Omicron)	BA.2.7	BA.2.7	-0.00008999595024645948	-0
+BA.2.71	21L (Omicron)	BA.2.71	BA.2.71	-0.00008999595024645948	-0
+BA.2.75	22D (Omicron)	BA.2.75	BA.2.75	0.19126716215613518	1.17547
+BA.2.75.1	22D (Omicron)	BA.2.75.1	BA.2.75.1	0.19126716215613518	1.17547
+BA.2.75.2	22D (Omicron)	BA.2.75.2	BA.2.75.2	0.6338793782833749	0.4677
+BA.2.75.3	22D (Omicron)	BA.2.75.3	BA.2.75.3	0.19126716215613518	1.17547
+BA.2.75.7	22D (Omicron)	BA.2.75.7	BA.2.75.7	0.37520611252942654	0.35628
+BA.2.75.4	22D (Omicron)	BA.2.75.4	BA.2.75.4	0.3644849119096625	1.13451
+BA.2.75.5	22D (Omicron)	BA.2.75.5	BA.2.75.5	0.40056346367685486	1.1724299999999999
+BA.2.75.6	22D (Omicron)	BA.2.75.6	BA.2.75.6	0.40549463827541665	1.28689
+BA.2.75.8	22D (Omicron)	BA.2.75.8	BA.2.75.8	0.3644849119096625	1.04854
+BA.2.76	21L (Omicron)	BA.2.76	BA.2.76	0.21548712660915123	0.11142000000000006
+BA.2.79	21L (Omicron)	BA.2.79	BA.2.79	0.15239383266978268	-0.058580000000000014
+BA.2.78	21L (Omicron)	BA.2.78	BA.2.78	0.1718042480715419	0.10556
+BA.2.76.2	21L (Omicron)	BA.2.76.2	BA.2.76.2	0.21548712660915123	0.11142000000000006
+BA.2.77	21L (Omicron)	BA.2.77	BA.2.77	0.38002376941814814	0.9213199999999999
+BA.2.76.1	21L (Omicron)	BA.2.76.1	BA.2.76.1	0.28000063743525844	0.18492
+BA.2.8	21L (Omicron)	BA.2.8	BA.2.8	-0.00008999595024645948	-0
+BA.2.79.1	21L (Omicron)	BA.2.79.1	BA.2.79.1	0.15239383266978268	-0.058580000000000014
+BA.2.81	21L (Omicron)	BA.2.81	BA.2.81	0.1718042480715419	0.10556
+BA.2.83	21L (Omicron)	BA.2.83	BA.2.83	0.1620476715764349	0.13507
+BA.2.82	21L (Omicron)	BA.2.82	BA.2.82	0.21548712660915123	0.11142000000000006
+BA.2.80	21L (Omicron)	BA.2.80	BA.2.80	0.3799299475718675	0.10838000000000005
+BA.2.9	21L (Omicron)	BA.2.9	BA.2.9	-0.00008999595024645948	-0
+BA.2.9.1	21L (Omicron)	BA.2.9.1	BA.2.9.1	0.1718042480715419	0.10556
+BA.2.9.3	21L (Omicron)	BA.2.9.3	BA.2.9.3	-0.00008999595024645948	-0
+BA.2.9.2	21L (Omicron)	BA.2.9.2	BA.2.9.2	-0.00008999595024645948	-0
+BA.2.9.4	21L (Omicron)	BA.2.9.4	BA.2.9.4	0.21548712660915123	0.11142000000000006
+BA.3.1	outgroup				
+BA.3	outgroup				
+BA.2.9.5	21L (Omicron)	BA.2.9.5	BA.2.9.5	-0.00008999595024645948	-0
+BA.2.9.6	21L (Omicron)	BA.2.9.6	BA.2.9.6	0.1718042480715419	0.10556
+BA.4.1	22A (Omicron)	BA.4.1	BA.4.1	0.3863247170036884	0.5583100000000001
+BA.4	22A (Omicron)	BA.4	BA.4	0.3863247170036884	0.5583100000000001
+BA.4.1.1	22A (Omicron)	BA.4.1.1	BA.4.1.1	0.3863247170036884	0.5583100000000001
+BA.4.1.2	22A (Omicron)	BA.4.1.2	BA.4.1.2	0.3863247170036884	0.5583100000000001
+BA.4.1.10	22A (Omicron)	BA.4.1.10	BA.4.1.10	0.6594692035378332	0.67074
+BA.4.1.5	22A (Omicron)	BA.4.1.5	BA.4.1.5	0.3863247170036884	0.5583100000000001
+BA.4.1.3	22A (Omicron)	BA.4.1.3	BA.4.1.3	0.3863247170036884	0.5583100000000001
+BA.4.1.7	22A (Omicron)	BA.4.1.7	BA.4.1.7	0.3863247170036884	0.5583100000000001
+BA.4.1.4	22A (Omicron)	BA.4.1.4	BA.4.1.4	0.3863247170036884	0.5583100000000001
+BA.4.1.9	22A (Omicron)	BA.4.1.9	BA.4.1.9	0.6014234018422104	0.6697299999999999
+BA.4.1.6	22A (Omicron)	BA.4.1.6	BA.4.1.6	0.3863247170036884	0.5583100000000001
+BA.4.1.8	22A (Omicron)	BA.4.1.8	BA.4.1.8	0.6014234018422104	0.6697299999999999
+BA.4.4	22A (Omicron)	BA.4.4	BA.4.4	0.3863247170036884	0.5583100000000001
+BA.4.5	22A (Omicron)	BA.4.5	BA.4.5	0.3863247170036884	0.5583100000000001
+BA.4.3	22A (Omicron)	BA.4.3	BA.4.3	0.3863247170036884	0.5583100000000001
+BA.4.2	22A (Omicron)	BA.4.2	BA.4.2	0.3863247170036884	0.5583100000000001
+BA.4.7	22A (Omicron)	BA.4.7	BA.4.7	0.6014234018422104	0.5513799999999999
+BA.4.6	22A (Omicron)	BA.4.6	BA.4.6	0.6014234018422104	0.6697299999999999
+BA.4.8	22A (Omicron)	BA.4	BA.4	0.3863247170036884	0.5583100000000001
+BA.5.1	22B (Omicron)	BA.5.1	BA.5.1	0.3863247170036884	0.5583100000000001
+BA.4.6.1	22A (Omicron)	BA.4.6.1	BA.4.6.1	0.6014234018422104	0.6697299999999999
+BA.5.1.10	22B (Omicron)	BA.5.1.10	BA.5.1.10	0.3863247170036884	0.5583100000000001
+BA.5.1.1	22B (Omicron)	BA.5.1.1	BA.5.1.1	0.3863247170036884	0.5583100000000001
+BA.5.1.11	22B (Omicron)	BA.5.1.11	BA.5.1.11	0.3863247170036884	0.5583100000000001
+BA.5	22B (Omicron)	BA.5	BA.5	0.3863247170036884	0.5583100000000001
+BA.5.1.16	22B (Omicron)	BA.5.1.16	BA.5.1.16	0.3863247170036884	0.5583100000000001
+BA.5.1.15	22B (Omicron)	BA.5.1.15	BA.5.1.15	0.3863247170036884	0.5583100000000001
+BA.5.1.12	22B (Omicron)	BA.5.1.12	BA.5.1.12	0.504610817797898	0.39120999999999995
+BA.5.1.18	22B (Omicron)	BA.5.1.18	BA.5.1.18	0.6014234018422104	0.6697299999999999
+BA.5.1.19	22B (Omicron)	BA.5.1.19	BA.5.1.19	0.3863247170036884	0.5583100000000001
+BA.5.1.14	22B (Omicron)	BA.5.1.14	BA.5.1.14	0.3863247170036884	0.5583100000000001
+BA.5.1.2	22B (Omicron)	BA.5.1.2	BA.5.1.2	0.3863247170036884	0.5583100000000001
+BA.5.1.17	22B (Omicron)	BA.5.1.17	BA.5.1.17	0.3863247170036884	0.5583100000000001
+BA.5.1.21	22B (Omicron)	BA.5.1.21	BA.5.1.21	0.3863247170036884	0.5583100000000001
+BA.5.1.5	22B (Omicron)	BA.5.1.5	BA.5.1.5	0.3863247170036884	0.5583100000000001
+BA.5.1.20	22B (Omicron)	BA.5.1.20	BA.5.1.20	0.6014234018422104	0.6697299999999999
+BA.5.1.3	22B (Omicron)	BA.5.1.3	BA.5.1.3	0.3863247170036884	0.5583100000000001
+BA.5.1.8	22B (Omicron)	BA.5.1.8	BA.5.1.8	0.3863247170036884	0.46306
+BA.5.1.9	22B (Omicron)	BA.5.1.9	BA.5.1.9	0.3863247170036884	0.5583100000000001
+BA.5.1.6	22B (Omicron)	BA.5.1.6	BA.5.1.6	0.3863247170036884	0.5583100000000001
+BA.5.1.4	22B (Omicron)	BA.5.1.4	BA.5.1.4	0.3863247170036884	0.5583100000000001
+BA.5.2	22B (Omicron)	BA.5.2	BA.5.2	0.3863247170036884	0.5583100000000001
+BA.5.2.10	22B (Omicron)	BA.5.2.10	BA.5.2.10	0.3863247170036884	0.5583100000000001
+BA.5.10.1	22B (Omicron)	BA.5.10.1	BA.5.10.1	0.6014234018422104	0.6697299999999999
+BA.5.2.1	22B (Omicron)	BA.5.2.1	BA.5.2.1	0.3863247170036884	0.5583100000000001
+BA.5.2.12	22B (Omicron)	BA.5.2.12	BA.5.2.12	0.3863247170036884	0.5583100000000001
+BA.5.1.7	22B (Omicron)	BA.5.1.7	BA.5.1.7	0.3863247170036884	0.5583100000000001
+BA.5.2.13	22B (Omicron)	BA.5.2.13	BA.5.2.13	0.6014234018422104	0.6697299999999999
+BA.5.2.11	22B (Omicron)	BA.5.2.11	BA.5.2.11	0.3863247170036884	0.5583100000000001
+BA.5.10	22B (Omicron)	BA.5.10	BA.5.10	0.3863247170036884	0.5583100000000001
+BA.5.2.15	22B (Omicron)	BA.5.2.15	BA.5.2.15	0.3863247170036884	0.5583100000000001
+BA.5.2.19	22B (Omicron)	BA.5.2.19	BA.5.2.19	0.3863247170036884	0.5583100000000001
+BA.5.2.16	22B (Omicron)	BA.5.2.16	BA.5.2.16	0.3863247170036884	0.5583100000000001
+BA.5.2.18	22B (Omicron)	BA.5.2.18	BA.5.2.18	0.5859252215184801	0.45785000000000003
+BA.5.2.14	22B (Omicron)	BA.5.2.14	BA.5.2.14	0.5859252215184801	0.36874999999999986
+BA.5.2.20	22B (Omicron)	BA.5.2.20	BA.5.2.20	0.3863247170036884	0.5583100000000001
+BA.5.2.21	22B (Omicron)	BA.5.2.21	BA.5.2.21	0.3863247170036884	0.5583100000000001
+BA.5.2.2	22B (Omicron)	BA.5.2.2	BA.5.2.2	0.3863247170036884	0.5583100000000001
+BA.5.2.3	22B (Omicron)	BA.5.2.3	BA.5.2.3	0.3863247170036884	0.5583100000000001
+BA.5.2.4	22B (Omicron)	BA.5.2.4	BA.5.2.4	0.3863247170036884	0.5583100000000001
+BA.5.2.22	22B (Omicron)	BA.5.2.22	BA.5.2.22	0.3863247170036884	0.5583100000000001
+BA.5.2.23	22B (Omicron)	BA.5.2.23	BA.5.2.23	0.504610817797898	0.39120999999999995
+BA.5.2.7	22B (Omicron)	BA.5.2.7	BA.5.2.7	0.5859252215184801	0.36874999999999986
+BA.5.2.5	22B (Omicron)	BA.5.2.5	BA.5.2.5	0.3863247170036884	0.5583100000000001
+BA.5.2.6	22B (Omicron)	BA.5.2.6	BA.5.2.6	0.6014234018422104	0.6697299999999999
+BA.5.2.8	22B (Omicron)	BA.5.2.8	BA.5.2.8	0.3863247170036884	0.5583100000000001
+BA.5.2.9	22B (Omicron)	BA.5.2.9	BA.5.2.9	0.3863247170036884	0.5583100000000001
+BA.5.3	22B (Omicron)	BA.5.3	BA.5.3	0.3863247170036884	0.5583100000000001
+BA.5.3.1	22B (Omicron)	BA.5.3.1	BA.5.3.1	0.3863247170036884	0.5583100000000001
+BA.5.3.2	22B (Omicron)	BA.5.3.2	BA.5.3.2	0.3863247170036884	0.5583100000000001
+BA.5.3.3	22B (Omicron)	BA.5.3.3	BA.5.3.3	0.3863247170036884	0.5583100000000001
+BA.5.3.4	22B (Omicron)	BA.5.3.4	BA.5.3.4	0.3863247170036884	0.5583100000000001
+BA.5.5	22B (Omicron)	BA.5.5	BA.5.5	0.3863247170036884	0.5583100000000001
+BA.5.6.1	22B (Omicron)	BA.5.6.1	BA.5.6.1	0.3863247170036884	0.5583100000000001
+BA.5.6	22B (Omicron)	BA.5.6	BA.5.6	0.3863247170036884	0.5583100000000001
+BA.5.5.1	22B (Omicron)	BA.5.5.1	BA.5.5.1	0.5026717361189906	0.4997300000000001
+BA.5.5.2	22B (Omicron)	BA.5.5.2	BA.5.5.2	0.3863247170036884	0.5583100000000001
+BA.5.7	22B (Omicron)	BA.5.7	BA.5.7	0.3863247170036884	0.5583100000000001
+BA.5.5.3	22B (Omicron)	BA.5.5.3	BA.5.5.3	0.3863247170036884	0.5583100000000001
+BA.5.8	22B (Omicron)	BA.5.8	BA.5.8	0.3863247170036884	0.5583100000000001
+BA.5.6.2	22B (Omicron)	BA.5.6.2	BA.5.6.2	0.5859252215184801	0.45952999999999994
+BA.5.9	22B (Omicron)	BA.5.9	BA.5.9	0.6014234018422104	0.39901000000000003
+BE.1	22B (Omicron)	BE.1	BA.5.3.1.1	0.3863247170036884	0.5583100000000001
+BB.2	outgroup				
+BC.2	outgroup				
+BD.1	outgroup				
+BC.1	outgroup				
+BE.1.1.1	22B (Omicron)	BE.1.1.1	BA.5.3.1.1.1.1	0.5859252215184801	0.45952999999999994
+BE.1.1	22B (Omicron)	BE.1.1	BA.5.3.1.1.1	0.3863247170036884	0.5583100000000001
+BE.1.3	22B (Omicron)	BE.1.3	BA.5.3.1.1.3	0.3863247170036884	0.5583100000000001
+BE.2	22B (Omicron)	BE.2	BA.5.3.1.2	0.3863247170036884	0.5583100000000001
+BE.1.2	22B (Omicron)	BE.1.2	BA.5.3.1.1.2	0.6014234018422104	0.6697299999999999
+BE.1.2.1	22B (Omicron)	BE.1.2.1	BA.5.3.1.1.2.1	0.7360939491355138	0.5026299999999999
+BF.1	22B (Omicron)	BF.1	BA.5.2.1.1	0.3863247170036884	0.5583100000000001
+BE.3	22B (Omicron)	BE.3	BA.5.3.1.3	0.3863247170036884	0.5583100000000001
+BF.11	22B (Omicron)	BF.11	BA.5.2.1.11	0.6014234018422104	0.6697299999999999
+BF.1.1	22B (Omicron)	BF.1.1	BA.5.2.1.1.1	0.3863247170036884	0.5583100000000001
+BF.10	22B (Omicron)	BF.10	BA.5.2.1.10	0.3863247170036884	0.5583100000000001
+BF.15	22B (Omicron)	BF.15	BA.5.2.1.15	0.3863247170036884	0.5583100000000001
+BF.13	22B (Omicron)	BF.13	BA.5.2.1.13	0.6014234018422104	0.5513799999999999
+BF.12	22B (Omicron)	BF.12	BA.5.2.1.12	0.3863247170036884	0.5279
+BF.18	22B (Omicron)	BF.18	BA.5.2.1.18	0.3863247170036884	0.5583100000000001
+BF.14	22B (Omicron)	BF.14	BA.5.2.1.14	0.5026717361189906	0.4997300000000001
+BF.16	22B (Omicron)	BF.16	BA.5.2.1.16	0.5859252215184801	0.45785000000000003
+BF.17	22B (Omicron)	BF.17	BA.5.2.1.17	0.3863247170036884	0.5583100000000001
+BF.2	22B (Omicron)	BF.2	BA.5.2.1.2	0.3863247170036884	0.5583100000000001
+BF.19	22B (Omicron)	BF.19	BA.5.2.1.19	0.3863247170036884	0.5583100000000001
+BF.20	22B (Omicron)	BF.20	BA.5.2.1.20	0.3863247170036884	0.5583100000000001
+BF.22	22B (Omicron)	BF.22	BA.5.2.1.22	0.3863247170036884	0.5583100000000001
+BF.23	22B (Omicron)	BF.23	BA.5.2.1.23	0.3863247170036884	0.5583100000000001
+BF.3	22B (Omicron)	BF.3	BA.5.2.1.3	0.3863247170036884	0.5583100000000001
+BF.24	22B (Omicron)	BF.24	BA.5.2.1.24	0.3863247170036884	0.5583100000000001
+BF.21	22B (Omicron)	BF.21	BA.5.2.1.21	0.3863247170036884	0.5583100000000001
+BF.3.1	22B (Omicron)	BF.3.1	BA.5.2.1.3.1	0.5283458529692266	0.48889999999999995
+BF.4	22B (Omicron)	BF.4	BA.5.2.1.4	0.3863247170036884	0.5583100000000001
+BF.6	22B (Omicron)	BF.6	BA.5.2.1.6	0.3863247170036884	0.5583100000000001
+BF.8	22B (Omicron)	BF.8	BA.5.2.1.8	0.3863247170036884	0.5583100000000001
+BF.5	22B (Omicron)	BF.5	BA.5.2.1.5	0.3863247170036884	0.5583100000000001
+BF.7	22B (Omicron)	BF.7	BA.5.2.1.7	0.6014234018422104	0.6697299999999999
+BG.3	22C (Omicron)	BG.3	BA.2.12.1.3	0.1718042480715419	-0.1269299999999999
+BG.1	22C (Omicron)	BG.1	BA.2.12.1.1	0.1718042480715419	-0.1269299999999999
+BG.4	22C (Omicron)	BG.4	BA.2.12.1.4	0.1718042480715419	-0.1269299999999999
+BF.9	22B (Omicron)	BF.9	BA.5.2.1.9	0.3863247170036884	0.5583100000000001
+BG.6	22C (Omicron)	BG.6	BA.2.12.1.6	0.1718042480715419	-0.22217999999999996
+BG.5	22C (Omicron)	BG.5	BA.2.12.1.5	0.1718042480715419	-0.1269299999999999
+BG.2	22C (Omicron)	BG.2	BA.2.12.1.2	0.1718042480715419	-0.1269299999999999
+BH.1	21L (Omicron)	BH.1	BA.2.38.3.1	0.35298099769435154	-0.11188000000000006
+BJ.1	21L (Omicron)	BJ.1	BA.2.10.1.1	0.5714270218143368	0.09519000000000005
+BL.2	22D (Omicron)	BL.2	BA.2.75.1.2	0.40549463827541665	1.28689
+BL.1.2	22D (Omicron)	BL.1.2	BA.2.75.1.1.2	0.40549463827541665	1.28689
+BL.1.1	22D (Omicron)	BL.1.1	BA.2.75.1.1.1	0.40549463827541665	1.28689
+BL.1	22D (Omicron)	BL.1	BA.2.75.1.1	0.40549463827541665	1.28689
+BL.3	22D (Omicron)	BL.3	BA.2.75.1.3	0.19126716215613518	1.17547
+BK.1	22B (Omicron)	BK.1	BA.5.1.10.1	0.3863247170036884	0.5583100000000001
+BL.4	22D (Omicron)	BL.4	BA.2.75.1.4	0.19126716215613518	1.17547
+BM.3	22D (Omicron)	BM.3	BA.2.75.3.3	0.19126716215613518	1.17547
+BM.1.1.1	22D (Omicron)	BM.1.1.1	BA.2.75.3.1.1.1	0.8366421653363688	0.43724
+BM.1	22D (Omicron)	BM.1	BA.2.75.3.1	0.37520611252942654	0.35628
+BM.1.1	22D (Omicron)	BM.1.1	BA.2.75.3.1.1	0.6338793782833749	0.4677
+BM.2	22D (Omicron)	BM.2	BA.2.75.3.2	0.40549463827541665	1.28689
+BM.4.1.1	22D (Omicron)	BM.4.1.1	BA.2.75.3.4.1.1	0.6338793782833749	0.4677
+BM.4	22D (Omicron)	BM.4	BA.2.75.3.4	0.19126716215613518	1.17547
+BM.4.1	22D (Omicron)	BM.4.1	BA.2.75.3.4.1	0.37520611252942654	0.35628
+BN.2	22D (Omicron)	BN.2	BA.2.75.5.2	0.40056346367685486	1.1724299999999999
+BN.1	22D (Omicron)	BN.1	BA.2.75.5.1	0.7607395078976054	1.25339
+BQ.1	22B (Omicron)	BQ.1	BA.5.3.1.1.1.1.1	0.630694401494532	0.66401
+BM.5	22D (Omicron)	BM.5	BA.2.75.3.5	0.23507392625353313	1.15852
+BP.1	21L (Omicron)	BP.1	BA.2.3.16.1	0.36609407423100015	0.9456899999999999
+BN.2.1	22D (Omicron)	BN.2.1	BA.2.75.5.2.1	0.5637276003498602	1.14197
+BQ.1.1	22B (Omicron)	BQ.1.1	BA.5.3.1.1.1.1.1.1	0.8313780783921618	0.77543
+BV.1	22B (Omicron)	BV.1	BA.5.2.20.1	0.3863247170036884	0.5583100000000001
+BS.1	21L (Omicron)	BS.1	BA.2.3.2.1	0.4679087038063218	0.66194
+BY.1	22D (Omicron)	BY.1	BA.2.75.6.1	0.6338793782833749	0.4677
+BR.1	22D (Omicron)	BR.1	BA.2.75.4.1	0.46093339767686115	0.9449499999999998
+BU.1	22B (Omicron)	BU.1	BA.5.2.16.1	0.630694401494532	0.57323
+BT.1	22B (Omicron)	BT.1	BA.5.1.21.1	0.3863247170036884	0.5583100000000001
+BW.1	22B (Omicron)	BW.1	BA.5.6.2.1	0.630694401494532	0.66401
+C.1	outgroup				
+C.1.2	outgroup				
+C.10	outgroup				
+BZ.1	22B (Omicron)	BZ.1	BA.5.2.3.1	0.3863247170036884	0.5583100000000001
+C.12	outgroup				
+C.11	outgroup				
+C.14	outgroup				
+C.1.1	outgroup				
+C.13	outgroup				
+C.17	outgroup				
+C.19	outgroup				
+C.20	outgroup				
+C.21	outgroup				
+C.16	outgroup				
+C.2	outgroup				
+C.18	outgroup				
+C.22	outgroup				
+C.2.1	outgroup				
+C.23	outgroup				
+C.26	outgroup				
+C.27	outgroup				
+C.29	outgroup				
+C.25	outgroup				
+C.3	outgroup				
+C.30	outgroup				
+C.33	outgroup				
+C.28	outgroup				
+C.30.1	outgroup				
+C.32	outgroup				
+C.35	outgroup				
+C.31	outgroup				
+C.34	outgroup				
+C.36	outgroup				
+C.37.1	outgroup				
+C.36.2	outgroup				
+C.36.3	outgroup				
+C.36.3.1	outgroup				
+C.36.1	outgroup				
+C.38	outgroup				
+C.40	outgroup				
+C.5	outgroup				
+C.39	outgroup				
+C.37	outgroup				
+C.6	outgroup				
+C.4	outgroup				
+C.7	outgroup				
+D.4	outgroup				
+D.2	outgroup				
+C.8	outgroup				
+D.3	outgroup				
+C.9	outgroup				
+G.1	outgroup				
+D.5	outgroup				
+L.2	outgroup				
+L.1	outgroup				
+K.3	outgroup				
+K.1	outgroup				
+L.4	outgroup				
+K.2	outgroup				
+M.1	outgroup				
+L.3	outgroup				
+M.3	outgroup				
+N.3	outgroup				
+N.4	outgroup				
+M.2	outgroup				
+N.1	outgroup				
+N.2	outgroup				
+N.5	outgroup				
+N.6	outgroup				
+N.7	outgroup				
+P.1	outgroup				
+N.8	outgroup				
+N.9	outgroup				
+P.1.10	outgroup				
+P.1.10.1	outgroup				
+P.1.1	outgroup				
+P.1.10.2	outgroup				
+N.10	outgroup				
+P.1.12	outgroup				
+P.1.11	outgroup				
+P.1.12.1	outgroup				
+P.1.15	outgroup				
+P.1.14	outgroup				
+P.1.13	outgroup				
+P.1.16	outgroup				
+P.1.17.1	outgroup				
+P.1.6	outgroup				
+P.1.2	outgroup				
+P.1.4	outgroup				
+P.1.3	outgroup				
+P.1.5	outgroup				
+P.1.7.1	outgroup				
+P.2	outgroup				
+P.1.7	outgroup				
+P.1.17	outgroup				
+P.1.9	outgroup				
+P.3	outgroup				
+P.4	outgroup				
+P.1.8	outgroup				
+P.5	outgroup				
+P.7	outgroup				
+Q.2	outgroup				
+Q.4	outgroup				
+P.6	outgroup				
+Q.3	outgroup				
+Q.5	outgroup				
+Q.6	outgroup				
+Q.1	outgroup				
+Q.8	outgroup				
+Q.7	outgroup				
+R.1	outgroup				
+U.2	outgroup				
+S.1	outgroup				
+R.2	outgroup				
+U.1	outgroup				
+V.1	outgroup				
+W.1	outgroup				
+W.3	outgroup				
+V.2	outgroup				
+XA	outgroup				
+W.2	outgroup				
+W.4	outgroup				
+XAB	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XAA	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XAD	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XAF	21L (Omicron)	BA.2.9	BA.2.9	-0.00008999595024645948	-0
+XAE	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0.2679599999999999
+XAH	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XAC	21L (Omicron)	BA.2.3	BA.2.3	-0.00008999595024645948	-0
+U.3	outgroup				
+XAJ	21L (Omicron)	BA.2.12	BA.2.12	0.3863247170036884	0.35483000000000003
+XAL	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XAG	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0.28093999999999997
+XAP	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XAR	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XAK	21L (Omicron)	BA.2	BA.2	0.2769375478127462	1.15166
+XAM	21L (Omicron)	BA.2.9	BA.2.9	-0.00008999595024645948	0.75567
+XAT	21L (Omicron)	BA.2.3.13	BA.2.3.13	-0.00008999595024645948	-0
+XAU	21L (Omicron)	BA.2.9	BA.2.9	-0.00008999595024645948	-0
+XAN	22B (Omicron)	BA.5.1	BA.5.1	0.3863247170036884	0.5583100000000001
+XAW	21L (Omicron)	BA.2	BA.2	0.2120001437046406	0.91409
+XAV	22B (Omicron)	BA.5	BA.5	0.3863247170036884	0.5583100000000001
+XAY	outgroup				
+XAS	21L (Omicron)	B.1.1.529	B.1.1.529	0.3863247170036884	0.5583100000000001
+XAQ	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XB	outgroup				
+XBB	recombinant	XBB	XBB	0.9070012868097488	0.40686999999999995
+XAZ	22B (Omicron)	BA.5	BA.5	0.3863247170036884	0.5583100000000001
+XBA	outgroup				
+XD	outgroup				
+XG	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XC	outgroup				
+XE	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XH	21L (Omicron)	BA.2.9	BA.2.9	-0.00008999595024645948	-0
+XF	outgroup				
+XK	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-3.62446
+XN	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XJ	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XL	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XR	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XP	outgroup				
+XM	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XQ	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0
+XS	outgroup				
+XT	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0.17270999999999995
+XV	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0.17270999999999995
+XW	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+XU	21L (Omicron)	BA.2.23	BA.2.23	-0.00008999595024645948	-0.09525000000000007
+XZ	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+Y.1	outgroup				
+XY	21L (Omicron)	BA.2	BA.2	-0.00008999595024645948	-0
+Z.1	outgroup				
