@@ -41,6 +41,7 @@ snakemake_log
 *.pyc
 .tox/
 .cache/
+.ipynb_checkpoints
 
 # Compiled source #
 ###################
