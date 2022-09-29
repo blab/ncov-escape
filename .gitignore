@@ -5,10 +5,13 @@ logs/
 results/
 build/
 auspice/
-data/*
 defaults/colors.tsv
 defaults/colors_*.tsv
 stats.json
+
+gisaid_metadata.tsv
+gisaid_metadata_pruned.tsv
+metadata.tsv.gz
 
 # common analysis directory names
 ncov-tutorial/
