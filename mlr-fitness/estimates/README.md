@@ -6,4 +6,4 @@ poetry build
 pip install <path-to-wheel>
 ```
 
-2. Run the notebook `evofr_mlr.ipynb` via `jupyter notebook`. This will export a file called `growth_advantages.tsv` that contains a series of posterior samples (1 to 100) with growth advantage per Pango lineage.
+2. Run the notebook `evofr_mlr.ipynb` via `jupyter notebook`. This will export a file called `growth_advantages.tsv` that contains the median growth advantage and 80% credible interval per Pango lineage.
