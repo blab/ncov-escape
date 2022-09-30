@@ -30,5 +30,10 @@ This will generate the file `output/nextclade.tsv` containing columns `immune_es
 
 5. Prune this file to relevant columns:
 ```
-tsv-select -H -f seqName,clade,Nextclade_pango,partiallyAliased,immune_escape,ace2_binding output/nextclade.tsv > escape_scores.tsv
+tsv-select -H -f seqName,clade,Nextclade_pango,partiallyAliased,immune_escape,ace2_binding output/nextclade.tsv > output/nextclade_escape_scores.tsv
+```
+
+6. The metadata file was pruned to only relevant rows via:
+```
+tsv-filter -H --str-ne clade:outgroup output/nextclade_escape_scores.tsv > escape_scores.tsv
 ```
