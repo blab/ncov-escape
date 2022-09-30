@@ -1,6 +1,6 @@
 ## Pango lineages dataset
 
-This dataset only includes Pango lineages with >100 sequences in US dataset.
+This dataset only includes Pango lineages with >150 sequences in US dataset. Rarer Pango lineages are collapsed into parental lineages, ie BM.1 was collapsed into BA.2.75.3.
 
 Data preparation followed:
 
