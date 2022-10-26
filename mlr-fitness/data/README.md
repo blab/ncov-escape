@@ -15,6 +15,19 @@ gzip -d metadata.tsv.gz -c > gisaid_metadata.tsv
 tsv-select -H -f strain,date,country,division,QC_overall_status,Nextclade_pango gisaid_metadata.tsv > gisaid_metadata_pruned.tsv
 ```
 
-3. This `gisaid_metadata_pruned.tsv` is processed in Mathematica by running the notebook `pango_data-prep.nb`. This results in the file `pango_location-variant-sequence-counts.tsv` versioned here. These files represent heavily derived GISAID data and are equivalent to downloadable results from [outbreak.info](https://outbreak.info), [cov-spectrum.org](https://cov-spectrum.org) and [covariants.org](https://covariants.org). This use is allowable under the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/).
+3. This `gisaid_metadata_pruned.tsv` is processed in Mathematica by running the notebook `pango_data-prep.nb`. This results in the files `pango_location-variant-sequence-counts.tsv` and `pango_variant-relationships.tsv` versioned here. These files represent heavily derived GISAID data and are equivalent to downloadable results from [outbreak.info](https://outbreak.info), [cov-spectrum.org](https://cov-spectrum.org) and [covariants.org](https://covariants.org). This use is allowable under the [GISAID Terms of Use](https://www.gisaid.org/registration/terms-of-use/).
 
 There will be dates that are missing sequence counts. These should be assumed to be 0.
+
+The file `pango_variant-relationships.tsv` looks like
+```
+BG.4	 BA.2.12.1
+BG.5	 BA.2.12.1
+BK.1	 BA.5.1.10
+BQ.1	 BE.1.1.1
+BQ.1.1 BQ.1
+BU.2	 base
+```
+and contains a mapping of each collapsed Pango lineage to its parent lineage. Everything collapses back to a `base`. Pictorial view below:
+
+![](pango_variant-tree.png)
