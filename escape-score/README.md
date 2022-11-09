@@ -1,39 +1,30 @@
 # Escape scores
 
-Escape scores are calculated by [Nextclade](https://github.com/nextstrain/nextclade) using approach from [Escape calculator for SARS-CoV-2 RBD](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/).
+Escape scores are calculated by [Nextclade](https://github.com/nextstrain/nextclade) using approach from [Escape calculator for SARS-CoV-2 RBD](https://jbloomlab.github.io/SARS2_RBD_Ab_escape_maps/escape-calc/). These calculations have been implemented in Nextclade and are available across Pango lineages at https://nextstrain.org/nextclade/sars-cov-2/21L?c=immune_escape.
 
-1. Install `nextclade` CLI following instructions at [docs.nextstrain.org](https://docs.nextstrain.org/projects/nextclade/en/stable/user/nextclade-cli.html)
-
-2. Provision `sars-cov-2-21L` dataset with:
+1. Download JSON from the Nextclade build:
 ```
-nextclade dataset get --name 'sars-cov-2-21L' --output-dir 'data/sars-cov-2-21L'
+curl -fsSL https://data.nextstrain.org/nextclade_sars-cov-2_21L.json -o nextclade_sars-cov-2_21L.json.gz
 ```
 
-3. Download canonical Pango sequences provisioned by [@corneliusroemer](https://github.com/corneliusroemer) via:
+2. Decompress this file:
 ```
-curl -fsSL https://github.com/corneliusroemer/pango-sequences/blob/main/data/pango_consensus_sequences.fasta.zstd?raw=true -o data/pango_consensus_sequences.fasta.zstd
-```
-And decompress with:
-```
-zstdcat data/pango_consensus_sequences.fasta.zstd > data/pango_consensus_sequences.fasta
+gzip -d nextclade_sars-cov-2_21L.json.gz -c > nextclade_sars-cov-2_21L.json
 ```
 
-4. Run Nextclade on each Pango lineage with:
+3. Flatten this JSON:
 ```
-nextclade run \
-   --input-dataset data/sars-cov-2-21L \
-   --output-all=output/ \
-   data/pango_consensus_sequences.fasta
+python flatten_auspice_json.py --json nextclade_sars-cov-2_21L.json --output nextclade_sars-cov-2_21L_flat.json
 ```
 
-This will generate the file `output/nextclade.tsv` containing columns `immune_escape` and `ace2_binding` and rows for each Pango lineage.
-
-5. Prune this file to relevant columns:
+4. Extract relevant tip attributes to TSV:
 ```
-tsv-select -H -f seqName,clade,Nextclade_pango,partiallyAliased,immune_escape,ace2_binding output/nextclade.tsv > output/nextclade_escape_scores.tsv
+python extract_tip_attributes.py --json nextclade_sars-cov-2_21L.json > escape_scores.tsv
 ```
 
-6. The metadata file was pruned to only relevant rows via:
+This TSV looks like
 ```
-tsv-filter -H --str-ne clade:outgroup output/nextclade_escape_scores.tsv > escape_scores.tsv
+seqName	clade	Nextclade_pango	partiallyAliased	immune_escape	ace2_binding
+BQ.1	22E (Omicron)	BQ.1	BA.5.3.1.1.1.1.1	0.630694401494532	0.66401
+BQ.1.1	22E (Omicron)	BQ.1.1	BA.5.3.1.1.1.1.1.1	0.8313780783921618	0.77543
 ```
