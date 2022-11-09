@@ -26,8 +26,10 @@ BG.5	 BA.2.12.1
 BK.1	 BA.5.1.10
 BQ.1	 BE.1.1.1
 BQ.1.1 BQ.1
-BU.2	 base
+BU.2	 BA.2
 ```
-and contains a mapping of each collapsed Pango lineage to its parent lineage. Everything collapses back to a `base`. Pictorial view below:
+and contains a mapping of each collapsed Pango lineage to its parent lineage. I've set the reference here as BA.2, so that we have BA.2 → BA.1, BA.2 → BA.4 and BA.2 → BA.5 contrasts even if this is was not the historical evolutionary path. I've chosen this because we have immune escape and ACE-2 binding measured relative to BA.2 and so it makes the most sense to have BA.2 as baseline in the MLR model. Pictorial view below:
 
 ![](pango_variant-tree.png)
+
+![](pango_variant-graph.png)
