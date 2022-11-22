@@ -16,6 +16,9 @@ metadata.tsv.gz
 escape-score/nextclade_sars-cov-2_21L.json
 escape-score/nextclade_sars-cov-2_21L.json.gz
 
+# Compiled LaTeX output
+ncov-escape.pdf
+
 # common analysis directory names
 ncov-tutorial/
 my-ncov-analyses/
@@ -73,6 +76,13 @@ Thumbs.db
 
 narratives/*pdf
 
+# LaTeX intermediaries #
+########################
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
 
 # metadata / new seqs scripts
 scripts/curate_metadata/inputs_new_sequences/
