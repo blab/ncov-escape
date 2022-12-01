@@ -13,8 +13,8 @@ gisaid_metadata.tsv
 gisaid_metadata_pruned.tsv
 metadata.tsv.gz
 
-escape-score/nextclade_sars-cov-2_21L.json
-escape-score/nextclade_sars-cov-2_21L.json.gz
+predictors/nextclade_sars-cov-2_21L.json
+predictors/nextclade_sars-cov-2_21L.json.gz
 
 # Compiled LaTeX output
 ncov-escape.pdf

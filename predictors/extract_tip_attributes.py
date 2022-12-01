@@ -69,52 +69,85 @@ if __name__=="__main__":
 
     print(
         "seqName" + "\t" + "clade" + "\t" + "Nextclade_pango" + "\t" \
-        + "partiallyAliased" + "\t" + "immune_escape" + "\t" + "ace2_binding"
+        + "partiallyAliased" + "\t" + "immune_escape" + "\t" + "ace2_binding" + "\t" \
+        + "rbd_count" + "\t" + "non_rbd_spike_count" + "\t" + "non_spike_count"
     )
 
     data = []
     for n in tree.find_clades(order="postorder"):
         node_elements = {}
-        node_elements["name"] = n.name
-        if n.parent:
-            node_elements["parent"] = n.parent.name
-        else:
-            node_elements["parent"] = None
+        name = n.name
         if hasattr(n, 'node_attrs'):
             if 'clade_membership' in n.node_attrs:
                 if 'value' in n.node_attrs["clade_membership"]:
-                    node_elements["clade_membership"] = n.node_attrs["clade_membership"]["value"]
+                    clade_membership = n.node_attrs["clade_membership"]["value"]
             else:
-                node_elements["clade_membership"] = "?"
+                clade_membership = "?"
             if 'Nextclade_pango' in n.node_attrs:
                 if 'value' in n.node_attrs["Nextclade_pango"]:
-                    node_elements["Nextclade_pango"] = n.node_attrs["Nextclade_pango"]["value"]
+                    Nextclade_pango = n.node_attrs["Nextclade_pango"]["value"]
             else:
-                node_elements["Nextclade_pango"] = "?"
+                Nextclade_pango = "?"
             if 'partiallyAliased' in n.node_attrs:
                 if 'value' in n.node_attrs["partiallyAliased"]:
-                    node_elements["partiallyAliased"] = n.node_attrs["partiallyAliased"]["value"]
+                    partiallyAliased = n.node_attrs["partiallyAliased"]["value"]
             else:
-                node_elements["partiallyAliased"] = "?"
+                partiallyAliased = "?"
             if 'immune_escape' in n.node_attrs:
                 if 'value' in n.node_attrs["immune_escape"]:
-                    node_elements["immune_escape"] = n.node_attrs["immune_escape"]["value"]
+                    immune_escape = n.node_attrs["immune_escape"]["value"]
+                    immune_escape = str(round(float(immune_escape), 8))
             else:
-                node_elements["immune_escape"] = "?"
+                immune_escape = "?"
             if 'ace2_binding' in n.node_attrs:
                 if 'value' in n.node_attrs["ace2_binding"]:
-                    node_elements["ace2_binding"] = n.node_attrs["ace2_binding"]["value"]
+                    ace2_binding = n.node_attrs["ace2_binding"]["value"]
+                    ace2_binding = str(round(float(ace2_binding), 8))
             else:
-                node_elements["ace2_binding"] = "?"
-        if node_elements["name"] == "BA.2":
-            node_elements["immune_escape"] = "0"
-            node_elements["ace2_binding"] = "0"
-        if node_elements["name"][:4] != "NODE" and node_elements["name"][:8] != "internal" and node_elements["name"][-8:] != "internal" and node_elements["name"] != "BA.3" and node_elements["name"] != "rec_parent":
+                ace2_binding = "?"
+
+        spike_mutations = set()
+        non_spike_mutations = set()
+        p = n
+        while p.parent != None:
+            if 'mutations' in p.branch_attrs:
+                if 'S' in p.branch_attrs["mutations"]:
+                    mut = p.branch_attrs["mutations"]["S"]
+                    sites = [x[1:-1] for x in mut]
+                    spike_mutations.update(sites)
+                genes = list(p.branch_attrs["mutations"].keys())
+                if 'nuc' in genes:
+                    genes.remove('nuc')
+                if 'S' in genes:
+                    genes.remove('S')
+                for gene in genes:
+                    if gene in p.branch_attrs["mutations"]:
+                        mut = p.branch_attrs["mutations"][gene]
+                        sites = [gene+x[1:-1] for x in mut]
+                        non_spike_mutations.update(sites)
+            p = p.parent
+
+        # print("spike_mutations", spike_mutations)
+        # print("non_spike_mutations", non_spike_mutations)
+
+        # RBD is positions 318 to 510 in spike
+        rbd_mutations = [x for x in spike_mutations if int(x) >= 318 and int(x) <= 510]
+        # print("rbd_mutations", rbd_mutations)
+
+        # S1 is positions 14 to 685 in spike
+        non_rbd_spike_mutations = [x for x in spike_mutations if int(x) < 318 or int(x) > 510]
+        # print("non_rbd_spike_mutations", non_rbd_spike_mutations)
+
+        rbd_count = str(len(rbd_mutations))
+        non_rbd_spike_count = str(len(non_rbd_spike_mutations))
+        non_spike_count = str(len(non_spike_mutations))
+
+        if name == "BA.2":
+            immune_escape = "0"
+            ace2_binding = "0"
+        if name[:4] != "NODE" and name[:8] != "internal" and name[-8:] != "internal" and name != "BA.3" and name != "rec_parent":
             print(
-                node_elements["name"] + "\t" \
-                + node_elements["clade_membership"] + "\t" \
-                + node_elements["Nextclade_pango"] + "\t" \
-                + node_elements["partiallyAliased"] + "\t" \
-                + node_elements["immune_escape"] + "\t" \
-                + node_elements["ace2_binding"]
+                name + "\t" + clade_membership + "\t" + Nextclade_pango + "\t" \
+                + partiallyAliased + "\t" + immune_escape + "\t" + ace2_binding + "\t" \
+                + rbd_count + "\t" + non_rbd_spike_count + "\t" + non_spike_count
             )
