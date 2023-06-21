@@ -16,6 +16,9 @@ metadata.tsv.gz
 predictors/nextclade_sars-cov-2_21L.json
 predictors/nextclade_sars-cov-2_21L.json.gz
 
+mlr-fitness/estimates/models/
+mlr-fitness/estimates/pango_results.json
+
 # Compiled LaTeX output
 ncov-escape.pdf
 
