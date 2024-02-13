@@ -1,0 +1,46 @@
+data_provenances:
+  - gisaid
+  - open
+variant_classifications:
+  - pango_lineages
+geo_resolutions:
+  - global
+analysis_periods:
+  - ba2
+  - xbb15
+
+# Params for the prepare data scripts
+# Define params for each data_provenance / variant_classification / geo_resolution combination
+# Include `max_date` if you don't want to use today as the max date
+prepare_data:
+  gisaid:
+    pango_lineages:
+      global:
+        location_min_seq: 300
+        location_min_seq_days: 30
+        excluded_locations: "defaults/global_excluded_locations.txt"
+        prune_seq_days: 12
+        clade_min_seq: 1
+        clade_min_seq_days: 150
+        collapse_threshold: 350
+  open:
+    pango_lineages:
+      global:
+        location_min_seq: 300
+        location_min_seq_days: 30
+        excluded_locations: "defaults/global_excluded_locations.txt"
+        prune_seq_days: 12
+        clade_min_seq: 1
+        clade_min_seq_days: 150
+        collapse_threshold: 350
+
+# In case we want to run models for various different pandemic periods
+analysis_periods:
+  ba2:
+    included_days: 150
+    date_max: ...
+    pivot: "BA.2"
+  xbb15:
+    included_days: 150
+    date_max: ...
+    pivot: "XBB.1.5"
