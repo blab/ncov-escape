@@ -110,3 +110,81 @@ rule get_pango_relationships:
             --seq-counts {input.sequence_counts} \
             --output-relationships {output.pango_relationships}
         """
+
+# sets of measurements to compare to natural evolution
+#TODO: Need rule to obtain these from repo?
+phenos_compare_natural = {
+    "current_dms": {
+        "input_data": "results/summaries/summary.csv",
+        "rename_cols": {
+            "human sera escape": "sera escape",
+            "spike mediated entry": "cell entry",
+        },
+        "phenotype_cols": ["sera escape", "ACE2 binding", "cell entry"],
+        "title": "XBB.1.5 full-spike DMS phenotypes",
+        "missing_muts": "drop",  # drop clades with missing muts
+    },
+    "yeast_RBD_DMS": {
+        "input_data": "data/compare_natural_datasets/yeast_RBD_DMS.csv",
+        "rename_cols": {},
+        "phenotype_cols": ["escape", "ACE2 affinity", "RBD expression"],
+        "title": "yeast RBD DMS phenotypes",
+        "missing_muts": "zero",  # set missing (non-RBD) mutations to zero
+    },
+    "muts_from_Wuhan-Hu-1": {
+        "input_data": "data/compare_natural_datasets/incremental_Hamming_distance_from_Wuhan-Hu-1.csv",
+        "rename_cols": {"incremental Hamming distance": "distance"},
+        "phenotype_cols": ["distance"],
+        "title": "relative distance from Wuhan-Hu-1",
+        "missing_muts": "drop",  # drop clades with missing muts
+    },
+    "EVEscape": {
+        "input_data": "data/compare_natural_datasets/EVEscape_XBB_single_mutation_predictions.csv",
+        "rename_cols": {},
+        "phenotype_cols": ["EVEscape"],
+        "title": "EVEscape",
+        "missing_muts": "drop",  # drop clades with missing muts
+    },
+    "EVEscape_components": {
+        "input_data": "data/compare_natural_datasets/EVEscape_XBB_single_mutation_predictions.csv",
+        "rename_cols": {"fitness_evol_indices": "EVE fitness", "dissimilarity_charge_hydrophobicity": "aa dissimilarity", "accessibility_wcn": "accessibility"},
+        "phenotype_cols": ["EVE fitness", "aa dissimilarity", "accessibility"],
+        "title": "EVEscape components",
+        "missing_muts": "drop",  # drop clades with missing muts
+    },
+}
+
+# TODO: Want to be able to repeat for BA.2 pivot? This will ideally just be extending phenotypes and making it only run for particular values
+
+rule compute_phenotypes:
+    input:
+        input_data = lambda wildcard: phenos_compare_natural[wildcard.phenotype] # Q. Where is wc.phenotype defined?
+        pango_consensus_jsons= ...
+    output:
+        clade_pair_dms="predictors/{pheno}_clade_pair.csv",
+        clade_dms="predictors/{pheno}_clade.csv",
+    params:
+        # Q: How do I properly process this to pass the entire config? 
+        # Would it be better just to pass things one by one? How would this work for dictionaries?
+       config = lambda wildcard: yaml.round_trip_dump({
+            "starting_clades": ["XBB"],  # clades descended from this
+            "exclude_muts": [],  # exclude clades w these mutations
+            "split_by_rbd": False,  # whether to treat RBD and non-RBD mutations separately
+            "dms_clade": "XBB.1.5",  # clade used for DMS
+            # rename columns in input data
+            "rename_cols": phenos_compare_natural[wc.pheno]["rename_cols"],
+            # "basic" means not split by RBD, which is done later in code if `split_by_rbd`
+            "phenotype_cols": phenos_compare_natural[wc.pheno]["phenotype_cols"],
+            # "drop" clades with missing mutations, or set missing mutations to "zero"
+            "missing_muts": phenos_compare_natural[wc.pheno]["missing_muts"],
+            "exclude_clades": [],  # exclude these clades
+       })
+    shell:
+        """
+        python ./scripts/.compute-phenotypes \
+            --input-data {input.input_data} \
+            --pango-consensus-jsons {input.pango_consensus_jsons} \
+            --clade-pair-dms {output.clade_pair_dms} \
+            --clade-dms {output.clade_dms} \
+            --config '{params.yaml}'
+        """
