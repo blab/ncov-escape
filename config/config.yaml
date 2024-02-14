@@ -34,13 +34,45 @@ prepare_data:
         clade_min_seq_days: 150
         collapse_threshold: 350
 
+prepare_predictors:
+  current_dms: 
+    input_data: "results/summaries/summary.csv"
+    rename_cols: {"human sera escape": "sera escape", "spike mediated entry": "cell entry"}
+    phenotype_cols: ["sera escape", "ACE2 binding", "cell entry"]
+    title: "XBB.1.5 full-spike DMS phenotypes"
+    missing_muts: "drop"  # drop clades with missing muts,
+  yeast_RBD_DM:
+    input_data: "data/compare_natural_datasets/yeast_RBD_DMS.csv" 
+    rename_cols: {}
+    phenotype_cols: ["escape", "ACE2 affinity", "RBD expression"]
+    title: "yeast RBD DMS phenotypes"
+    missing_muts: "zero"  # set missing (non-RBD) mutations to zero
+  muts_from_Wuhan-Hu-1:
+    input_data: "data/compare_natural_datasets/incremental_Hamming_distance_from_Wuhan-Hu-1.csv"
+    rename_cols: {"incremental Hamming distance": "distance"}
+    phenotype_cols: ["distance"]
+    title: "relative distance from Wuhan-Hu-1"
+    missing_muts": "drop"  # drop clades with missing muts
+  EVEscape:
+    input_data: "data/compare_natural_datasets/EVEscape_XBB_single_mutation_predictions.csv"
+    rename_cols: {}
+    phenotype_cols: ["EVEscape"]
+    title: "EVEscape"
+    missing_muts: "drop"  # drop clades with missing muts
+  EVEscape_components:
+    input_data: "data/compare_natural_datasets/EVEscape_XBB_single_mutation_predictions.csv"
+    rename_cols: {"fitness_evol_indices": "EVE fitness", "dissimilarity_charge_hydrophobicity": "aa dissimilarity", "accessibility_wcn": "accessibility"}
+    phenotype_cols: ["EVE fitness", "aa dissimilarity", "accessibility"]
+    title: "EVEscape components"
+    missing_muts: "drop"  # drop clades with missing muts
+
 # In case we want to run models for various different pandemic periods
 analysis_periods:
-  ba2:
-    included_days: 150
-    date_max: ...
-    pivot: "BA.2"
+  # ba2:
+  #   included_days: 150
+  #   date_max: "2022-"
+  #   pivot: "BA.2"
   xbb15:
     included_days: 150
-    date_max: ...
+    date_max: "2023-01-01"
     pivot: "XBB.1.5"
