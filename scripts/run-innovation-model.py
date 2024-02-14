@@ -10,13 +10,12 @@ LEARNING_RATE = 4e-3
 NUM_SAMPLES = 1000
 
 def main():
-    parser = argparse.ArgumentParser(description = "Given input sequence counts, generate a file mapping lineages to closest parental lineage.")
+    parser = argparse.ArgumentParser(description = "Given input sequence counts, estimate parent-child relative fitness differences along branches.")
     parser.add_argument("--seq-counts", type=str, required=True, help="output TSV of collapsed sequence counts")
     parser.add_argument("--pango-relationships", type=str, required=True, help="output TSV of pango-variant-relationships")
     parser.add_argument("--growth-advantage-path", type=str, required=True, help="output path for the estimated growth advantages by location")
     parser.add_argument("--pivot", type=str, required=True, help="The variant with which to be consider all advantages relative to.")
     args = parser.parse_args()
-
 
     # Load data 
     raw_seq = pd.read_csv(args.seq_counts, sep="\t")
