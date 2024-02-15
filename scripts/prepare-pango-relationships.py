@@ -4,7 +4,7 @@ from pango_aliasor.aliasor import Aliasor
 
 def find_closest_parents(variant: str, variants: list[str], aliasor: Aliasor):
     parent = aliasor.parent(variant)
-    while parent is not "":
+    while parent != "":
         if parent in variants:
             return parent
         parent = aliasor.parent(parent)
