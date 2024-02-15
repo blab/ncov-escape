@@ -13,28 +13,29 @@ def _get_all_input(w):
         # Prepared data sets
         # TODO: Remove cases?
         *expand(
-            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_cases.tsv",
+            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_cases.tsv",
             data_provenance=data_provenances,
             variant_classification=variant_classifications,
             geo_resolution=geo_resolutions,
-            period=analysis_periods
+            analysis_period=analysis_periods
         ),
         *expand(
-            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_seq_counts.tsv",
+            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_seq_counts.tsv",
             data_provenance=data_provenances,
             variant_classification=variant_classifications,
             geo_resolution=geo_resolutions,
-            period=analysis_periods
+            analysis_period=analysis_periods
         ),
         # Resulting growth advantages
         *expand(
-            "results/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/growth_advantages.tsv",
+            "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv",
             data_provenance=data_provenances,
             variant_classification=variant_classifications,
             geo_resolution=geo_resolutions,
-            period=analysis_periods
+            analysis_period=analysis_periods
         ),
     ]
+    return all_input
 
 rule all:
     input: _get_all_input

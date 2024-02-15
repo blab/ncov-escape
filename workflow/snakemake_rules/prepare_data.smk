@@ -46,8 +46,8 @@ def _get_analysis_period_option(wildcards, option_name):
     If the *option* exists as a key within config['analysis_periods'][wildcard.analysis_period]
     then return as "--{option-name} {option_value}". Or else return an empty string.
     """
-    option_value = config.get('analysis_periods', {}) \
-                         .get(wildcards.analysis_periods, {}) \
+    option_value = config.get('analysis_period', {}) \
+                         .get(wildcards.analysis_period, {}) \
                          .get(option_name)
 
     if option_value is not None:
@@ -62,8 +62,8 @@ rule prepare_clade_data:
         cases = "data/cases/{geo_resolution}.tsv.gz",
         sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz"
     output:
-        cases = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_cases.tsv",
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_seq_counts.tsv"
+        cases = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_cases.tsv",
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_seq_counts.tsv"
     params:
         max_date = lambda wildcards: _get_analysis_period_option(wildcards, 'max_date'),
         included_days = lambda wildcards: _get_analysis_period_option(wildcards, 'included_days'),
@@ -95,9 +95,9 @@ rule prepare_clade_data:
 rule collapse_sequence_counts:
     "Collapsing Pango lineages, based on sequence count threshold"
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_seq_counts.tsv"
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_seq_counts.tsv"
     output:
-        collapsed_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv"
+        collapsed_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv"
     params:
         collapse_threshold = lambda wildcards: _get_prepare_data_option(wildcards, 'collapse_threshold')
     shell:
@@ -110,9 +110,9 @@ rule collapse_sequence_counts:
 
 rule get_pango_relationships:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv"
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv"
     output:
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/pango_variant_relationships.tsv"
+        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv"
     shell:
         """
         python ./scripts/prepare-pango-relationships.py \

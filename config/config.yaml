@@ -6,7 +6,6 @@ variant_classifications:
 geo_resolutions:
   - global
 analysis_periods:
-  - ba2
   - xbb15
 
 # Params for the prepare data scripts
@@ -67,7 +66,7 @@ prepare_predictors:
     missing_muts: "drop"  # drop clades with missing muts
 
 # In case we want to run models for various different pandemic periods
-analysis_periods:
+analysis_period:
   # ba2:
   #   included_days: 150
   #   date_max: "2022-"

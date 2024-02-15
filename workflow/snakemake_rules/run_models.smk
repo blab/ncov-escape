@@ -5,8 +5,8 @@ def _get_analysis_period_option(wildcards, option_name):
     If the *option* exists as a key within config['analysis_periods'][wildcard.analysis_period]
     then return as "--{option-name} {option_value}". Or else return an empty string.
     """
-    option_value = config.get('analysis_periods', {}) \
-                         .get(wildcards.analysis_periods, {}) \
+    option_value = config.get('analysis_period', {}) \
+                         .get(wildcards.analysis_period, {}) \
                          .get(option_name)
 
     if option_value is not None:
@@ -17,20 +17,20 @@ def _get_analysis_period_option(wildcards, option_name):
 
 rule innovation_model:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv",
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/pango_variant_relationships.tsv",
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
+        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv",
     params:
         min_date = lambda wildcards: _get_analysis_period_option(wildcards, 'min_date'),
         max_date = lambda wildcards: _get_analysis_period_option(wildcards, 'max_date'),
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot')
     output:
-        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/growth_advantages.tsv"
+        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv"
     shell:
         """
         python ./scripts/run-innovation-model.py \
             --seq-counts {input.sequence_counts} \
             --pango-relationships {input.pango_relationships} \
-            --growth-advantage-path {out.results} \
+            --growth-advantage-path {output.growth_advantages} \
             {params.min_date} \
             {params.max_date} \
             {params.pivot}
