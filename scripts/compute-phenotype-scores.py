@@ -83,8 +83,12 @@ def consolidate_reversions(r):
         muts.append(f"{gene}:{new_wt}{site}{new_mutant}")
     return muts
         
-def get_pango_pair_differences(pango_df, exclude_muts, pair_only_new_muts_are_spike):
-    #TODO: Alter parent name here with my pango-variant relationships file?
+def get_pango_pair_differences(pango_df, pango_relationships_path, exclude_muts, pair_only_new_muts_are_spike):
+    # Alter parent name here with pango-variant relationships file for computing comparisons
+    pango_relationships = pd.read_csv(pango_relationships_path, sep="\t")
+    pango_relationships = pango_relationships.set_index("variant")
+    pango_df["parent"] = pango_df["variant"].map(lambda x: pango_relationships[x].parent)
+
     pango_pair_df = (
         pango_df
         .query("parent != ''")
@@ -320,6 +324,7 @@ def main():
     parser.add_argument("--pango-consensus-seqs-json", type=str, required=True, help="Path to JSON containing consensus seqeuences for clades.")
     parser.add_argument("--input-path", type=str, required=True, help="Path to file containing summaries.")
     parser.add_argument("--clade-phenotype-path", type=str, required=True, help="Path to file containing clade phenotypes.")
+    parser.add_argument("--pango-relationships-path", type=str, required=True, help="Path to file containing pango-parent relationships.")
     parser.add_argument("--clade-pair-phenotype-path", type=str, required=True, help="Path to file containing clade pair phenotypes.")
     parser.add_argument("--config", type=str, required=True, help="Configuration file containing details for processing phenotypes")
     args = parser.parse_args()
@@ -336,12 +341,10 @@ def main():
         missing_muts=config["missing_muts"],
         rename_cols=config["rename_cols"],
         phenotype_cols=config["phenotype_cols"],
-        )
+    )
 
-    #TODO: Alter to use clade parents we computed previously instead of parents from tree?
-    
     # Map from reference sequences to DMS phenotype
-    _ = compute_dms_phenotype(
+    compute_dms_phenotype(
         pango_df, 
         dms_clade=config["dms-clade"], 
         dms_data_all_dict=dms_data_all_dict,
@@ -350,7 +353,21 @@ def main():
         exclude_muts=config["exclude_muts"],
         clade_dms_path=args.clade_phenotype_path,
     )
-    #pango_pair_dms_df = compute_dms_phenotype_pairs(pango_pair_df, dms_data_all_dict=None, phenotypes=None, muts_dms=None, pango_pair_dms_path=None)
+
+    # Create pair dataframe using pango_df and pango_relationships
+    pango_pair_df = get_pango_pair_differences(
+        pango_df,
+        args.pango_relationships_path,
+        exclude_muts=config["exclude_muts"],
+        pair_only_new_muts_are_spike=False,
+    )
+
+    compute_dms_phenotype_pairs(
+        pango_pair_df, 
+        dms_data_all_dict=None, 
+        phenotypes=None, 
+        muts_dms=None, 
+        pango_pair_dms_path=None)
     return None
 
 if __name__ == "__main__":

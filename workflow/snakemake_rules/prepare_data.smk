@@ -184,10 +184,11 @@ def pass_phenotype_config(wildcards):
 rule compute_phenotypes:
     input:
         input_data = lambda wildcards: phenos_compare_natural.get(wildcards.phenotype), # Q. Where is wc.phenotype defined?
-        pango_consensus_jsons= "data/placeholder.txt"
+        pango_consensus_jsons= "data/placeholder.txt",
+        pango_variant_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv"
     output:
-        clade_pair_dms="predictors/{pheno}_clade_pair.csv",
-        clade_dms="predictors/{pheno}_clade.csv"
+        clade_pair_dms="predictors/{analysis_period}/{pheno}_clade_pair.csv",
+        clade_dms="predictors/{analysis_period}/{pheno}_clade.csv"
     params:
         # Q: How do I properly process this to pass the entire config? 
         # Would it be better just to pass things one by one? How would this work for dictionaries?
@@ -197,6 +198,7 @@ rule compute_phenotypes:
         python ./scripts/.compute-phenotypes \
             --input-data {input.input_data} \
             --pango-consensus-jsons {input.pango_consensus_jsons} \
+            --pango-relationships-path {input.pango_variant_relationships} \
             --clade-pair-dms {output.clade_pair_dms} \
             --clade-dms {output.clade_dms} \
             --config '{params.yaml}'
