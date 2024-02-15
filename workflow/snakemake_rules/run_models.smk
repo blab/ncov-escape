@@ -1,4 +1,3 @@
-
 def _get_analysis_period_option(wildcards, option_name):
     """
     Return the option for analysis period from the config based on the analysis period values.
@@ -18,14 +17,14 @@ def _get_analysis_period_option(wildcards, option_name):
 
 rule innovation_model:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv"
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/pango_variant_relationships.tsv"
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv",
+        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/pango_variant_relationships.tsv",
     params:
         min_date = lambda wildcards: _get_analysis_period_option(wildcards, 'min_date'),
         max_date = lambda wildcards: _get_analysis_period_option(wildcards, 'max_date'),
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot')
     output:
-        results: "results/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/growth_advantages.tsv"
+        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/growth_advantages.tsv"
     shell:
         """
         python ./scripts/run-innovation-model.py \

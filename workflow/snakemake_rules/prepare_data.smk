@@ -1,9 +1,18 @@
+rule download_case_counts:
+    output:
+        cases = "data/cases/{geo_resolution}.tsv.gz"
+    params:
+        cases_url = "https://data.nextstrain.org/files/workflows/forecasts-ncov/cases/{geo_resolution}.tsv.gz"
+    shell:
+        """
+        curl -fsSL --compressed {params.cases_url:q} --output {output.cases}
+        """
 
 rule download_sequence_counts:
     output:
-        clades  = "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz"
+        clades = "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz"
     params:
-        clades_url = "https://data.nextstrain.org/files/workflows/forecasts-ncov/data/{data_provenance}/pango_lineages/global.tsv.gz"
+        clades_url = "https://data.nextstrain.org/files/workflows/forecasts-ncov/data/{data_provenance}/{variant_classification}/global.tsv.gz"
     shell:
         """
         curl -fsSL --compressed {params.clades_url:q} --output {output.clades}
@@ -48,7 +57,7 @@ def _get_analysis_period_option(wildcards, option_name):
     return ''
 
 rule prepare_clade_data:
-    """Preparing clade counts for analysis"""
+    "Preparing clade counts for analysis"
     input:
         cases = "data/cases/{geo_resolution}.tsv.gz",
         sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz"
@@ -64,7 +73,7 @@ rule prepare_clade_data:
         prune_seq_days = lambda wildcards: _get_prepare_data_option(wildcards, 'prune_seq_days'),
         clade_min_seq = lambda wildcards: _get_prepare_data_option(wildcards, 'clade_min_seq'),
         clade_min_seq_days = lambda wildcards: _get_prepare_data_option(wildcards, 'clade_min_seq_days'),
-        force_include_clades = lambda wildcards: _get_prepare_data_option(wildcards, 'force_include_clades'),
+        force_include_clades = lambda wildcards: _get_prepare_data_option(wildcards, 'force_include_clades')
     shell:
         """
         python ./scripts/prepare-data.py \
@@ -86,17 +95,17 @@ rule prepare_clade_data:
 rule collapse_sequence_counts:
     "Collapsing Pango lineages, based on sequence count threshold"
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_seq_counts.tsv",
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/prepared_seq_counts.tsv"
     output:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv"
+        collapsed_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{period}/collapsed_seq_counts.tsv"
     params:
-        collapse_threshold = lambda wildcards: _get_prepare_data_option(wildcards, 'collapse_threshold'),
+        collapse_threshold = lambda wildcards: _get_prepare_data_option(wildcards, 'collapse_threshold')
     shell:
         """
         python ./scripts/collapse-lineage-counts.py \
             --seq-counts {input.sequence_counts} \
-            {params.collapse_threshold} \
-            --output-seq-counts {output.sequence_counts}
+            --output-seq-counts {output.collapsed_counts} \
+            {params.collapse_threshold}
         """
 
 rule get_pango_relationships:
@@ -156,29 +165,33 @@ phenos_compare_natural = {
 
 # TODO: Want to be able to repeat for BA.2 pivot? This will ideally just be extending phenotypes and making it only run for particular values
 
+def pass_phenotype_config(wildcards):
+    config = yaml.round_trip_dump({
+                "starting_clades": ["XBB"],  # clades descended from this
+                "exclude_muts": [],  # exclude clades w these mutations
+                "split_by_rbd": False,  # whether to treat RBD and non-RBD mutations separately
+                "dms_clade": "XBB.1.5",  # clade used for DMS
+                # rename columns in input data
+                "rename_cols": phenos_compare_natural[wildcards.pheno]["rename_cols"],
+                # "basic" means not split by RBD, which is done later in code if `split_by_rbd`
+                "phenotype_cols": phenos_compare_natural[wildcards.pheno]["phenotype_cols"],
+                # "drop" clades with missing mutations, or set missing mutations to "zero"
+                "missing_muts": phenos_compare_natural[wildcards.pheno]["missing_muts"],
+                "exclude_clades": [],  # exclude these clades
+        })
+    return config
+
 rule compute_phenotypes:
     input:
-        input_data = lambda wildcard: phenos_compare_natural[wildcard.phenotype] # Q. Where is wc.phenotype defined?
-        pango_consensus_jsons= ...
+        input_data = lambda wildcards: phenos_compare_natural.get(wildcards.phenotype), # Q. Where is wc.phenotype defined?
+        pango_consensus_jsons= "data/placeholder.txt"
     output:
         clade_pair_dms="predictors/{pheno}_clade_pair.csv",
-        clade_dms="predictors/{pheno}_clade.csv",
+        clade_dms="predictors/{pheno}_clade.csv"
     params:
         # Q: How do I properly process this to pass the entire config? 
         # Would it be better just to pass things one by one? How would this work for dictionaries?
-       config = lambda wildcard: yaml.round_trip_dump({
-            "starting_clades": ["XBB"],  # clades descended from this
-            "exclude_muts": [],  # exclude clades w these mutations
-            "split_by_rbd": False,  # whether to treat RBD and non-RBD mutations separately
-            "dms_clade": "XBB.1.5",  # clade used for DMS
-            # rename columns in input data
-            "rename_cols": phenos_compare_natural[wc.pheno]["rename_cols"],
-            # "basic" means not split by RBD, which is done later in code if `split_by_rbd`
-            "phenotype_cols": phenos_compare_natural[wc.pheno]["phenotype_cols"],
-            # "drop" clades with missing mutations, or set missing mutations to "zero"
-            "missing_muts": phenos_compare_natural[wc.pheno]["missing_muts"],
-            "exclude_clades": [],  # exclude these clades
-       })
+       config = pass_phenotype_config
     shell:
         """
         python ./scripts/.compute-phenotypes \

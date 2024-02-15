@@ -34,11 +34,10 @@ def _get_all_input(w):
             geo_resolution=geo_resolutions,
             period=analysis_periods
         ),
-
     ]
 
 rule all:
     input: _get_all_input
 
-include: "workflow/snakemake_rule/prepare_data.smk"
-include: "workflow/snakemake_rule/run_models.smk"
+include: "workflow/snakemake_rules/prepare_data.smk"
+include: "workflow/snakemake_rules/run_models.smk"
