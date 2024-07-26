@@ -20,18 +20,16 @@ rule innovation_model:
         sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
         pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv",
     params:
-        min_date = lambda wildcards: _get_analysis_period_option(wildcards, 'min_date'),
-        max_date = lambda wildcards: _get_analysis_period_option(wildcards, 'max_date'),
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot')
     output:
-        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv"
+    	posteriors = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/posteriors"
+        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/growth_advantages.tsv"
     shell:
         """
         python ./scripts/run-innovation-model.py \
             --seq-counts {input.sequence_counts} \
             --pango-relationships {input.pango_relationships} \
             --growth-advantage-path {output.growth_advantages} \
-            {params.min_date} \
-            {params.max_date} \
+            --posterior-path {output.posteriors} \
             {params.pivot}
         """
