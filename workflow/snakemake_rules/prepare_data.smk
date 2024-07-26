@@ -1,22 +1,4 @@
-rule download_case_counts:
-    output:
-        cases = "data/cases/{geo_resolution}.tsv.gz"
-    params:
-        cases_url = "https://data.nextstrain.org/files/workflows/forecasts-ncov/cases/{geo_resolution}.tsv.gz"
-    shell:
-        """
-        curl -fsSL --compressed {params.cases_url:q} --output {output.cases}
-        """
-
-rule download_sequence_counts:
-    output:
-        clades = "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz"
-    params:
-        clades_url = "https://data.nextstrain.org/files/workflows/forecasts-ncov/data/{data_provenance}/{variant_classification}/global.tsv.gz"
-    shell:
-        """
-        curl -fsSL --compressed {params.clades_url:q} --output {output.clades}
-        """
+# TODO: Switch this to load metadata and use `create-observed-sequence-counts`
 
 def _get_prepare_data_option(wildcards, option_name):
     """
@@ -56,6 +38,8 @@ def _get_analysis_period_option(wildcards, option_name):
         return f'--{option_name} {option_value}'
     return ''
 
+
+# TODO: Call prepare data -> prepare-pango-relationship on all resulting sequence files {analysis_period}/{obs_date}
 rule prepare_clade_data:
     "Preparing clade counts for analysis"
     input:

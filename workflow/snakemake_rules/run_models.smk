@@ -17,8 +17,8 @@ def _get_analysis_period_option(wildcards, option_name):
 
 rule innovation_model:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv",
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/collapsed_seq_counts_{obs_date}.tsv",
+        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/pango_variant_relationships_{obs_date}.tsv",
     params:
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot')
     output:
