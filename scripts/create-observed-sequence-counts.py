@@ -79,10 +79,7 @@ def observe_sequence_counts(delayed, obs_date=None):
     return obs_seq
 
 
-OUTPUT_PATH = "./data/time_stamped/"  # Make this an argument as well
-OBSERVATION_DATES = ["04/02/2024"]
 BIAS_BUFFER = 14
-NUM_DAYS_CONTEXT = 90
 
 
 if __name__ == "__main__":
@@ -138,9 +135,20 @@ if __name__ == "__main__":
         help="Maximum metadata records to read into memory at once during initial pass."
         + "Increasing this value increases peak memory usage.",
     )
+
+    parser.add_argument("--obs_date_min", help="First date of observation.")
+    parser.add_argument("--obs_date_max", help="Last date of observation.")
+    parser.add_argument("--interval", help="The interval for the date range")
     parser.add_argument(
-        "--output",
-        help="Path to output TSV for sequence counts per date, location, and clade.",
+        "--num_days_context",
+        default=None,
+        help="Optionally, the number of days that are included for forecasts"
+        + "By default, this includes all days after `obs_date_min`.",
+    )
+
+    parser.add_argument(
+        "--output-path",
+        help="Path to output TSV for sequence counts by observation date.",
     )
 
     args = parser.parse_args()
@@ -216,19 +224,23 @@ if __name__ == "__main__":
     sequence_count_by_submission = count_sequences_with_submission_date(metadata)
 
     # We need to create a directory to hold observed counts
-    # TODO: Figure out how to specify observation dates.
-    # Config like ncov-forecasting-fit?
-    for obs_date in OBSERVATION_DATES:
+    observation_dates = pd.date_range(
+        start=args.obs_date_min, end=args.obs_date_max, freq=args.interval
+    )
+
+    for obs_date in observation_dates:
         # Observe sequences up to this date
         obs_seq = observe_sequence_counts(
             sequence_count_by_submission, obs_date=obs_date
         )
 
-        # Filter to appropriate date
-        # QUESTION: Should users specify this directly or shold we use fixed length?
-        min_date = pd.to_datetime(obs_date) - pd.Timedelta(
-            NUM_DAYS_CONTEXT + BIAS_BUFFER, "d"
-        )
+        # Filter to appropriate date, either to maintain consistent window or grow window in time
+        if args.num_days_context is None:
+            min_date = args.obs_date_min
+        else:
+            min_date = pd.to_datetime(obs_date) - pd.Timedelta(
+                args.num_days_context + BIAS_BUFFER, "d"
+            )
         obs_seq = obs_seq[obs_seq.date > min_date]
 
         # Remove most recent 14 days due to bias
@@ -236,7 +248,7 @@ if __name__ == "__main__":
         obs_seq = obs_seq[obs_seq.date <= max_date]
 
         # Export file
-        path = OUTPUT_PATH + "/" + str(obs_date)
+        path = args.output_path + "/" + str(obs_date)
         if not os.path.exists(path):
             os.makedirs(path)
 
@@ -248,7 +260,7 @@ if __name__ == "__main__":
     )
 
     # Make sure we have the folder
-    path = OUTPUT_PATH + "/truth"
+    path = args.output_path + "/truth"
     if not os.path.exists(path):
         os.makedirs(path)
 
