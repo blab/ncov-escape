@@ -73,11 +73,7 @@ if __name__ == "__main__":
     def _get_posterior(location, pivot):
         # Filtering to location of interest
         _raw_seq = raw_seq[raw_seq.location == location].copy()
-        _raw_variant_parents = raw_variant_parents[
-            raw_variant_parents.location == location
-        ].copy()
-
-        data = ef.InnovationSequenceCounts(_raw_seq, _raw_variant_parents, pivot=pivot)
+        data = ef.InnovationSequenceCounts(_raw_seq, raw_variant_parents, pivot=pivot)
 
         # Defining model
         model = ef.InnovationMLR(tau=4.2)
@@ -98,4 +94,3 @@ if __name__ == "__main__":
     ]
     ga_df = pd.concat(ga_dfs)
     ga_df.to_csv(args.growth_advantage_path, sep="\t")
-
