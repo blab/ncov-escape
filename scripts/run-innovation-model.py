@@ -1,6 +1,7 @@
 import argparse
 
 import evofr as ef
+import numpy as np
 import pandas as pd
 
 LOCATIONS = ["USA"]
@@ -24,6 +25,59 @@ def get_growth_advantage(posterior, pivot):
     return ga_df
 
 
+def prep_predictors(predictors, variant_freqs, predictor_names):
+    # Index by variant name
+    predictors = predictors.rename(columns={"seqName": "variant"}).set_index("variant")
+    predictors = predictors.replace("?").astype(
+        {name: "float" for name in predictor_names}
+    )
+
+    # Find scores of interest and parents
+    var_names = [v for v in variant_freqs.var_names if v in predictors.index]
+    predictors = predictors.loc[var_names]  # Need all variants to be present...
+    predictors["parent"] = predictors.index.map(variant_freqs.parent_map)
+
+    # Get delta between parents and children
+    def get_parent_delta(x, col="immune_escape"):
+        variant = x.name
+        parent = x.parent
+        # If parent and child are present generate contrast
+        if parent in predictors.index:
+            return predictors.loc[variant][col] - predictors.loc[parent][col]
+        # Gotta figure out how to deal with the nans
+        return np.nan
+
+    # Generate delta columns
+    for name in predictor_names:
+        predictors[f"delta_{name}"] = predictors.apply(
+            lambda x: get_parent_delta(x, name), axis=1
+        )
+    return predictors
+
+
+def make_features(predictors, variant_freqs, feature_names=None, intercept=True):
+
+    if feature_names is None:
+        feature_names = ["delta_immune_escape", "delta_ace2_binding"]
+
+    n_features = len(feature_names)
+
+    # Fill with features from data frame
+    N_variants = len(variant_freqs.var_names)
+    features = np.empty((N_variants, n_features))
+
+    for v, var in enumerate(variant_freqs.var_names):
+        if var in predictors.index:
+            features[v, :] = predictors.loc[var][feature_names].values
+        else:
+            features[v, :] = np.nan
+
+    # Add intercept if desired
+    if intercept:
+        features = np.column_stack((features, np.ones(N_variants)))
+    return features
+
+
 # TODO: Load in ITERS, LEARNING_RATE, NUM_SAMPLES from a config file as in forecasts-ncov
 # Similarly, load in CI_COVERAGE
 
@@ -35,13 +89,19 @@ if __name__ == "__main__":
         "--seq-counts",
         type=str,
         required=True,
-        help="output TSV of collapsed sequence counts",
+        help="input TSV of collapsed sequence counts",
     )
     parser.add_argument(
         "--pango-relationships",
         type=str,
         required=True,
-        help="output TSV of pango-variant-relationships",
+        help="input TSV of pango-variant-relationships",
+    )
+    parser.add_argument(
+        "--predictor_path",
+        type=str,
+        default=None,
+        help="input TSV of predictors of variant fitness",
     )
     parser.add_argument(
         "--growth-advantage-path",
@@ -76,7 +136,19 @@ if __name__ == "__main__":
         data = ef.InnovationSequenceCounts(_raw_seq, raw_variant_parents, pivot=pivot)
 
         # Defining model
-        model = ef.InnovationMLR(tau=4.2)
+        if args.predictor_path is None:
+            model = ef.InnovationMLR(tau=4.2)
+        else:
+            # Define predictors
+            predictors = pd.read_csv(args.predictor_path, sep="\t")
+            # TODO: All config to specify predictors to use
+            predictor_names = ["immune_escape", "ace2_binding"]
+            predictors = prep_predictors(
+                predictors, data, predictor_names=predictor_names
+            )
+            features = make_features(predictors, data, feature_names=predictor_names)
+            prior = ef.models.DeltaRegressionPrior(features)
+            model = ef.InnovationMLR(tau=4.2, delta_prior=prior)
 
         # Defining inference method
         inference_method = ef.InferFullRank(ITERS, LEARNING_RATE, NUM_SAMPLES)
