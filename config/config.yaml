@@ -34,14 +34,14 @@ prepare_data:
         collapse_threshold: 350
 
 prepare_predictors:
-  current_dms: 
+  current_dms:
     input_data: "results/summaries/summary.csv"
     rename_cols: {"human sera escape": "sera escape", "spike mediated entry": "cell entry"}
     phenotype_cols: ["sera escape", "ACE2 binding", "cell entry"]
     title: "XBB.1.5 full-spike DMS phenotypes"
     missing_muts: "drop"  # drop clades with missing muts,
   yeast_RBD_DM:
-    input_data: "data/compare_natural_datasets/yeast_RBD_DMS.csv" 
+    input_data: "data/compare_natural_datasets/yeast_RBD_DMS.csv"
     rename_cols: {}
     phenotype_cols: ["escape", "ACE2 affinity", "RBD expression"]
     title: "yeast RBD DMS phenotypes"
