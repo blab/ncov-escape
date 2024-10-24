@@ -200,7 +200,7 @@ where $\alpha_{V} = \delta_{V} = 0$.
 We can then interpret $\delta_{v}$ as the relative fitness of variant $v$ relative to variant $V$.
 Assuming a fixed generation time $\tau$ additionally allows us to then write the relative $R_{t}$ or growth advantage for variant $v$ over $V$ as $\Delta_{v} = \exp(\delta_{v}\tau)$.
 
-[Preceding sentence about the multinomial likelihood]
+To fit this model, we use a multinomial likelihood with probabilities defined by the frequencies above, the vector of counts for each variant at time $t$ $S_{t}$, and the total count of sequences at time $t$:
 
 \begin{align*}
     S_{t} \sim \text{Multinomial}(N_{t}, p_{t})
@@ -208,6 +208,10 @@ Assuming a fixed generation time $\tau$ additionally allows us to then write the
 
 \paragraph{Mapping variant-parent relationships}%
 
+In order to estimate rough branch-specific relative fitness innovations, we develop a data set mapping variants as parent-child pairs.
+
+For each Pango lineage in our generated sequence counts, we iterate to its parent lineage until the parent lineage is either in the sequence count file or there is no parent present.
+If there is no parent present, we simply estimate the variant growth advantage directly.
 
 \paragraph{Growth advantage innovation model}%
 
@@ -242,7 +246,6 @@ To better explain the variation in growth advantage innovations and enable predi
     \psi_{v,t} &= (\delta_{v,t} - \delta_{\text{parent}_{v}, t}) \sim \text{Normal} \left( \sum_{p} \beta_{p} x_{p}, \sigma \right) \\
     \beta_{p, \cdot} &\sim \text{RandomWalk}(0, \gamma)
 \end{align*}
-
 
 \paragraph{Generating predictors for regression prior analysis}%
 
