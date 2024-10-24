@@ -22,7 +22,7 @@ rule innovation_model:
     params:
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot')
     output:
-    	posteriors = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/posteriors"
+    	posteriors = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/posteriors",
         growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/growth_advantages.tsv"
     shell:
         """

@@ -174,7 +174,7 @@ rule compute_phenotypes:
         clade_pair_dms="predictors/{analysis_period}/{pheno}_clade_pair.csv",
         clade_dms="predictors/{analysis_period}/{pheno}_clade.csv"
     params:
-        # Q: How do I properly process this to pass the entire config? 
+        # Q: How do I properly process this to pass the entire config?
         # Would it be better just to pass things one by one? How would this work for dictionaries?
        config = pass_phenotype_config
     shell:
