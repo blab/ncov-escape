@@ -8,20 +8,17 @@ import sys
 
 from datetime import datetime, timedelta
 
-CASES_DTYPES = {
-    'location': 'string',
-    'cases': 'int64',
-}
-
 SEQ_COUNTS_DTYPES = {
     'location': 'string',
     'clade': 'string',
     'sequences': 'int64',
 }
 
-# Default cutoff date is today's date
-DEFAULT_CUTOFF_DATE = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+# Default min date is 1 year before today's date
+DEFAULT_MIN_DATE = (datetime.now() - timedelta(days=365)).strftime('%Y-%m-%d')
 
+# Default max date is today's date
+DEFAULT_MAX_DATE = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def positive_int(value):
     """
@@ -41,17 +38,12 @@ if __name__ == '__main__':
 
     parser.add_argument("--seq-counts", metavar="TSV", required=True,
         help="Path to clade counts TSV with four columns: 'location','clade','date','sequences'")
-    parser.add_argument("--cases", metavar="TSV", required=True,
-        help="Path to case counts TSV with three columns: 'location','date','cases'")
-    parser.add_argument("--max-date", default=DEFAULT_CUTOFF_DATE,
+    parser.add_argument("--min-date", default=DEFAULT_MIN_DATE,
+        help="The minimum cutoff for date (inclusive), formatted as 'YYYY-MM-DD'.\n"
+             "(default: %(default)s)")
+    parser.add_argument("--max-date", default=DEFAULT_MAX_DATE,
         help="The maximum cutoff for date (inclusive), formatted as 'YYYY-MM-DD'.\n"
              "(default: %(default)s)")
-    parser.add_argument("--included-days", type=positive_int,
-        help="The number of days (including the cutoff date) to include in analysis.\n"
-             "If not provided, all data through the cutoff date will be included.")
-    parser.add_argument("--prune-seq-days", type=positive_int,
-        help="The number of days (including the cutoff date) to prune sequence counts.\n"
-             "This is useful to exclude sequence counts for recent days that are overly enriched for variants.")
     parser.add_argument("--location-min-seq", type=positive_int, default=1,
         help="The mininum number of sequences a location must have within the "
              "days-min-seq to be included in analysis.\n"
@@ -70,12 +62,11 @@ if __name__ == '__main__':
              "for counting the number of sequences per clade to determine if a clade is included as its own variant.\n"
              "If not provided, will count sequences from all dates included in analysis date range.")
     parser.add_argument("--force-include-clades", nargs="*",
-        help="Clades to force include in the output regardless of sequences counts. " +
-             "Must be formatted as <clade_name>=<variant_name>")
+        help="Clades to force include in the output regardless of sequences counts.")
+    parser.add_argument("--force-exclude-clades", nargs="*",
+        help="Clades to force exclude in the output regardless of sequences counts.")
     parser.add_argument("--output-seq-counts", required=True,
         help="Path to output TSV file for the prepared variants data.")
-    parser.add_argument("--output-cases", required=True,
-        help="Path to output TSV file for the prepared cases data.")
 
     args = parser.parse_args()
 
@@ -86,16 +77,8 @@ if __name__ == '__main__':
     print(f"Setting max date (inclusive) as {args.max_date!r}.")
     max_date = datetime.strptime(args.max_date, '%Y-%m-%d')
 
-    # The min date is shared between the seq_counts and cases data
-    # Set default min_date to minimum date possible so we include all data up to the max date
-    min_date = None
-    if args.included_days is not None:
-        # Calculate the minimum date as *included_days* days before the max date
-        # Subtract 1 from days in calculation since we are including the max date
-        min_date = max_date - timedelta(days=(args.included_days - 1))
-        print(f"Setting min date (inclusive) as {datetime.strftime(min_date, '%Y-%m-%d')!r}.")
-    else:
-        print("No min date was set, including all dates up to the max date.")
+    print(f"Setting min date (inclusive) as {args.min_date!r}.")
+    min_date = datetime.strptime(args.min_date, '%Y-%m-%d')
 
     ###########################################################################
     ################### Rules for subsetting by location ######################
@@ -158,17 +141,18 @@ if __name__ == '__main__':
     # Keep track of clades that are force included so that they can bypass the sequence counts check
     force_included_clades = set()
     if args.force_include_clades:
-        for force_include_clade in args.force_include_clades:
-            force_include = force_include_clade.split('=')
-            if len(force_include) != 2:
-                print(f"ERROR: Unable to parse force include clade {force_include_clade!r}.")
-                sys.exit(1)
+        for variant in args.force_include_clades:
+            force_included_clades.add(variant)
 
-            clade, variant = force_include
-            seq_counts.loc[seq_counts['clade'] == clade, 'variant'] = variant
-            force_included_clades.add(clade)
+        print(f"Force including the following variants: {args.force_include_clades}")
 
-        print(f"Force including the following clades/variants: {args.force_include_clades}")
+    # Keep track of clades that are force excluded so that they can bypass the sequence counts check
+    force_excluded_clades = set()
+    if args.force_exclude_clades:
+        for variant in args.force_exclude_clades:
+            force_excluded_clades.add(variant)
+
+        print(f"Force excluding the following variants: {args.force_exclude_clades}")
 
     # Collapse small clades into "other" if clades-min-seq is provided
     if args.clade_min_seq:
@@ -201,8 +185,11 @@ if __name__ == '__main__':
         # Get a set of clades that meet the clade_min_seq requirement
         clades_with_min_seq = set(seqs_per_clade.loc[seqs_per_clade['sequences'] >= args.clade_min_seq, 'clade'])
 
+        # Remove force excluded clades from this list
+        clades_to_keep = clades_with_min_seq - force_excluded_clades
+
         # Replace variant with 'other' if they are not force included and do not meet the clade_min_seq requirement
-        seq_counts.loc[~seq_counts['clade'].isin(force_included_clades | clades_with_min_seq), 'variant'] = 'other'
+        seq_counts.loc[~seq_counts['clade'].isin(force_included_clades | clades_to_keep), 'variant'] = 'other'
 
     # Replace 'recombinant' clade with 'other'
     seq_counts.loc[seq_counts['clade'].isin(['recombinant']), 'variant'] = 'other'
@@ -221,14 +208,6 @@ if __name__ == '__main__':
 
     # The default max date for clade counts is the max date
     max_clade_date = max_date
-    # Set the max date for clade counts to earlier date if prune_seq_days is provided.
-    if args.prune_seq_days is not None:
-        print(
-            f"Pruning variants counts in the last {args.prune_seq_days} day(s)",
-            "to exclude recent dates that may be overly enriched for variants."
-        )
-        # Calculate max clade date as *prune_seq_days* days before the max_date
-        max_clade_date = max_date - timedelta(days=(args.prune_seq_days))
 
     ###########################################################################
     ########################## Subset and output data #########################
@@ -254,20 +233,3 @@ if __name__ == '__main__':
               sep='\t',
               index=False,
           )
-
-
-    # Load entire case counts data
-    cases = pd.read_csv(args.cases, sep='\t', parse_dates=['date'], dtype=CASES_DTYPES)
-    # Subset the case counts data by date and locations
-    cases = cases.loc[
-        (cases['date'] >= min_date if min_date else True) &
-        (cases['date'] <= max_date) &
-        (cases['location'].isin(locations_to_include))
-    ]
-    # Sort cases subset and print to output file
-    cases.sort_values(['location', 'date']) \
-         .to_csv(
-             args.output_cases,
-             sep='\t',
-             index=False,
-         )

@@ -12,11 +12,10 @@ Provision data locally by cloning https://github.com/nextstrain/forecasts-ncov/ 
 ```
 nextstrain build . -j 1 --configfile config/config.yaml --config data_provenances=gisaid variant_classification=pango_lineages geo_resolutions=global
 ```
-This will create `forecasts-ncov/data/cases/global.tsv.gz` and `forecasts-ncov/data/gisaid/pango_lineages/global.tsv.gz` locally.
+This will create `forecasts-ncov/data/gisaid/pango_lineages/global.tsv.gz` locally.
 
 Go to the `ncov-escape` directory and run
 ```
-mkdir -p data/cases/
 mkdir -p data/gisaid/pango_lineages/
 ```
-Copy each `global.tsv.gz` file from `forecasts-ncov` to `ncov-escape` in the respective directories.
+Copy the `global.tsv.gz` file from `forecasts-ncov` to `ncov-escape` in the corresponding directory.

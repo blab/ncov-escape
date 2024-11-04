@@ -1,6 +1,5 @@
 data_provenances:
   - gisaid
-  - open
 variant_classifications:
   - pango_lineages
 geo_resolutions:
@@ -15,22 +14,11 @@ prepare_data:
   gisaid:
     pango_lineages:
       global:
-        location_min_seq: 300
-        location_min_seq_days: 30
+        min_date: "2023-01-01"
+        max_date: "2023-12-01"
+        location_min_seq: 1000
         excluded_locations: "defaults/global_excluded_locations.txt"
-        prune_seq_days: 12
         clade_min_seq: 1
-        clade_min_seq_days: 150
-        collapse_threshold: 350
-  open:
-    pango_lineages:
-      global:
-        location_min_seq: 300
-        location_min_seq_days: 30
-        excluded_locations: "defaults/global_excluded_locations.txt"
-        prune_seq_days: 12
-        clade_min_seq: 1
-        clade_min_seq_days: 150
         collapse_threshold: 350
 
 prepare_predictors:
