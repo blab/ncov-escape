@@ -162,7 +162,7 @@ def pass_phenotype_config(wildcards):
 
 rule compute_phenotypes:
     input:
-        input_data = lambda wildcards: phenos_compare_natural.get(wildcards.phenotype), # Q. Where is wc.phenotype defined?
+        input_data = lambda wildcards: phenos_compare_natural.get(wildcards.pheno),
         pango_consensus_jsons= "data/placeholder.txt",
         pango_variant_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv"
     output:
