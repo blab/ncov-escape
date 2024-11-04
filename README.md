@@ -1,9 +1,5 @@
 # Analysis of SARS-CoV-2 antigenic drift and evolutionary fitness
 
-## Nextstrain workflow
-
-There is a Nextstrain workflow forked from v12 of the canonical Nextstrain [ncov](https://github.com/nextstrain/ncov) workflow in the [`ncov-workflow`](ncov-workflow/) directory.
-
 ## Sequence counts and MLR analyis
 
 ### Provisioning data locally
@@ -19,3 +15,10 @@ Go to the `ncov-escape` directory and run
 mkdir -p data/gisaid/pango_lineages/
 ```
 Copy the `global.tsv.gz` file from `forecasts-ncov` to `ncov-escape` in the corresponding directory.
+
+### Sequence counts
+
+Construct collapsed Pango sequence counts for analysis period and Pango relationships with
+```
+nextstrain build . -j 1 data/gisaid/pango_lineages/global/xbb15/pango_variant_relationships.tsv
+```

@@ -19,11 +19,13 @@ def main():
     aliasor = Aliasor()
     seq_counts = pd.read_csv(args.seq_counts, sep="\t")
     variants = seq_counts.variant.unique()
-    parent_map = {}
+
+    parent_map = []
     for variant in variants:
-        parent_map[variant] = find_closest_parents(variant, variants, aliasor)
-    
-    variant_relationships = pd.DataFrame(parent_map).reset_index()
+        closest_parent = find_closest_parents(variant, variants, aliasor)
+        parent_map.append({"variant": variant, "closest_parent": closest_parent})
+
+    variant_relationships = pd.DataFrame(parent_map)
     variant_relationships.to_csv(args.output_relationships, sep="\t", index=False)
 
 if __name__ == "__main__":
