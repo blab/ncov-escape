@@ -1,4 +1,5 @@
 # TODO: Switch this to load metadata and use `create-observed-sequence-counts`
+get_analysis_config = lambda wildcards: config.get("analysis_period", {}).get(wildcards.analysis_period, {})
 
 def _get_prepare_data_option(wildcards, option_name):
     """
@@ -12,6 +13,31 @@ def _get_prepare_data_option(wildcards, option_name):
                          .get(wildcards.data_provenance, {}) \
                          .get(wildcards.variant_classification, {}) \
                          .get(wildcards.geo_resolution, {}) \
+                         .get(option_name)
+
+
+    if option_value is not None:
+        # Change underscores of YAML keys to dashes for proper CLI option names
+        option_name = option_name.replace('_', '-')
+        return f'--{option_name} {option_value}'
+    return ''
+
+
+def _get_prepare_data_option_analysis(wildcards, option_name):
+    """
+    Return the option for prepare data from the config based on the
+    wildcards.data_provenance, wildcards.variant_classification and the wildcards.geo_resolution values.
+
+    If the *option* exists as a key within config['prepare_data'][wildcard.data_provenance][wildcard.geo_resolution]
+    then return as "--{option-name} {option_value}". Or else return an empty string.
+    """
+    data_provenance = get_analysis_config(wildcards).get("data_provenance", "gisaid")
+    variant_classification = get_analysis_config(wildcards).get("variant_classification", "pango_lineages")
+    geo_resolution = get_analysis_config(wildcards).get("geo_resolution", "global"),
+    option_value = config.get('prepare_data', {}) \
+                         .get(data_provenance, {}) \
+                         .get(variant_classification, {}) \
+                         .get(geo_resolution, {}) \
                          .get(option_name)
 
 
@@ -55,20 +81,24 @@ rule provision_sequence_counts:
 rule prepare_clade_data:
     "Preparing clade counts for analysis"
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz"
+        sequence_counts = lambda wildcards: "data/{data_provenance}/{variant_classification}/{geo_resolution}.tsv.gz".format(
+            data_provenance= get_analysis_config(wildcards).get("data_provenance", "gisaid"),
+            variant_classification=get_analysis_config(wildcards).get("variant_classification", "pango_lineages"),
+            geo_resolution=get_analysis_config(wildcards).get("geo_resolution", "global")
+        )
     output:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_seq_counts.tsv"
+        sequence_counts = "data/{analysis_period}/prepared_seq_counts.tsv"
     log:
-        "logs/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepare_clade_data.txt"
+        "logs/{analysis_period}/prepare_clade_data.txt"
     params:
-        min_date = lambda wildcards: _get_prepare_data_option(wildcards, 'min_date'),
-        max_date = lambda wildcards: _get_prepare_data_option(wildcards, 'max_date'),
-        location_min_seq = lambda wildcards: _get_prepare_data_option(wildcards, 'location_min_seq'),
-        excluded_locations = lambda wildcards: _get_prepare_data_option(wildcards, 'excluded_locations'),
-        prune_seq_days = lambda wildcards: _get_prepare_data_option(wildcards, 'prune_seq_days'),
-        clade_min_seq = lambda wildcards: _get_prepare_data_option(wildcards, 'clade_min_seq'),
-        force_include_clades = lambda wildcards: _get_prepare_data_option(wildcards, 'force_include_clades'),
-        force_exclude_clades = lambda wildcards: _get_prepare_data_option(wildcards, 'force_exclude_clades')
+        min_date = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'min_date'),
+        max_date = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'max_date'),
+        location_min_seq = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'location_min_seq'),
+        excluded_locations = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'excluded_locations'),
+        prune_seq_days = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'prune_seq_days'),
+        clade_min_seq = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'clade_min_seq'),
+        force_include_clades = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'force_include_clades'),
+        force_exclude_clades = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'force_exclude_clades')
     shell:
         """
         python ./scripts/prepare-data.py \
@@ -86,11 +116,11 @@ rule prepare_clade_data:
 rule collapse_sequence_counts:
     "Collapsing Pango lineages, based on sequence count threshold"
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_seq_counts.tsv"
+        sequence_counts = "data/{analysis_period}/prepared_seq_counts.tsv"
     output:
-        collapsed_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv"
+        collapsed_counts = "data/{analysis_period}/collapsed_seq_counts.tsv"
     params:
-        collapse_threshold = lambda wildcards: _get_prepare_data_option(wildcards, 'collapse_threshold')
+        collapse_threshold = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'collapse_threshold')
     shell:
         """
         python ./scripts/collapse-lineage-counts.py \
@@ -101,9 +131,9 @@ rule collapse_sequence_counts:
 
 rule get_pango_relationships:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv"
+        sequence_counts = "data/{analysis_period}/collapsed_seq_counts.tsv"
     output:
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv"
+        pango_relationships = "data/{analysis_period}/pango_variant_relationships.tsv"
     shell:
         """
         python ./scripts/prepare-pango-relationships.py \

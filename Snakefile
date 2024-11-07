@@ -10,6 +10,17 @@ wildcard_constraints:
     geo_resolution="[A-Za-z0-9_-]+",  # Allow letters, numbers, underscores, and dashes
     variant_classifications="[A-Za-z0-9_-]+"  # Allow letters, numbers, underscores, and dashes
 
+def _get_date_range(ap):
+    obs_date_min = config["analysis_period"].get(ap, {}).get('obs_date_min')
+    obs_date_max = config["analysis_period"].get(ap, {}).get('obs_date_max')
+    obs_date_interval = config["analysis_period"].get(ap, {}).get('interval')
+    date_range = pd.date_range(
+        start=obs_date_min,
+        end=obs_date_max,
+        freq=obs_date_interval,
+    ).strftime("%Y-%m-%d").tolist()
+
+    return date_range
 
 def _get_all_input(w):
     data_provenances = config["data_provenances"] if isinstance(config["data_provenances"], list) else [config["data_provenances"]]
@@ -18,18 +29,21 @@ def _get_all_input(w):
     analysis_periods = config["analysis_period"]
 
     # date_ranges = {analysis: generate_dates(analysis_periods[analysis]) for analysis in analysis_periods}
-    # obs_date = [date for analysis in analysis_periods.keys() for date in date_ranges[analysis]]
-
     all_input = [
+        # Non-windowed analyses
         *expand(
             "results/{analysis_period}/growth_advantages.tsv",
-            # data_provenance=data_provenances,
-            # variant_classification=variant_classifications,
-            # geo_resolution=geo_resolutions,
-            analysis_period=analysis_periods.keys(),
-            # obs_date=obs_date
-        ),
+            analysis_period=[ap for ap, cfg in analysis_periods.items() if not cfg.get("windowed", False)],
+        )
     ]
+    # Windowed analyses
+    for ap, cfg in analysis_periods.items():
+        if cfg.get("windowed", False):
+            all_input += expand(
+                "results/{analysis_period}/growth_advantages_{obs_date}.tsv",
+                analysis_period=[ap],
+                obs_date=_get_date_range(ap)
+                )
     return all_input
 
 rule all:
@@ -37,3 +51,4 @@ rule all:
 
 include: "workflow/snakemake_rules/prepare_data.smk"
 include: "workflow/snakemake_rules/run_models.smk"
+include: "workflow/snakemake_rules/run_models_over_period.smk"

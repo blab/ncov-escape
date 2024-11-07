@@ -17,14 +17,14 @@ def _get_analysis_period_option(wildcards, option_name):
 
 rule innovation_model:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv",
+        sequence_counts = "data/{analysis_period}/collapsed_seq_counts.tsv",
+        pango_relationships = "data/{analysis_period}/pango_variant_relationships.tsv",
     params:
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot'),
-    	posteriors = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/posteriors"
+    	posteriors = "results/{analysis_period}/posteriors"
     output:
-        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv",
-        growth_advantages_delta = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages_delta.tsv"
+        growth_advantages = "results/{analysis_period}/growth_advantages.tsv",
+        growth_advantages_delta = "results/{analysis_period}/growth_advantages_delta.tsv"
     shell:
         """
         python ./scripts/run-innovation-model.py \

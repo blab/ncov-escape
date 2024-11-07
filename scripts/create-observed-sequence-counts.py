@@ -33,7 +33,7 @@ def format_date(date_string, expected_format):
 
 
 def count_sequences_with_submission_date(metadata):
-    grouped = metadata.groupby(["date", "country", "clades"])
+    grouped = metadata.groupby(["date", "location", "variant"], group_keys=True)
 
     def compute_delay(x):
         delays = (
@@ -48,9 +48,8 @@ def count_sequences_with_submission_date(metadata):
 
     out = (
         grouped.apply(compute_delay)
+        .reset_index(level=list(range(len(grouped.grouper.names))), drop=True)
         .reset_index()
-        .drop(columns=["level_3"])
-        .rename(columns={"country": "location"})
     )
     return out
 
@@ -112,7 +111,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--clade-column",
-        required=True,
+        required=False,
         help="Column in metadata TSV with clade information",
     )
     parser.add_argument(
@@ -131,18 +130,18 @@ if __name__ == "__main__":
     parser.add_argument(
         "--metadata-chunk-size",
         type=int,
-        default=100000,
+        default=500_000,
         help="Maximum metadata records to read into memory at once during initial pass."
         + "Increasing this value increases peak memory usage.",
     )
 
-    parser.add_argument("--obs_date_min", help="First date of observation.")
-    parser.add_argument("--obs_date_max", help="Last date of observation.")
-    parser.add_argument("--interval", help="The interval for the date range")
+    parser.add_argument("--obs-date-min", help="First date of observation.")
+    parser.add_argument("--obs-date-max", help="Last date of observation.")
+    parser.add_argument("--interval", help="The interval for the date range e.g. '2W' or '1D'.")
     parser.add_argument(
-        "--num_days_context",
-        default=None,
-        help="Optionally, the number of days that are included for forecasts"
+        "--num-days-context",
+        type=int,
+        help="Optionally, the number of days that are included in context"
         + "By default, this includes all days after `obs_date_min`.",
     )
 
@@ -165,7 +164,8 @@ if __name__ == "__main__":
         args.id_column: "sequences",
         args.date_column: "date",
         args.location_column: "location",
-        args.clade_column: "clade",
+        args.clade_column: "variant",
+        "date_submitted": "date_submitted"
     }
 
     # Only use required columns, adding filter columns if provided
@@ -177,7 +177,7 @@ if __name__ == "__main__":
     metadata_reader = pd.read_csv(
         args.metadata,
         sep="\t",
-        usecols=metadata_usecols,
+        usecols=list(metadata_usecols),
         dtype="object",
         chunksize=args.metadata_chunk_size,
     )
@@ -205,14 +205,21 @@ if __name__ == "__main__":
 
         # Convert location and clade columns to category dtype
         metadata["location"] = metadata["location"].astype("category")
-        metadata["clade"] = metadata["clade"].astype("category")
+        metadata["variant"] = metadata["variant"].astype("category")
 
         # Convert date column to datetime, sets ambiguous dates to None
-        metadata["date"] = metadata["date"].apply(lambda x: format_date(x, "%Y-%m-%d"))
+        metadata["date"] = pd.to_datetime(metadata["date"], errors="coerce")
+        metadata.dropna(subset=["date"], inplace=True)
 
-        # Drop rows with null date, location, or clades
-        metadata.dropna(subset=["date", "location", "clade"], inplace=True)
+        # Filter to time period
+        min_date = pd.Timestamp(args.obs_date_min) - pd.Timedelta(days=args.num_days_context + BIAS_BUFFER)
+        max_date = pd.Timestamp(args.obs_date_max)
+        metadata = metadata[(metadata.date >= min_date) & (metadata.date <= max_date)]
+        metadata["date"] = pd.to_datetime(metadata["date"]).dt.strftime("%Y-%m-%d")
+        metadata["date_submitted"] = pd.to_datetime(metadata["date_submitted"]).dt.strftime("%Y-%m-%d")
 
+        # Drop rows with null date, location, or variants
+        metadata.dropna(subset=["date", "location", "variant"], inplace=True)
         metadata_chunks.append(metadata)
 
     # Merge all chunks that passed all filters.
@@ -230,6 +237,7 @@ if __name__ == "__main__":
 
     for obs_date in observation_dates:
         # Observe sequences up to this date
+        obs_date = obs_date.strftime("%Y-%m-%d")
         obs_seq = observe_sequence_counts(
             sequence_count_by_submission, obs_date=obs_date
         )
@@ -244,16 +252,16 @@ if __name__ == "__main__":
         obs_seq = obs_seq[obs_seq.date > min_date]
 
         # Remove most recent 14 days due to bias
-        max_date = pd.to_datetime(obs_date) - pd.Timedelta(BIAS_BUFFER, "d")
+        max_date = (pd.to_datetime(obs_date) - pd.Timedelta(BIAS_BUFFER, "d")).dt.strftime("%Y-%m-%d")
         obs_seq = obs_seq[obs_seq.date <= max_date]
 
         # Export file
-        path = args.output_path + "/" + str(obs_date)
+        path = args.output_path
         if not os.path.exists(path):
             os.makedirs(path)
 
         # Make sure we have the folder
-        obs_seq.to_csv(f"{path}/seq_counts_{obs_date}.tsv", sep="\t", index=False)
+        obs_seq.to_csv(f"{path}/collapsed_seq_counts_{obs_date}.tsv", sep="\t", index=False)
 
     retrospective_seq_counts = observe_sequence_counts(
         sequence_count_by_submission, obs_date=None
