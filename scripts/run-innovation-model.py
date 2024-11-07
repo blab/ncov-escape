@@ -1,7 +1,9 @@
 import argparse
+import os
 
 import evofr as ef
 import numpy as np
+import jax.numpy as jnp
 import pandas as pd
 
 LOCATIONS = ["USA"]
@@ -10,7 +12,66 @@ CI_COVERAGE = [0.8]
 ITERS = 50_000
 LEARNING_RATE = 4e-3
 NUM_SAMPLES = 1000
+TAU = 4.2
 
+def _get_growth_advantage_delta(samples, data, ps, name, rel_to="other"):
+    # Unpack variant info
+    var_names = data.var_names
+    par_names = [data.parent_map[v] for v in var_names]
+
+    # Get posterior samples
+    ga = jnp.array(jnp.exp(samples["delta"]))
+    N_variant = ga.shape[-1]
+
+    # Loop over ga and make relative rel_to
+    for i, s in enumerate(var_names):
+        if s == rel_to:
+            ga = jnp.divide(ga, ga[:, i][:, None])
+
+    #ga = jnp.divide(ga, ga[:, var_names.index(rel_to)][:, None])
+
+    # Compute medians and quantiles
+    meds = jnp.median(ga, axis=0)
+    gas = []
+    for i, p in enumerate(ps):
+        up = 0.5 + p / 2
+        lp = 0.5 - p / 2
+        gas.append(jnp.quantile(ga, jnp.array([lp, up]), axis=0).T)
+
+    # Make empty dictionary
+    v_dict = dict()
+    v_dict["location"] = []
+    v_dict["variant"] = []
+    v_dict["parent"] = []
+    v_dict["median_ga_delta"] = []
+
+    for p in ps:
+        v_dict[f"ga_delta_upper_{round(p * 100)}"] = []
+        v_dict[f"ga_delta_lower_{round(p * 100)}"] = []
+
+    for variant in range(N_variant):
+        if var_names[variant] != rel_to:
+            v_dict["location"].append(name)
+            v_dict["variant"].append(var_names[variant])
+            v_dict["parent"].append(par_names[variant])
+            v_dict["median_ga_delta"].append(meds[variant])
+            for i, p in enumerate(ps):
+                v_dict[f"ga_delta_upper_{round(p * 100)}"].append(gas[i][variant, 1])
+                v_dict[f"ga_delta_lower_{round(p * 100)}"].append(gas[i][variant, 0])
+
+    return v_dict
+
+def get_growth_advantage_delta(posterior, pivot):
+    ga_delta_df = pd.DataFrame(
+        _get_growth_advantage_delta(
+            posterior.samples,
+            posterior.data,
+            name=posterior.name,
+            ps=CI_COVERAGE,
+            rel_to=pivot
+        )
+    )
+    return ga_delta_df
 
 def get_growth_advantage(posterior, pivot):
     ga_df = pd.DataFrame(
@@ -110,6 +171,12 @@ if __name__ == "__main__":
         help="output path for the estimated growth advantages by location",
     )
     parser.add_argument(
+        "--growth-advantage-delta-path",
+        type=str,
+        required=True,
+        help="output path for the estimated growth advantages deltas by location",
+    )
+    parser.add_argument(
         "--pivot",
         type=str,
         required=True,
@@ -126,9 +193,11 @@ if __name__ == "__main__":
     # Load data
     raw_seq = pd.read_csv(args.seq_counts, sep="\t")
     raw_variant_parents = pd.read_csv(args.pango_relationships, sep="\t")
+    raw_variant_parents = raw_variant_parents.rename(columns={"closest_parent": "parent"})
 
     # Use all location present unless instructed otherwise
-    locations = pd.unique(raw_seq["location"])
+    # locations = pd.unique(raw_seq["location"])
+    locations = LOCATIONS # TODO: Filter locations earlier within config
 
     def _get_posterior(location, pivot):
         # Filtering to location of interest
@@ -137,7 +206,7 @@ if __name__ == "__main__":
 
         # Defining model
         if args.predictor_path is None:
-            model = ef.InnovationMLR(tau=4.2)
+            model = ef.InnovationMLR(tau=TAU)
         else:
             # Define predictors
             predictors = pd.read_csv(args.predictor_path, sep="\t")
@@ -148,21 +217,32 @@ if __name__ == "__main__":
             )
             features = make_features(predictors, data, feature_names=predictor_names)
             prior = ef.models.DeltaRegressionPrior(features)
-            model = ef.InnovationMLR(tau=4.2, delta_prior=prior)
+            model = ef.InnovationMLR(tau=TAU, delta_prior=prior)
 
         # Defining inference method
-        inference_method = ef.InferFullRank(ITERS, LEARNING_RATE, NUM_SAMPLES)
+        # inference_method = ef.InferFullRank(ITERS, LEARNING_RATE, NUM_SAMPLES)
+        inference_method = ef.InferMAP(ITERS, LEARNING_RATE)
 
         # Fitting model
+        print(f"Fitting {location}")
         posterior = inference_method.fit(model, data, name=location)
         if args.posterior_path is not None:
+            os.makedirs(args.posterior_path, exist_ok=True)
             posterior.save_posterior(args.posterior_path + f"/{location}.pkl")
         return posterior
 
     posteriors = [_get_posterior(location, pivot=args.pivot) for location in locations]
 
-    ga_dfs = [
+    # Export 
+    print("Exporting growth advantages")
+    ga_df = pd.concat([
         get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors
-    ]
-    ga_df = pd.concat(ga_dfs)
+    ])
     ga_df.to_csv(args.growth_advantage_path, sep="\t")
+
+
+    ga_delta_df = pd.concat([
+        get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors
+    ])
+    ga_delta_df.to_csv(args.growth_advantage_delta_path, sep="\t")
+

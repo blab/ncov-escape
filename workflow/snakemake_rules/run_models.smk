@@ -17,19 +17,21 @@ def _get_analysis_period_option(wildcards, option_name):
 
 rule innovation_model:
     input:
-        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/collapsed_seq_counts_{obs_date}.tsv",
-        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/pango_variant_relationships_{obs_date}.tsv",
+        sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
+        pango_relationships = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/pango_variant_relationships.tsv",
     params:
-        pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot')
+        pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot'),
+    	posteriors = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/posteriors"
     output:
-    	posteriors = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/posteriors",
-        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/growth_advantages.tsv"
+        growth_advantages = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv",
+        growth_advantages_delta = "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages_delta.tsv"
     shell:
         """
         python ./scripts/run-innovation-model.py \
             --seq-counts {input.sequence_counts} \
             --pango-relationships {input.pango_relationships} \
             --growth-advantage-path {output.growth_advantages} \
-            --posterior-path {output.posteriors} \
+            --growth-advantage-delta-path {output.growth_advantages_delta} \
+            --posterior-path {params.posteriors} \
             {params.pivot}
         """

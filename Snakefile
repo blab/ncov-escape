@@ -23,14 +23,7 @@ def _get_all_input(w):
 
     all_input = [
         *expand(
-            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/prepared_cases.tsv",
-            data_provenance=data_provenances,
-            variant_classification=variant_classifications,
-            geo_resolution=geo_resolutions,
-            analysis_period=analysis_periods.keys()
-        ),
-        *expand(
-            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/collapsed_seq_counts_{obs_date}.tsv",
+            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
             data_provenance=data_provenances,
             variant_classification=variant_classifications,
             geo_resolution=geo_resolutions,
@@ -38,7 +31,7 @@ def _get_all_input(w):
             obs_date=obs_date
         ),
         *expand(
-            "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/{obs_date}/growth_advantages.tsv",
+            "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv",
             data_provenance=data_provenances,
             variant_classification=variant_classifications,
             geo_resolution=geo_resolutions,
@@ -47,7 +40,6 @@ def _get_all_input(w):
         ),
     ]
     return all_input
-
 
 rule all:
     input: _get_all_input
