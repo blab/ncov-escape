@@ -1,5 +1,6 @@
 import argparse
 import os
+import pickle
 
 import evofr as ef
 import numpy as np
@@ -159,10 +160,16 @@ if __name__ == "__main__":
         help="input TSV of pango-variant-relationships",
     )
     parser.add_argument(
-        "--predictor_path",
+        "--predictor-path",
         type=str,
         default=None,
         help="input TSV of predictors of variant fitness",
+    )
+    parser.add_argument(
+        "--predictor-names",
+        type=str,
+        default=None,
+        help="List of predictors to use for informed analysis",
     )
     parser.add_argument(
         "--growth-advantage-path",
@@ -206,12 +213,17 @@ if __name__ == "__main__":
 
         # Defining model
         if args.predictor_path is None:
+            # Build uninformed model
             model = ef.InnovationMLR(tau=TAU)
         else:
-            # Define predictors
+            # Build predictor-informed model
+            # Define predictors if they are supplied
             predictors = pd.read_csv(args.predictor_path, sep="\t")
-            # TODO: All config to specify predictors to use
-            predictor_names = ["immune_escape", "ace2_binding"]
+            predictor_names = args.predictor_names
+
+            # Default to `immune_escape` and `ace2_binding` if not specified.
+            if predictor_names is None:
+                predictor_names = ["immune_escape", "ace2_binding"]
             predictors = prep_predictors(
                 predictors, data, predictor_names=predictor_names
             )
@@ -228,7 +240,9 @@ if __name__ == "__main__":
         posterior = inference_method.fit(model, data, name=location)
         if args.posterior_path is not None:
             os.makedirs(args.posterior_path, exist_ok=True)
-            posterior.save_posterior(args.posterior_path + f"/{location}.pkl")
+            posterior.save_posterior(args.posterior_path + f"/samples_{location}.pkl")
+            with open(args.posterior_path + f"/data_{location}.pkl", 'wb') as f:
+                pickle.dump(posterior.data, f)
         return posterior
 
     posteriors = [_get_posterior(location, pivot=args.pivot) for location in locations]
