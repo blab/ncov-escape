@@ -35,3 +35,28 @@ rule innovation_model:
             --posterior-path {params.posteriors} \
             {params.pivot}
         """
+
+rule innovation_model_informed:
+    input:
+        sequence_counts = "data/{analysis_period}/collapsed_seq_counts.tsv",
+        pango_relationships = "data/{analysis_period}/pango_variant_relationships.tsv",
+        predictor_path = "data/{analysis_period}/lineage_phenotypes.csv"
+    params:
+        predictor_names = lambda wildcards: _get_predictor_names(wildcards)
+        pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot'),
+    	posteriors = "results/{analysis_period}/posteriors/informed"
+    output:
+        growth_advantages = "results/{analysis_period}/informed/growth_advantages.tsv",
+        growth_advantages_delta = "results/{analysis_period}/informed/growth_advantages_delta.tsv"
+    shell:
+        """
+        python ./scripts/run-innovation-model.py \
+            --seq-counts {input.sequence_counts} \
+            --pango-relationships {input.pango_relationships} \
+            --predictor-path {input.predictor_path} \
+            --predictor-names {params.predictor_names} \
+            --growth-advantage-path {output.growth_advantages} \
+            --growth-advantage-delta-path {output.growth_advantages_delta} \
+            --posterior-path {params.posteriors} \
+            {params.pivot}
+        """
