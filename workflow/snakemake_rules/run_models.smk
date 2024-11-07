@@ -42,7 +42,7 @@ rule innovation_model_informed:
         pango_relationships = "data/{analysis_period}/pango_variant_relationships.tsv",
         predictor_path = "data/{analysis_period}/lineage_phenotypes.csv"
     params:
-        predictor_names = lambda wildcards: _get_predictor_names(wildcards)
+        predictor_names = lambda wildcards: _get_predictor_names(wildcards),
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot'),
     	posteriors = "results/{analysis_period}/posteriors/informed"
     output:
