@@ -4,13 +4,12 @@ import pandas as pd
 if not config:
     configfile: "config/config.yaml"
 
-def generate_dates(analysis_period):
-    dates = pd.date_range(
-        start=analysis_period['obs_date_min'],
-        end=analysis_period['obs_date_max'],
-        freq=analysis_period['obs_date_interval']
-    )
-    return dates.strftime('%Y-%m-%d').tolist()
+wildcard_constraints:
+    data_provenance="[A-Za-z0-9_-]+",  # Allow letters, numbers, underscores, and dashes
+    analysis_period="[A-Za-z0-9_-]+",  # Allow letters, numbers, underscores, and dashes
+    geo_resolution="[A-Za-z0-9_-]+",  # Allow letters, numbers, underscores, and dashes
+    variant_classifications="[A-Za-z0-9_-]+"  # Allow letters, numbers, underscores, and dashes
+
 
 def _get_all_input(w):
     data_provenances = config["data_provenances"] if isinstance(config["data_provenances"], list) else [config["data_provenances"]]
@@ -18,25 +17,17 @@ def _get_all_input(w):
     geo_resolutions = config["geo_resolutions"] if isinstance(config["geo_resolutions"], list) else [config["geo_resolutions"]]
     analysis_periods = config["analysis_period"]
 
-    date_ranges = {analysis: generate_dates(analysis_periods[analysis]) for analysis in analysis_periods}
-    obs_date = [date for analysis in analysis_periods.keys() for date in date_ranges[analysis]]
+    # date_ranges = {analysis: generate_dates(analysis_periods[analysis]) for analysis in analysis_periods}
+    # obs_date = [date for analysis in analysis_periods.keys() for date in date_ranges[analysis]]
 
     all_input = [
         *expand(
-            "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv",
-            data_provenance=data_provenances,
-            variant_classification=variant_classifications,
-            geo_resolution=geo_resolutions,
+            "results/{analysis_period}/growth_advantages.tsv",
+            # data_provenance=data_provenances,
+            # variant_classification=variant_classifications,
+            # geo_resolution=geo_resolutions,
             analysis_period=analysis_periods.keys(),
-            obs_date=obs_date
-        ),
-        *expand(
-            "results/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/growth_advantages.tsv",
-            data_provenance=data_provenances,
-            variant_classification=variant_classifications,
-            geo_resolution=geo_resolutions,
-            analysis_period=analysis_periods.keys(),
-            obs_date=obs_date
+            # obs_date=obs_date
         ),
     ]
     return all_input

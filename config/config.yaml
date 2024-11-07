@@ -60,8 +60,6 @@ analysis_period:
   #   date_max: "2022-"
   #   pivot: "BA.2"
   xbb15:
-    num_days_context: 90
-    obs_date_min: "2023-01-01"
-    obs_date_max: "2023-12-01"
-    obs_date_interval: "2W"
+    min_date: "2023-01-01"
+    max_date: "2023-12-01"
     pivot: "XBB.1.5"
