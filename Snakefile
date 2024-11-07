@@ -50,5 +50,6 @@ rule all:
     input: _get_all_input
 
 include: "workflow/snakemake_rules/prepare_data.smk"
+include: "workflow/snakemake_rules/retrieve_phenotypes.smk"
 include: "workflow/snakemake_rules/run_models.smk"
 include: "workflow/snakemake_rules/run_models_over_period.smk"
