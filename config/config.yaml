@@ -59,10 +59,21 @@ analysis_period:
   #   included_days: 150
   #   date_max: "2022-"
   #   pivot: "BA.2"
+  ba2:
+    min_date: "2021-11-01"
+    max_date: "2022-11-01"
+    pivot: "BA.2"
   xbb15:
     min_date: "2023-01-01"
     max_date: "2023-12-01"
     pivot: "XBB.1.5"
+    predictor_names:
+      - 'spike pseudovirus DMS Non-RBD human sera escape relative to XBB.1.5'
+      - 'spike pseudovirus DMS Non-RBD ACE2 binding relative to XBB.1.5'
+  jn1:
+    min_date: "2024-01-01"
+    max_date: "2024-10-01"
+    pivot: "JN.1"
   # xbb15_windowed:
   #   windowed: true
   #   obs_date_min: "2023-01-01"

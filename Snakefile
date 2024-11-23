@@ -34,7 +34,11 @@ def _get_all_input(w):
         *expand(
             "results/{analysis_period}/growth_advantages.tsv",
             analysis_period=[ap for ap, cfg in analysis_periods.items() if not cfg.get("windowed", False)],
-        )
+        ),
+        *expand(
+            "results/{analysis_period}/informed/growth_advantages.tsv",
+            analysis_period=[ap for ap, cfg in analysis_periods.items() if (not cfg.get("windowed", False)) and (cfg.get("predictor_names", False))],
+	)
     ]
     # Windowed analyses
     for ap, cfg in analysis_periods.items():
