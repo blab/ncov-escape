@@ -40,7 +40,7 @@ rule innovation_model_informed:
     input:
         sequence_counts = "data/{analysis_period}/collapsed_seq_counts.tsv",
         pango_relationships = "data/{analysis_period}/pango_variant_relationships.tsv",
-        predictor_path = "data/{analysis_period}/lineage_phenotypes.csv"
+        predictor_path = "data/{analysis_period}/phenotypes/lineage_phenotypes.csv"
     params:
         predictor_names = lambda wildcards: _get_predictor_names(wildcards),
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot'),

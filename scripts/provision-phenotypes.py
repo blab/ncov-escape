@@ -6,10 +6,10 @@ import yaml
 
 # Default files to download if no `output` key is found
 DEFAULT_FILES_TO_DOWNLOAD = {
-    "mutation_phenotypes_csv": "results/mutation_phenotypes.csv",
-    "mutation_phenotypes_randomized_csv": "results/mutation_phenotypes_randomized.csv",
-    "lineage_phenotypes_csv": "results/lineage_phenotypes.csv",
-    "lineage_phenotypes_randomized_csv": "results/lineage_phenotypes_randomized.csv",
+    "mutation_phenotypes.csv": "results/mutation_phenotypes.csv",
+    "mutation_phenotypes_randomized.csv": "results/mutation_phenotypes_randomized.csv",
+    "lineage_phenotypes.csv": "results/lineage_phenotypes.csv",
+    "lineage_phenotypes_randomized.csv": "results/lineage_phenotypes_randomized.csv",
 }
 
 def download_file(url, local_path):
@@ -55,7 +55,7 @@ def main():
     # Download each file
     for key, relative_path in files_to_download.items():
         file_url = f"{args.base_url}/{relative_path}"
-        local_path = os.path.join(args.output_path, relative_path)
+        local_path = os.path.join(args.output_path, key)
         download_file(file_url, local_path)
 
 if __name__ == "__main__":
