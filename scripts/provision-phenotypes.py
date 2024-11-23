@@ -1,7 +1,8 @@
+import argparse
 import os
+
 import requests
 import yaml
-import argparse
 
 # Default files to download if no `output` key is found
 DEFAULT_FILES_TO_DOWNLOAD = {
@@ -45,6 +46,7 @@ def main():
     parser = argparse.ArgumentParser(description="Download files specified in a config file from a GitHub repository.")
     parser.add_argument("--config-path", required=True, help="Path to the configuration file in the repository.")
     parser.add_argument("--base-url", required=True, help="Base URL of the GitHub repository.")
+    parser.add_argument("--output-path", required=True, help="Path to save files.")
     args = parser.parse_args()
 
     # Get the files to download
@@ -53,7 +55,7 @@ def main():
     # Download each file
     for key, relative_path in files_to_download.items():
         file_url = f"{args.base_url}/{relative_path}"
-        local_path = os.path.join("data", relative_path)
+        local_path = os.path.join(args.output_path, relative_path)
         download_file(file_url, local_path)
 
 if __name__ == "__main__":
