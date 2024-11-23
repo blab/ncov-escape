@@ -19,4 +19,4 @@ def _get_predictor_names(wildcards):
     predictor_names = config.get('analysis_period', {}) \
                         .get(wildcards.analysis_period, {}) \
                         .get("predictor_names", None)
-    return json.dumps(predictor_names)
+    return f"'{json.dumps(predictor_names)}'"

@@ -1,10 +1,11 @@
 import argparse
+import json
 import os
 import pickle
 
 import evofr as ef
-import numpy as np
 import jax.numpy as jnp
+import numpy as np
 import pandas as pd
 
 LOCATIONS = ["USA"]
@@ -14,6 +15,7 @@ ITERS = 50_000
 LEARNING_RATE = 4e-3
 NUM_SAMPLES = 1000
 TAU = 4.2
+
 
 def _get_growth_advantage_delta(samples, data, ps, name, rel_to="other"):
     # Unpack variant info
@@ -29,7 +31,7 @@ def _get_growth_advantage_delta(samples, data, ps, name, rel_to="other"):
         if s == rel_to:
             ga = jnp.divide(ga, ga[:, i][:, None])
 
-    #ga = jnp.divide(ga, ga[:, var_names.index(rel_to)][:, None])
+    # ga = jnp.divide(ga, ga[:, var_names.index(rel_to)][:, None])
 
     # Compute medians and quantiles
     meds = jnp.median(ga, axis=0)
@@ -62,6 +64,7 @@ def _get_growth_advantage_delta(samples, data, ps, name, rel_to="other"):
 
     return v_dict
 
+
 def get_growth_advantage_delta(posterior, pivot):
     ga_delta_df = pd.DataFrame(
         _get_growth_advantage_delta(
@@ -69,10 +72,11 @@ def get_growth_advantage_delta(posterior, pivot):
             posterior.data,
             name=posterior.name,
             ps=CI_COVERAGE,
-            rel_to=pivot
+            rel_to=pivot,
         )
     )
     return ga_delta_df
+
 
 def get_growth_advantage(posterior, pivot):
     ga_df = pd.DataFrame(
@@ -89,7 +93,15 @@ def get_growth_advantage(posterior, pivot):
 
 def prep_predictors(predictors, variant_freqs, predictor_names):
     # Index by variant name
-    predictors = predictors.rename(columns={"seqName": "variant"}).set_index("variant")
+    predictors = predictors.rename(columns={"lineage": "variant"}).set_index("variant")
+
+    # Check all predictors are present
+    missing_columns = [n for n in predictor_names if n not in predictors.columns]
+    if missing_columns:
+        raise ValueError(
+            f"The following predictor names are not columns in the DataFrame: {missing_columns}"
+        )
+
     predictors = predictors.replace("?").astype(
         {name: "float" for name in predictor_names}
     )
@@ -163,7 +175,7 @@ if __name__ == "__main__":
         "--predictor-path",
         type=str,
         default=None,
-        help="input TSV of predictors of variant fitness",
+        help="input CSV of predictors of variant fitness",
     )
     parser.add_argument(
         "--predictor-names",
@@ -200,11 +212,13 @@ if __name__ == "__main__":
     # Load data
     raw_seq = pd.read_csv(args.seq_counts, sep="\t")
     raw_variant_parents = pd.read_csv(args.pango_relationships, sep="\t")
-    raw_variant_parents = raw_variant_parents.rename(columns={"closest_parent": "parent"})
+    raw_variant_parents = raw_variant_parents.rename(
+        columns={"closest_parent": "parent"}
+    )
 
     # Use all location present unless instructed otherwise
     # locations = pd.unique(raw_seq["location"])
-    locations = LOCATIONS # TODO: Filter locations earlier within config
+    locations = LOCATIONS  # TODO: Filter locations earlier within config
 
     def _get_posterior(location, pivot):
         # Filtering to location of interest
@@ -218,8 +232,11 @@ if __name__ == "__main__":
         else:
             # Build predictor-informed model
             # Define predictors if they are supplied
-            predictors = pd.read_csv(args.predictor_path, sep="\t")
-            predictor_names = args.predictor_names
+            predictors = pd.read_csv(args.predictor_path)
+            try:
+                predictor_names = json.loads(args.predictor_names)
+            except json.JSONDecodeError:
+                predictor_names = args.predictor_names.split(",")
 
             # Default to `immune_escape` and `ace2_binding` if not specified.
             if predictor_names is None:
@@ -241,22 +258,20 @@ if __name__ == "__main__":
         if args.posterior_path is not None:
             os.makedirs(args.posterior_path, exist_ok=True)
             posterior.save_posterior(args.posterior_path + f"/samples_{location}.pkl")
-            with open(args.posterior_path + f"/data_{location}.pkl", 'wb') as f:
+            with open(args.posterior_path + f"/data_{location}.pkl", "wb") as f:
                 pickle.dump(posterior.data, f)
         return posterior
 
     posteriors = [_get_posterior(location, pivot=args.pivot) for location in locations]
 
-    # Export 
+    # Export
     print("Exporting growth advantages")
-    ga_df = pd.concat([
-        get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors
-    ])
+    ga_df = pd.concat(
+        [get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors]
+    )
     ga_df.to_csv(args.growth_advantage_path, sep="\t")
 
-
-    ga_delta_df = pd.concat([
-        get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors
-    ])
+    ga_delta_df = pd.concat(
+        [get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors]
+    )
     ga_delta_df.to_csv(args.growth_advantage_delta_path, sep="\t")
-
