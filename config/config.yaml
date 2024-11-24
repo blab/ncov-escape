@@ -14,44 +14,10 @@ prepare_data:
   gisaid:
     pango_lineages:
       global:
-        min_date: "2023-01-01"
-        max_date: "2023-12-01"
         location_min_seq: 1000
         excluded_locations: "defaults/global_excluded_locations.txt"
         clade_min_seq: 1
-        collapse_threshold: 350
-
-prepare_predictors:
-  current_dms:
-    input_data: "results/summaries/summary.csv"
-    rename_cols: {"human sera escape": "sera escape", "spike mediated entry": "cell entry"}
-    phenotype_cols: ["sera escape", "ACE2 binding", "cell entry"]
-    title: "XBB.1.5 full-spike DMS phenotypes"
-    missing_muts: "drop"  # drop clades with missing muts,
-  yeast_RBD_DM:
-    input_data: "data/compare_natural_datasets/yeast_RBD_DMS.csv"
-    rename_cols: {}
-    phenotype_cols: ["escape", "ACE2 affinity", "RBD expression"]
-    title: "yeast RBD DMS phenotypes"
-    missing_muts: "zero"  # set missing (non-RBD) mutations to zero
-  muts_from_Wuhan-Hu-1:
-    input_data: "data/compare_natural_datasets/incremental_Hamming_distance_from_Wuhan-Hu-1.csv"
-    rename_cols: {"incremental Hamming distance": "distance"}
-    phenotype_cols: ["distance"]
-    title: "relative distance from Wuhan-Hu-1"
-    missing_muts": "drop"  # drop clades with missing muts
-  EVEscape:
-    input_data: "data/compare_natural_datasets/EVEscape_XBB_single_mutation_predictions.csv"
-    rename_cols: {}
-    phenotype_cols: ["EVEscape"]
-    title: "EVEscape"
-    missing_muts: "drop"  # drop clades with missing muts
-  EVEscape_components:
-    input_data: "data/compare_natural_datasets/EVEscape_XBB_single_mutation_predictions.csv"
-    rename_cols: {"fitness_evol_indices": "EVE fitness", "dissimilarity_charge_hydrophobicity": "aa dissimilarity", "accessibility_wcn": "accessibility"}
-    phenotype_cols: ["EVE fitness", "aa dissimilarity", "accessibility"]
-    title: "EVEscape components"
-    missing_muts: "drop"  # drop clades with missing muts
+        collapse_threshold: 200
 
 # In case we want to run models for various different pandemic periods
 analysis_period:
@@ -67,13 +33,10 @@ analysis_period:
     min_date: "2023-01-01"
     max_date: "2023-12-01"
     pivot: "XBB.1.5"
+    force_include: "defaults/xbb15/force_include_lineages.txt"
     predictor_names:
       - 'spike pseudovirus DMS Non-RBD human sera escape relative to XBB.1.5'
       - 'spike pseudovirus DMS Non-RBD ACE2 binding relative to XBB.1.5'
-  jn1:
-    min_date: "2024-01-01"
-    max_date: "2024-10-01"
-    pivot: "JN.1"
   xbb15_windowed:
     windowed: true
     obs_date_min: "2023-01-01"
@@ -81,3 +44,7 @@ analysis_period:
     interval: "2M"
     pivot: "XBB.1.5"
     num_days_context: 90
+  jn1:
+    min_date: "2024-01-01"
+    max_date: "2024-10-01"
+    pivot: "JN.1"

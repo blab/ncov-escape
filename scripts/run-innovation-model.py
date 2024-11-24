@@ -12,9 +12,9 @@ LOCATIONS = ["USA"]
 CI_COVERAGE = [0.8]
 
 ITERS = 50_000
-LEARNING_RATE = 4e-3
-NUM_SAMPLES = 1000
-TAU = 4.2
+LEARNING_RATE = 1e-3
+NUM_SAMPLES = 100
+TAU = 1.0
 
 
 def _get_growth_advantage_delta(samples, data, ps, name, rel_to="other"):

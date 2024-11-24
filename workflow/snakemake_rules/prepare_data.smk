@@ -77,7 +77,6 @@ rule provision_sequence_counts:
             --output-path {output}
         """
 
-# TODO: Call prepare data -> prepare-pango-relationship on all resulting sequence files {analysis_period}/{obs_date}
 rule prepare_clade_data:
     "Preparing clade counts for analysis"
     input:
@@ -91,8 +90,8 @@ rule prepare_clade_data:
     log:
         "logs/{analysis_period}/prepare_clade_data.txt"
     params:
-        min_date = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'min_date'),
-        max_date = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'max_date'),
+        min_date = lambda wildcards: _get_analysis_period_option(wildcards, 'min_date'),
+        max_date = lambda wildcards: _get_analysis_period_option(wildcards, 'max_date'),
         location_min_seq = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'location_min_seq'),
         excluded_locations = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'excluded_locations'),
         prune_seq_days = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'prune_seq_days'),
@@ -120,13 +119,15 @@ rule collapse_sequence_counts:
     output:
         collapsed_counts = "data/{analysis_period}/collapsed_seq_counts.tsv"
     params:
-        collapse_threshold = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'collapse_threshold')
+        collapse_threshold = lambda wildcards: _get_prepare_data_option_analysis(wildcards, 'collapse_threshold'),
+        force_include = lambda wildcards: _get_analysis_period_option(wildcards, 'force_include')
     shell:
         """
         python ./scripts/collapse-lineage-counts.py \
             --seq-counts {input.sequence_counts} \
             --output-seq-counts {output.collapsed_counts} \
-            {params.collapse_threshold}
+            {params.collapse_threshold} \
+            {params.force_include}
         """
 
 rule get_pango_relationships:

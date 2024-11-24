@@ -64,26 +64,43 @@
 # substantially to use pango_aliasor instead to get parent lineages.
 
 import argparse
+
 import pandas as pd
 from pango_aliasor.aliasor import Aliasor
 
-def get_low_count_lineages(seq_counts: pd.DataFrame, collapse_threshold: int) -> set:
+
+def get_low_count_lineages(
+    seq_counts: pd.DataFrame, collapse_threshold: int, force_include: set
+) -> set:
     total_counts = seq_counts.groupby("variant")["sequences"].sum()
-    low_count_lineages = set(total_counts[total_counts < collapse_threshold].index.to_list())
+    low_count_lineages = set(
+        total_counts[total_counts < collapse_threshold].index.to_list()
+    )
     low_count_lineages.discard("other")
+
+    # Exclude forece-included variants from collapsing
+    low_count_lineages -= force_include
     return low_count_lineages
+
 
 def lineage_depth(lineage: str, aliasor: Aliasor) -> int:
     return len(aliasor.uncompress(lineage).split("."))
 
-def collapse_lineages(seq_counts, collapse_threshold, aliasor: Aliasor):
+
+def collapse_lineages(
+    seq_counts, collapse_threshold, aliasor: Aliasor, force_include: set
+):
     print("Starting variants:", len(seq_counts.groupby("variant")))
     print(seq_counts.variant.unique())
 
-    low_count_lineages = get_low_count_lineages(seq_counts, collapse_threshold)
+    low_count_lineages = get_low_count_lineages(
+        seq_counts, collapse_threshold, force_include
+    )
 
     # Find max depth of lineage tree
-    max_lineage_depth = max(map(lambda x: lineage_depth(x, aliasor), low_count_lineages))
+    max_lineage_depth = max(
+        map(lambda x: lineage_depth(x, aliasor), low_count_lineages)
+    )
 
     # Collapse lineages from highest depth to lowest depth
     for depth in range(max_lineage_depth, 0, -1):
@@ -95,45 +112,88 @@ def collapse_lineages(seq_counts, collapse_threshold, aliasor: Aliasor):
                 if parent == "":
                     parent = "other"
                 seq_counts.loc[seq_counts["variant"] == lineage, "variant"] = parent
-        print("At depth", depth, "there are", len(low_count_lineages_at_depth), "low count lineages")
+        print(
+            "At depth",
+            depth,
+            "there are",
+            len(low_count_lineages_at_depth),
+            "low count lineages",
+        )
         print(low_count_lineages_at_depth)
 
-        low_count_lineages = get_low_count_lineages(seq_counts, collapse_threshold)
+        low_count_lineages = get_low_count_lineages(
+            seq_counts, collapse_threshold, force_include
+        )
 
     print("Ending variants:", len(seq_counts.groupby("variant")))
     print(seq_counts.variant.unique())
 
     return seq_counts
 
+
 def aggregate_counts(seq_counts):
-    return seq_counts.groupby(["location", "variant", "date"], as_index=False)["sequences"].sum()
+    return seq_counts.groupby(["location", "variant", "date"], as_index=False)[
+        "sequences"
+    ].sum()
+
 
 def sort_output(seq_counts):
     return seq_counts.sort_values(["variant", "date"])
 
+
 def save_seq_counts(seq_counts, output_file):
     seq_counts.to_csv(output_file, sep="\t", index=False)
 
+
 def main():
-    parser = argparse.ArgumentParser(description = "Given input sequence counts and \
+    parser = argparse.ArgumentParser(
+        description="Given input sequence counts and \
         Pango aliasing file, collapse Pango lineages into their parental lineages \
-        based on supplied threshold and output a new sequence counts file")
-    parser.add_argument("--seq-counts", type=str, required=True, help="input TSV of sequence counts")
-    parser.add_argument("--collapse-threshold", type=int, default=1000, help="threshold count to collapse lineage into parental lineage")
-    parser.add_argument("--output-seq-counts", type=str, required=True, help="output TSV of collapsed sequence counts")
+        based on supplied threshold and output a new sequence counts file"
+    )
+    parser.add_argument(
+        "--seq-counts", type=str, required=True, help="input TSV of sequence counts"
+    )
+    parser.add_argument(
+        "--collapse-threshold",
+        type=int,
+        default=1000,
+        help="threshold count to collapse lineage into parental lineage",
+    )
+    parser.add_argument(
+        "--output-seq-counts",
+        type=str,
+        required=True,
+        help="output TSV of collapsed sequence counts",
+    )
+    parser.add_argument(
+        "--force-include-file",
+        type=str,
+        required=False,
+        help="file with list of variants to force include (one per line)",
+    )
     args = parser.parse_args()
 
     seq_counts = pd.read_csv(args.seq_counts, sep="\t")
+
+    # Load force-included variants if provided
+    force_include = set()
+    if args.force_include_file:
+        with open(args.force_include_file, "r") as f:
+            force_include = set(line.strip() for line in f)
 
     # Automatically downloads aliasing file from github, needs internet connection
     # File is sourced from https://github.com/cov-lineages/pango-designation/blob/master/pango_designation/alias_key.json
     aliasor: Aliasor = Aliasor()
 
-    seq_counts = collapse_lineages(seq_counts, args.collapse_threshold, aliasor)
+    seq_counts = collapse_lineages(
+        seq_counts, args.collapse_threshold, aliasor, force_include
+    )
     seq_counts = aggregate_counts(seq_counts)
     seq_counts = sort_output(seq_counts)
 
     save_seq_counts(seq_counts, args.output_seq_counts)
+
 
 if __name__ == "__main__":
     main()
