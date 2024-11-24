@@ -1,22 +1,20 @@
 #TODO: Run collapsing logic on this
-
-rule observed_over_period:
+rule process_metadata:
     input:
-        # sequence_counts = "data/{data_provenance}/{variant_classification}/{geo_resolution}/{analysis_period}/collapsed_seq_counts.tsv"
         metadata = lambda wildcards: "data/{data_provenance}_metadata.tsv.gz".format(
             data_provenance=get_analysis_config(wildcards).get("data_provenance", "gisaid")
         )
     output:
-        sequence_counts_dated = "data/{analysis_period}/prepared_seq_counts_{obs_date}.tsv", 
+        sequence_counts_by_submission = "data/{analysis_period}/sequence_counts_by_submission.tsv"
     params:
         obs_date_min = lambda wildcards: _get_analysis_period_option(wildcards, 'obs_date_min'),
         obs_date_max = lambda wildcards: _get_analysis_period_option(wildcards, 'obs_date_max'),
         obs_date_interval = lambda wildcards: _get_analysis_period_option(wildcards, 'interval'),
         num_days_context = lambda wildcards: _get_analysis_period_option(wildcards, 'num_days_context'),
-        output_path = lambda wildcards: f"data/{wildcards.analysis_period}"
+        output_path = "data/{analysis_period}"
     shell:
         """
-        python ./scripts/create-observed-sequence-counts.py \
+        python ./scripts/process-metadata-by-submission.py \
             --metadata {input.metadata} \
             --clade-column "Nextclade_pango" \
             --output-path {params.output_path} \
@@ -24,7 +22,26 @@ rule observed_over_period:
             --filter-query "QC_overall_status != 'bad'" \
             {params.obs_date_min}\
             {params.obs_date_max} \
-            {params.obs_date_interval} \
+            {params.num_days_context}
+        """
+
+rule observe_over_period:
+    input:
+        sequence_counts_by_submission = "data/{analysis_period}/sequence_counts_by_submission.tsv"
+    output:
+        sequence_counts_dated = "data/{analysis_period}/prepared_seq_counts_{obs_date}.tsv"
+    params:
+        obs_date_min = lambda wildcards: _get_analysis_period_option(wildcards, 'obs_date_min'),
+        num_days_context = lambda wildcards: _get_analysis_period_option(wildcards, 'num_days_context'),
+        output_path = lambda wildcards: f"data/{wildcards.analysis_period}",
+        obs_date = lambda wildcards: wildcards.obs_date
+    shell:
+        """
+        python ./scripts/observe-sequence-counts.py \
+            --sequence-counts-by-submission {input.sequence_counts_by_submission} \
+            --output-path {params.output_path} \
+            --obs-date {params.obs_date} \
+            {params.obs_date_min} \
             {params.num_days_context}
         """
 
@@ -43,6 +60,18 @@ rule collapse_over_period:
             --output-seq-counts {output.collapsed_counts} \
             {params.collapse_threshold}
         """
+
+rule get_pango_relationships_over_period:
+    input:
+        sequence_counts = "data/{analysis_period}/collapsed_seq_counts_{obs_date}.tsv"
+    output:
+        pango_relationships = "data/{analysis_period}/pango_variant_relationships_{obs_date}.tsv"
+    shell:
+        """
+        python ./scripts/prepare-pango-relationships.py \
+            --seq-counts {input.sequence_counts} \
+            --output-relationships {output.pango_relationships}
+        """
     
 rule run_innovation_model_over_period:
     input:
@@ -50,7 +79,7 @@ rule run_innovation_model_over_period:
             analysis_period = wildcards.analysis_period,
             obs_date = wildcards.obs_date
             ),
-        pango_relationships = "data/{analysis_period}/pango_variant_relationships.tsv",
+        pango_relationships = "data/{analysis_period}/pango_variant_relationships_{obs_date}.tsv",
     params:
         pivot = lambda wildcards: _get_analysis_period_option(wildcards, 'pivot'),
     	posteriors = lambda wildcards: "results/{analysis_period}/posteriors_{obs_date}".format(

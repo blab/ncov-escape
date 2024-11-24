@@ -3,7 +3,6 @@ Summarize sequence counts grouped by date, location, and clade.
 """
 import argparse
 import os
-import sys
 from datetime import datetime
 
 import pandas as pd
@@ -87,14 +86,11 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--sequence-counts-by-submission",
-        requred=True,
+        required=True,
         help="Path to `sequence_counts_by_submission` TSV.",
     )
+    parser.add_argument("--obs-date", help="Observation date.")
     parser.add_argument("--obs-date-min", help="First date of observation.")
-    parser.add_argument("--obs-date-max", help="Last date of observation.")
-    parser.add_argument(
-        "--interval", help="The interval for the date range e.g. '2W' or '1D'."
-    )
     parser.add_argument(
         "--num-days-context",
         type=int,
@@ -112,52 +108,32 @@ if __name__ == "__main__":
         args.sequence_counts_by_submission, sep="\t"
     )
 
-    # We need to create a directory to hold observed counts
-    observation_dates = pd.date_range(
-        start=args.obs_date_min, end=args.obs_date_max, freq=args.interval
-    )
+    print(args.num_days_context)
 
-    for obs_date in observation_dates:
-        # Observe sequences up to this date
-        obs_date = obs_date.strftime("%Y-%m-%d")
-        obs_seq = observe_sequence_counts(
-            sequence_count_by_submission, obs_date=obs_date
+    # Observe sequences up to this date
+    obs_date = args.obs_date
+    obs_seq = observe_sequence_counts(sequence_count_by_submission, obs_date=obs_date)
+
+    # Filter to appropriate date, either to maintain consistent window or grow window in time
+    if args.num_days_context is None:
+        min_date = args.obs_date_min
+    else:
+        min_date = pd.to_datetime(obs_date) - pd.Timedelta(
+            args.num_days_context + BIAS_BUFFER, "d"
         )
+        min_date = min_date.strftime("%Y-%m-%d")
+    obs_seq = obs_seq[obs_seq.date > min_date]
 
-        # Filter to appropriate date, either to maintain consistent window or grow window in time
-        if args.num_days_context is None:
-            min_date = args.obs_date_min
-        else:
-            min_date = pd.to_datetime(obs_date) - pd.Timedelta(
-                args.num_days_context + BIAS_BUFFER, "d"
-            )
-        obs_seq = obs_seq[obs_seq.date > min_date]
-
-        # Remove most recent 14 days due to bias
-        max_date = (
-            pd.to_datetime(obs_date) - pd.Timedelta(BIAS_BUFFER, "d")
-        ).dt.strftime("%Y-%m-%d")
-        obs_seq = obs_seq[obs_seq.date <= max_date]
-
-        # Export file
-        path = args.output_path
-        if not os.path.exists(path):
-            os.makedirs(path)
-
-        # Make sure we have the folder
-        obs_seq.to_csv(
-            f"{path}/prepared_seq_counts_{obs_date}.tsv", sep="\t", index=False
-        )
-
-    retrospective_seq_counts = observe_sequence_counts(
-        sequence_count_by_submission, obs_date=None
+    # Remove most recent 14 days due to bias
+    max_date = (pd.to_datetime(obs_date) - pd.Timedelta(BIAS_BUFFER, "d")).strftime(
+        "%Y-%m-%d"
     )
+    obs_seq = obs_seq[obs_seq.date <= max_date]
 
-    # Make sure we have the folder
+    # Export file
     path = args.output_path
     if not os.path.exists(path):
         os.makedirs(path)
 
-    retrospective_seq_counts.to_csv(
-        f"{path}/seq_counts_retrospective.tsv", sep="\t", index=False
-    )
+    # Make sure we have the folder
+    obs_seq.to_csv(f"{path}/prepared_seq_counts_{obs_date}.tsv", sep="\t", index=False)
