@@ -273,6 +273,9 @@ if __name__ == "__main__":
     ga_df.to_csv(args.growth_advantage_path, sep="\t", index=False)
 
     ga_delta_df = pd.concat(
-        [get_growth_advantage(posterior, pivot=args.pivot) for posterior in posteriors]
+        [
+            get_growth_advantage_delta(posterior, pivot=args.pivot)
+            for posterior in posteriors
+        ]
     )
     ga_delta_df.to_csv(args.growth_advantage_delta_path, sep="\t", index=False)
