@@ -40,6 +40,11 @@ analysis_period:
       - "RBD yeast-display DMS ACE2 affinity relative to XBB.1.5"
       - "RBD yeast-display DMS RBD expression relative to XBB.1.5"
       - "RBD yeast-display DMS escape relative to XBB.1.5"
+  xbb15_test:
+    min_date: "2024-01-01"
+    max_date: "2024-6-30"
+    pivot: "XBB.1.5"
+    force_include: "defaults/xbb15/force_include_lineages.txt"
   xbb15_windowed:
     windowed: true
     obs_date_min: "2023-01-01"
