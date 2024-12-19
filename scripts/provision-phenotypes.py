@@ -8,8 +8,8 @@ import yaml
 DEFAULT_FILES_TO_DOWNLOAD = {
     "mutation_phenotypes.csv": "results/mutation_phenotypes.csv",
     "mutation_phenotypes_randomized.csv": "results/mutation_phenotypes_randomized.csv",
-    "lineage_phenotypes.csv": "results/lineage_phenotypes.csv",
-    "lineage_phenotypes_randomized.csv": "results/lineage_phenotypes_randomized.csv",
+    "lineage_phenotypes.csv": "results/clade_phenotypes.csv",
+    "lineage_phenotypes_randomized.csv": "results/clade_phenotypes_randomized.csv",
 }
 
 def download_file(url, local_path):

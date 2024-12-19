@@ -94,7 +94,7 @@ def get_growth_advantage(posterior, pivot):
 
 def prep_predictors(predictors, variant_freqs, predictor_names):
     # Index by variant name
-    predictors = predictors.rename(columns={"lineage": "variant"}).set_index("variant")
+    predictors = predictors.rename(columns={"clade": "variant"}).set_index("variant")
 
     # Check all predictors are present
     missing_columns = [n for n in predictor_names if n not in predictors.columns]
