@@ -45,3 +45,10 @@ analysis_period:
     min_date: "2024-01-01"
     max_date: "2024-10-01"
     pivot: "JN.1"
+  xbb15_windowed:
+    windowed: true
+    obs_date_min: "2023-01-01"
+    obs_date_max: "2023-12-01"
+    interval: "2M"
+    pivot: "XBB.1.5"
+    num_days_context: 90
