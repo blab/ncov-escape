@@ -21,10 +21,6 @@ prepare_data:
 
 # In case we want to run models for various different pandemic periods
 analysis_period:
-  # ba2:
-  #   included_days: 150
-  #   date_max: "2022-"
-  #   pivot: "BA.2"
   ba2:
     min_date: "2021-11-01"
     max_date: "2022-11-01"
@@ -45,13 +41,6 @@ analysis_period:
     max_date: "2024-6-30"
     pivot: "XBB.1.5"
     force_include: "defaults/xbb15/force_include_lineages.txt"
-  xbb15_windowed:
-    windowed: true
-    obs_date_min: "2023-01-01"
-    obs_date_max: "2023-12-01"
-    interval: "2M"
-    pivot: "XBB.1.5"
-    num_days_context: 90
   jn1:
     min_date: "2024-01-01"
     max_date: "2024-10-01"
