@@ -1,9 +1,7 @@
 #TODO: Run collapsing logic on this
 rule process_metadata:
     input:
-        metadata = lambda wildcards: "data/{data_provenance}_metadata.tsv.gz".format(
-            data_provenance=get_analysis_config(wildcards).get("data_provenance", "gisaid")
-        )
+        metadata = lambda wildcards: "data/gisaid_metadata_filtered.tsv.gz"
     output:
         sequence_counts_by_submission = "data/{analysis_period}/sequence_counts_by_submission.tsv"
     params:

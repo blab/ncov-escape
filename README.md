@@ -11,10 +11,10 @@ Windowed analyses require access to SARS-CoV-2 metadata.
 This can be acquired via
 
 ```bash
-aws s3 cp s3://nextstrain-ncov-private/metadata.tsv.gz data/gisaid/gisaid_metadata.tsv.gz
-zstd -c -d data/gisaid/giasaid_metadata.tsv.gz \
+aws s3 cp s3://nextstrain-ncov-private/metadata.tsv.gz data/gisaid_metadata.tsv.gz
+zstd -c -d data/gisaid_metadata.tsv.gz \
    | tsv-select -H -f strain,date,date_submitted,country,clade_nextstrain,Nextclade_pango,QC_overall_status \
-   | zstd -c > data/gisaid/giasaid_metadata.tsv.gz
+   | gzip -c > data/gisaid_metadata_filtered.tsv.gz
 ```
 
 Non-windowed analyses will provision sequence counts from [forecasts-ncov](https://github.com/nextstrain/forecasts-ncov).
