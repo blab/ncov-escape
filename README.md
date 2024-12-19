@@ -1,5 +1,10 @@
 # Analysis of SARS-CoV-2 antigenic drift and evolutionary fitness
 
+## Installation
+
+All dependencies can be met by running through the Nextstrain runtime.
+See [docs.nextstrain.org](https://docs.nextstrain.org/en/latest/install.html) for installation instructions.
+
 ## Provision metadata locally
 
 Windowed analyses require access to SARS-CoV-2 metadata.
