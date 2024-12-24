@@ -2,6 +2,7 @@
 # (or at least out of _this_ git repo).
 benchmarks/
 logs/
+data/
 results/
 build/
 auspice/
