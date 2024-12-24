@@ -46,14 +46,19 @@ analysis_period:
       - "RBD yeast-display DMS escape relative to XBB.1.5"
 ```
 
-It will then produce sequence count files for windowed analyses, non-windowed analyses, collapsing lineages into their parents based on count thresholds specified in `./config/config.yaml`.
+### Sequence counts and variant relationships
 
-This will also generate variant relationship files, so that the innovation model can be fit.
+It produces sequence count files for windowed analyses, non-windowed analyses, collapsing lineages into their parents based on count thresholds specified in `./config/config.yaml`, as well as generating variant relationship files, so that the innovation model can be fit.
 
-The sequence count files and variant relationships will then be used to estimate relative fitness using the uninformed (normal-prior) innovation model.
+Collapsed sequence counts follow the form `data/{analysis_period}/collapsed_seq_counts.tsv` and variant relationships follow the form `data/{analysis_period}/pango_variant_relationships.tsv`.
 
-If predictor names are provided, they will be also be used to fit the regression prior innovation model.
+### MLR innovation model
 
-For each analysis, this will produce `results/{analysis_period}/growth_advantage.tsv` and `results/{analysis_periods}/growth_advantage_delta.tsv` for each analysis period.
+The collapsed sequence count files and variant relationships are used to estimate relative fitness using the uninformed (normal-prior) innovation model.
+
+For each analysis period, this produces `results/{analysis_period}/growth_advantage.tsv` and `results/{analysis_periods}/growth_advantage_delta.tsv`.
 
 The model posteriors will also be saved under `results/{analysis_period}/posteriors/data_{location}.pkl` and `results/{analysis_period}/posteriors/samples_{location}.pkl`.
+
+If predictor names are provided, they are used to fit the regression prior innovation model.
+These predictor-informed results are stored under `results/{analysis_period}/informed/growth_advantages.tsv` and `results/{analysis_period}/informed/growth_advantages.tsv`.
