@@ -17,7 +17,11 @@ zstd -c -d data/gisaid_metadata.tsv.gz \
    | gzip -c > data/gisaid_metadata_filtered.tsv.gz
 ```
 
-Non-windowed analyses will provision sequence counts from [forecasts-ncov](https://github.com/nextstrain/forecasts-ncov).
+Access to this S3 bucket is restricted based on GISAID data sharing policies.
+
+Non-windowed analyses will provision sequence counts from [forecasts-ncov](https://github.com/nextstrain/forecasts-ncov). These reduced sequence counts are publicly available.
+
+Windowed analyses require working from detailed metadata as the rules [`process_metadata` and `observe_over_period`](/workflow/snakemake_rules/run_models_over_period.smk) restrict sequence counts to follow what was actually available based on submission dates, rather than what's available at the current moment.
 
 
 ## Workflow
